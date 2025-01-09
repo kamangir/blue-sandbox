@@ -122,11 +122,11 @@ gdalwarp -co BIGTIFF=YES -co NUM_THREADS=ALL_CPUS -co COMPRESS=LZW -co PREDICTOR
 #### Prepare imagery for labelling
 If your rendered RGB imagery has low contrast, then manual labeling can be difficult to impossible. You can use QGIS to play around with different normalization and contrast settings as shown in the following figure:
 
-![](figures/high_contrast_example.png)
+![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/high_contrast_example.png?raw=true)
 
 You can save the contrast adjusted image as a rendered GeoTIFF by right clicking the layer in the Layers panel, then exporting, and selecting the "Rendered image" option as shown in the following figure (remember to set the compression level to high here):
 
-![](figures/rendering_example.png)
+![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/rendering_example.png?raw=true)
 
 
 
@@ -153,15 +153,14 @@ tensorboard --logdir logs/maui_demo_0/ --port 8889
 ```
 
 In particular, the "Images" tab in tensorboard will show examples of the input imagery, target mask, and model predictions. See the following figure for an example:
-![](figures/tensorboard.png)
+![image](https://github.com/microsoft/building-damage-assessment/blob/main/figures/tensorboard.png?raw=true)
 
 If, after 20-30 epochs of training, the model results do not look reasonable, then we advise labeling more examples of the three classes (taking into account the mistakes that the model is making), creating a copy of the config file pointing to the updated GeoJSON, and re-running the `create_masks.py`, `fine_tune.py`, and `inference.py` scripts. It is also helpful to intermittently run inference with the latest checkpoint while the model is training to see if the results are useful.
 
 The following figures show imagery and the resulting predictions after 8 epochs of training with the example labels (green is the "Building" class and red is the "Damaged Building" class):
 
-![](figures/imagery.png)
-![](figures/damage.png)
-
+![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/imagery.png?raw=true)
+![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/damage.png?raw=true)
 
 
 ## 3. Results summarization
@@ -181,5 +180,5 @@ This will calculate the percentage of each building that is predicted to be dama
 
 The final output looks like this:
 
-![](figures/buildings.png)
+![image](https://github.com/microsoft/building-damage-assessment/blob/main/figures/buildings.png?raw=true)
 
