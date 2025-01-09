@@ -1,4 +1,4 @@
-# Satellite imagery damage assessment workflow - 🌐 `@damage`
+# 🌐 `@damage`: Satellite imagery damage assessment workflow
 
 🌐 `@damage` is a work in progress on [Satellite imagery damage assessment workflow](https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md).
 
