@@ -6,7 +6,7 @@
 graph LR
     ingest["@damage<br>ingest -<br>&lt;dataset-object-name&gt;"]
     label["@damage<br>label -<br>&lt;dataset-object-name&gt;"]
-    train["@damage<br>train -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
+    fine_tune["@damage<br>fine_tune -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
     predict["@damage<br>predict -<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
     summarize["@damage<br>summarize -<br>&lt;prediction-object-name&gt;"]
 
@@ -19,8 +19,9 @@ graph LR
     dataset --> label
     label --> dataset
 
-    dataset --> train
-    train --> model
+    dataset --> fine_tune
+    model --> fine_tune
+    fine_tune --> model
 
     dataset --> predict
     model --> predict
