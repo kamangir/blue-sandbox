@@ -6,7 +6,7 @@ from blue_sandbox import env
 
 def test_required_env():
     test_abcli_env()
-    test_blue_objects_env()
+    test_blue_objects_env(including_RDS=False)
 
 
 def test_blue_sandbox_env():
