@@ -16,7 +16,7 @@ graph LR
     ingest["@damage<br>ingest -<br>&lt;dataset-object-name&gt;"]
     label["@damage<br>label -<br>&lt;dataset-object-name&gt;"]
     train["@damage<br>train -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
-    predict["@damage<br>predict -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;&lt;prediction-object-name&gt;"]
+    predict["@damage<br>predict -<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
     summarize["@damage<br>summarize -<br>&lt;prediction-object-name&gt;"]
 
     dataset["dataset"]:::folder
