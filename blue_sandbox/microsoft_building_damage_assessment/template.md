@@ -15,6 +15,9 @@ TODO: add the rest of the md 🔥
 graph LR
     ingest["@damage<br>ingest -<br>&lt;dataset-object-name&gt;"]
     label["@damage<br>label -<br>&lt;dataset-object-name&gt;"]
+    train["@damage<br>train -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
+    predict["@damage<br>predict -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;&lt;prediction-object-name&gt;"]
+    summarize["@damage<br>summarize -<br>&lt;prediction-object-name&gt;"]
 
     dataset["dataset"]:::folder
     model["model"]:::folder
@@ -25,15 +28,15 @@ graph LR
     dataset --> label
     label --> dataset
 
-    dataset -> train
-    train -> model
+    dataset --> train
+    train --> model
 
-    dataset -> predict
-    model -> predict
-    predict -> prediction
+    dataset --> predict
+    model --> predict
+    predict --> prediction
 
-    prediction -> summarize
-    summarize -> prediction
+    prediction --> summarize
+    summarize --> prediction
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
