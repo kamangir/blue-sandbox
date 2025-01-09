@@ -12,8 +12,7 @@ items = [
         "TBA",
         "Satellite imagery damage assessment workflow",
     )
-    for index in range(1, 4)
-]
+] + 2 * [""]
 
 
 def build():
