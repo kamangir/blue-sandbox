@@ -15,3 +15,10 @@ function bashtest() {
 }
 
 bashtest "$@"
+
+
+
+
+
+
+
