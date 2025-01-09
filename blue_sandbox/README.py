@@ -9,9 +9,9 @@ items = [
     "{}[`{}`]({}) [![image]({})]({}) {}".format(
         "🌐",
         "`@damage`",
-        "https://github.com/kamangir/blue-sandbox/blob/microsoft-building-damage-assessment-2025-01-09-chRAIH/blue_sandbox/microsoft_building_damage_assessment/README.md",
+        "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/microsoft_building_damage_assessment/README.md",
         "https://github.com/microsoft/building-damage-assessment/raw/main/figures/damage.png",
-        "https://github.com/kamangir/blue-sandbox/blob/microsoft-building-damage-assessment-2025-01-09-chRAIH/blue_sandbox/microsoft_building_damage_assessment/README.md",
+        "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/microsoft_building_damage_assessment/README.md",
         "Satellite imagery damage assessment workflow",
     )
 ] + [
