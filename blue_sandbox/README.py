@@ -5,7 +5,15 @@ from blue_objects import file, README
 from blue_sandbox import NAME, VERSION, ICON, REPO_NAME
 
 
-items = ["wip 🔥"] + 2 * [""]
+items = [
+    "{}[`{}`](#) [![image]({})](#) {}".format(
+        ICON,
+        f"feature {index}",
+        "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
+        f"description of feature {index} ...",
+    )
+    for index in range(1, 4)
+]
 
 
 def build():
