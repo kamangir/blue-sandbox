@@ -9,7 +9,7 @@ items = [
     "{}[`{}`](#) [![image]({})](#) {}".format(
         "🌐",
         "`@damage`",
-        "TBA",
+        "https://github.com/microsoft/building-damage-assessment/raw/main/figures/damage.png",
         "Satellite imagery damage assessment workflow",
     )
 ] + 2 * [""]
