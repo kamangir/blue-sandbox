@@ -6,6 +6,10 @@ function test_blue_sandbox_help() {
     local module
     for module in \
         "@sandbox" \
+        \
+        "@damage" \
+        "@damage ingest" \
+        \
         "blue_sandbox"; do
         abcli_eval ,$options \
             abcli_help $module
