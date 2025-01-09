@@ -8,9 +8,9 @@ from blue_sandbox import NAME, VERSION, ICON, REPO_NAME
 items = [
     "{}[`{}`](#) [![image]({})](#) {}".format(
         ICON,
-        f"feature {index}",
+        f"experiment {index}",
         "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
-        f"description of feature {index} ...",
+        f"description of experiment {index} ...",
     )
     for index in range(1, 4)
 ]
