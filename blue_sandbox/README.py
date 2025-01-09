@@ -14,7 +14,15 @@ items = [
         "Satellite imagery damage assessment workflow",
         "https://github.com/kamangir/blue-sandbox/blob/microsoft-building-damage-assessment-2025-01-09-chRAIH/blue_sandbox/microsoft_building_damage_assessment/README.md",
     )
-] + 2 * [""]
+] + [
+    "{}[`{}`](#) [![image]({})](#) {}".format(
+        ICON,
+        f"experiment {index}",
+        "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
+        f"description of experiment {index} ...",
+    )
+    for index in range(2, 4)
+]
 
 
 def build():
