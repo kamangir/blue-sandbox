@@ -2,15 +2,6 @@
 
 🌐 `@damage` is a work in progress on [Satellite imagery damage assessment workflow](https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md).
 
----
-
-purpose: ... given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
-
-🔥
-
-TODO: add the rest of the md 🔥
-
-
 ```mermaid
 graph LR
     ingest["@damage<br>ingest -<br>&lt;dataset-object-name&gt;"]
@@ -40,3 +31,11 @@ graph LR
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
+
+---
+
+purpose: ... given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
+
+🔥
+
+TODO: add the rest of the md 🔥 pending clone 🧱
