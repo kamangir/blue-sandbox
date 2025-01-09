@@ -5,15 +5,7 @@ from blue_objects import file, README
 from blue_sandbox import NAME, VERSION, ICON, REPO_NAME
 
 
-items = [
-    "{}[`{}`](#) [![image]({})](#) {}".format(
-        ICON,
-        f"feature {index}",
-        "https://github.com/kamangir/assets/raw/main/blue-sandbox/marquee.png?raw=true",
-        f"description of feature {index} ...",
-    )
-    for index in range(1, 4)
-]
+items = ["wip 🔥"] + 2 * [""]
 
 
 def build():
@@ -25,10 +17,3 @@ def build():
         VERSION=VERSION,
         REPO_NAME=REPO_NAME,
     )
-
-
-
-
-
-
-
