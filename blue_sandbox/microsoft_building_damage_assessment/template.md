@@ -43,13 +43,7 @@ purpose: ... given post-disaster imagery ... to identify whether each known buil
 
 ## 1. ingest
 
-includes Image acquisition ... of Post disaster imagery ... through different ... providers, e.g. Sentinel-2, Planet, Maxar, or NOAA ... and label generation.
-
-... we will use ... imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) for the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). ... download the imagery captured over Lahaina on 8/12/2023, and merges the files into a single cloud optimized GeoTIFF (COG).
-
-```bash
-@damage ingest event=Maui-Hawaii-fires-Aug-23
-```
+Includes ... acquisition ... of post disaster imagery, from Sentinel-2, Planet, or NOAA, and label generation. Here, we focus on acquisitions from [Maxar's Open Data program](https://www.maxar.com/open-data/).
 
 to see the list of all events,
 
@@ -79,6 +73,12 @@ to see the list of acquisitions for `<event>`,
                            PRE 122000312222/
                            PRE 122000312223/
 ...
+```
+
+Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). We download the imagery captured over Lahaina on 8/12/2023, and merge the files into a single cloud optimized GeoTIFF (COG).
+
+```bash
+@damage ingest event=Maui-Hawaii-fires-Aug-23
 ```
 
 --table--

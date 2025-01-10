@@ -4,7 +4,7 @@ ICON = "🌀"
 
 DESCRIPTION = f"{ICON} A sandbox for ideas and experiments."
 
-VERSION = "5.41.1"
+VERSION = "5.42.1"
 
 REPO_NAME = "blue-sandbox"
 
