@@ -12,7 +12,7 @@ items = (
     [step for step in list_of_steps.keys()]
     + [
         (
-            "[`{}`](https://kamangir-public.s3.ca-central-1.amazonaws.com/{})".format(
+            "[`{}`](https://kamangir-public.s3.ca-central-1.amazonaws.com/{}.tar.gz)".format(
                 object_name,
                 object_name,
             )
