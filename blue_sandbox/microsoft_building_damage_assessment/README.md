@@ -78,20 +78,41 @@ To see the list of acquisitions for `<event>`,
 
 Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). We download the imagery captured over Lahaina on 8/12/2023, and merge the files into a single cloud optimized GeoTIFF (COG).
 
-```bash
-@damages ingest \
-    event=Maui-Hawaii-fires-Aug-23
-```
-
 - [ ] `@damages ingest` += `count` <- how many tifs to download and merge 🚧 + proper handling of `event_name` 🚧 
 
+- [ ] `@damages label` += proper handling of `event_name` 🚧 
+
 🔥
+
+```bash
+runme() {
+    local options=$1
+    local event_name=$(@option "$options" event Maui-Hawaii-fires-Aug-23)
+
+    @select $event_name-ingest-$(@@timestamp)
+
+    @damages ingest event=$event_name,~upload .
+
+    @damages label ~upload .
+
+    @wait "+= .qgz?"
+
+    @upload - .
+
+    @publish tar .
+}
+
+runme
+```
+
+🚧 
+
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 | `ingest` | `label` | `train` | `predict` | `summarize` |
-| [`Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.tar.gz) |  |  |  |  |
-| [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.png?raw=true)](#) |  |  |  |  |
+| [`{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3'}`](https://kamangir-public.s3.ca-central-1.amazonaws.com/{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3'}.tar.gz) | [`{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm'}`](https://kamangir-public.s3.ca-central-1.amazonaws.com/{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm'}.tar.gz) |  |  |  |
+| [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3'}.png?raw=true)](#) | [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm'}.png?raw=true)](#) |  |  |  |
 
 
 ### Step 1.1

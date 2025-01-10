@@ -1,8 +1,16 @@
 from typing import Dict
 
+from blue_sandbox.env import DAMAGES_TEST_DATASET_OBJECT_NAME
+
 list_of_steps: Dict[str, Dict] = {
-    "ingest": "Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC",
-    "label": "",
+    "ingest": {
+        "object_name": DAMAGES_TEST_DATASET_OBJECT_NAME,
+        "image_name": "Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3",
+    },
+    "label": {
+        "object_name": DAMAGES_TEST_DATASET_OBJECT_NAME,
+        "image_name": DAMAGES_TEST_DATASET_OBJECT_NAME,
+    },
     "train": "",
     "predict": "",
     "summarize": "",

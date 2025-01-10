@@ -1,5 +1,7 @@
 from blueness import module
 
+from blue_objects import mlflow, metadata
+
 from blue_sandbox import NAME
 from blue_sandbox.logger import logger
 
@@ -14,6 +16,16 @@ def ingest(
 ) -> bool:
     logger.info(f"{NAME}.ingest({event_name}) -> {object_name}")
 
-    logger.info("🪄")
-
-    return True
+    return all(
+        [
+            mlflow.set_tags(
+                object_name,
+                {"event": event_name},
+            ),
+            metadata.post_to_object(
+                object_name,
+                "ingest",
+                {"event": event_name},
+            ),
+        ]
+    )

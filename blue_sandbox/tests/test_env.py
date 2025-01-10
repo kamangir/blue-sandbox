@@ -10,4 +10,4 @@ def test_required_env():
 
 
 def test_blue_sandbox_env():
-    assert env.BLUE_PLUGIN_CONFIG
+    assert env.DAMAGES_TEST_DATASET_OBJECT_NAME

@@ -5,7 +5,7 @@ load_env(__name__)
 load_config(__name__)
 
 
-BLUE_PLUGIN_CONFIG = os.getenv(
-    "BLUE_PLUGIN_CONFIG",
+DAMAGES_TEST_DATASET_OBJECT_NAME = os.getenv(
+    "DAMAGES_TEST_DATASET_OBJECT_NAME",
     "",
 )
