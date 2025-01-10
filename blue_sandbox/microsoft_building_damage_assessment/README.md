@@ -59,18 +59,14 @@ includes Image acquisition ... of Post disaster imagery ... through different ..
 @publish ~download,tar .
 ```
 
+🔥
+
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 | ingest | label | train | predict | summarize |
 | [`Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.tar.gz) |  |  |  |  |
 | [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.png?raw=true)](#) |  |  |  |  |
 
-🔥
-
-
-
-
-🚧
 
 ### Step 1.1
 

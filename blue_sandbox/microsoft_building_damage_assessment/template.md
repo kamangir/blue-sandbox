@@ -59,14 +59,10 @@ includes Image acquisition ... of Post disaster imagery ... through different ..
 @publish ~download,tar .
 ```
 
---table--
-
 🔥
 
+--table--
 
-
-
-🚧
 
 ### Step 1.1
 
