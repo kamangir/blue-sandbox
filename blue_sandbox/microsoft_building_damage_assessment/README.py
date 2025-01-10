@@ -31,7 +31,7 @@ items = (
     ]
     + [
         (
-            "![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/{}.png?raw=true)]".format(
+            "![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/{}.png?raw=true)".format(
                 step["image_name"],
             )
             if step["image_name"]
