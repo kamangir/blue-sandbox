@@ -82,10 +82,9 @@ Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io
 
 - [ ] `@damages label` += proper handling of `event_name` 🚧 
 
-🔥
 
 ```bash
-runme() {
+ingest_and_label() {
     local options=$1
     local event_name=$(@option "$options" event Maui-Hawaii-fires-Aug-23)
 
@@ -102,8 +101,24 @@ runme() {
     @publish tar .
 }
 
-runme
+ingest_and_label
 ``` 
+
+🔥
+
+```
+train() {
+    @select Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm
+
+    local event_name=$(@mlflow tags get . --tag event)
+    @log "event: $event_name"
+
+    @select $event_name-model-$(@@timestamp)
+
+}
+
+train
+```
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
