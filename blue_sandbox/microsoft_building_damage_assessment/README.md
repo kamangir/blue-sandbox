@@ -37,31 +37,28 @@ graph LR
 
 purpose: ... given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
 
+1) [ingest](#1-ingest)
+2) [train and inference](#2-train-and-inference)
+3) [summarization](#3-summarization)
+
+## 1. ingest
+
+includes Image acquisition ... of Post disaster imagery ... through different ... providers, e.g. Sentinel-2, Planet, Maxar, or NOAA ... and label generation.
+
+... we will use ... imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) for the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). ... download the imagery captured over Lahaina on 8/12/2023, and merges the files into a single cloud optimized GeoTIFF (COG).
+
+```bash
+@damage ingest \
+    event=Maui-Hawaii-fires-Aug-23
+```
+
 🔥
 
-The workflow consists of three parts described in the following sections:
-1) [Image acquisition and label generation](#1-image-acquisition-and-label-generation)
-2) [Model training and inference](#2-model-training-and-inference)
-3) [Results summarization](#3-results-summarization)
-
-
-## 1. Image acquisition and label generation
-Post disaster imagery may be available through different image providers, e.g. Sentinel-2, Planet, Maxar, or NOAA.
-
-For the purposes of this tutorial we will use satellite imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) for the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). The following commands download the imagery captured over Lahaina on 8/12/2023, and merges the files into a single cloud optimized GeoTIFF (COG).
-
-```
-mkdir -p data/demo/raw/
-cd data/demo/raw/
-wget https://maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/ard/04/122000330002/2023-08-12/10300100EB15FF00-visual.tif
-wget https://maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/ard/04/122000330020/2023-08-12/10300100EB15FF00-visual.tif
-gdalbuildvrt maxar_lahaina_8_12_2023-visual.vrt *.tif*
-gdalwarp -co BIGTIFF=YES -co NUM_THREADS=ALL_CPUS -co COMPRESS=LZW -co PREDICTOR=2 -of COG maxar_lahaina_8_12_2023-visual.vrt maxar_lahaina_8_12_2023-visual.tif
-rm 10300100EB15FF00-visual.tif*
-rm maxar_lahaina_8_12_2023-visual.vrt
-cd  ../../..
-```
-_Tip:_ Download the resulting GeoTIFF file to your laptop, and view it in QGIS to make sure it is what you expect.
+|   |   |   |   |   |
+| --- | --- | --- | --- | --- |
+| `ingest` | `label` | `train` | `predict` | `summarize` |
+| [`Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.tar.gz) |  |  |  |  |
+| [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.png?raw=true)](#) |  |  |  |  |
 
 
 ### Step 1.1
@@ -131,7 +128,7 @@ You can save the contrast adjusted image as a rendered GeoTIFF by right clicking
 
 
 
-## 2. Model training and inference
+## 2. train and inference
 
 The model training and inference steps are based on config files. If you opted to skip the previous step, we have provided example labels for the demo in `data/demo/labels/` and a default config file that uses these labels in `configs/example_config.yml`. After setting up the config file, the following commands will create masks from the GeoJSON labels, fine-tune a model using the imagery and masks, and run inference with that model over the entire scene:
 ```
@@ -164,7 +161,7 @@ The following figures show imagery and the resulting predictions after 8 epochs 
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/damage.png?raw=true)
 
 
-## 3. Results summarization
+## 3. summarization
 To summarize results at the building level, download building footprints from OSM, Google, or Microsoft using the `download_building_footprints.py` command, for example:
 
 ```
