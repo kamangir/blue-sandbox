@@ -1,6 +1,6 @@
 # 🌐 `@damages`: Satellite imagery damage assessment workflow
 
-🌐 `@damages` is a work in progress on [Satellite imagery damage assessment workflow](https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md).
+🌐 `@damages` is a work in progress on [Satellite imagery damage assessment workflow](https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md), [reference](https://www.satellite-image-deep-learning.com/p/building-damage-assessment).
 
 ```mermaid
 graph LR
