@@ -2,12 +2,20 @@ from typing import List
 
 from blue_options.terminal import show_usage, xtra
 
+list_of_events = ["Maui-Hawaii-fires-Aug-23"]
+
 
 def help_ingest(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("~download,~upload", mono=mono)
+    options = "".join(
+        [
+            xtra("dryrun,", mono=mono),
+            "event=<event>",
+            xtra(",~upload", mono=mono),
+        ]
+    )
 
     args = [
         "[--verbose 1]",
@@ -21,7 +29,10 @@ def help_ingest(
             "[-|<object-name>]",
         ]
         + args,
-        "ingest @damage data.",
+        "ingest <event> -> <object-name>.",
+        {
+            "event: {}".format(" | ".join(list_of_events)): [],
+        },
         mono=mono,
     )
 
