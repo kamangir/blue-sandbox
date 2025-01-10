@@ -70,8 +70,6 @@ to see the list of acquisitions for `<event>`,
 @damage ingest list event=Maui-Hawaii-fires-Aug-23 04/
 ```
 ```bash
-💻 abcli-9.455.1.current:kamangir@dev:~/git/blue-sandbox(microsoft-building-damage-assessment-2025-01-09-jcGSN2)
- > @damage ingest list event=Maui-Hawaii-fires-Aug-23 04/
 ⚙️  aws s3 ls --no-sign-request s3://maxar-opendata/events/Maui-Hawaii-fires-Aug-23/ard/04/
                            PRE 122000303330/
                            PRE 122000303331/
