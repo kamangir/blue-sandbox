@@ -45,7 +45,7 @@ purpose: ... given post-disaster imagery ... to identify whether each known buil
 
 Includes ... acquisition ... of post disaster imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) (other options: Sentinel-2, Planet, and NOAA), and label generation. 
 
-to see the list of all events,
+To see the list of all events,
 
 ```bash
 @damage ingest list events
@@ -58,7 +58,7 @@ to see the list of all events,
 ...
 ```
 
-to see the list of acquisitions for `<event>`,
+To see the list of acquisitions for `<event>`,
 
 ```bash
 @damage ingest list \
@@ -82,6 +82,8 @@ Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io
 @damage ingest \
     event=Maui-Hawaii-fires-Aug-23
 ```
+
+- [ ] `@damage ingest` += `count` <- how many tifs to download and merge 🚧 + proper handling of `event_name` 🚧 
 
 🔥
 
