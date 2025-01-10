@@ -7,9 +7,10 @@ function test_blue_sandbox_help() {
     for module in \
         "@sandbox" \
         \
-        "@damage" \
-        "@damage ingest" \
-        "@damage ingest list" \
+        "@damages" \
+        "@damages ingest" \
+        "@damages ingest list" \
+        "@damages label" \
         \
         "blue_sandbox"; do
         abcli_eval ,$options \

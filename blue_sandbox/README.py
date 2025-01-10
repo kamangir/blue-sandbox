@@ -11,7 +11,7 @@ from blue_sandbox.microsoft_building_damage_assessment import (
 items = [
     "{}[`{}`]({}) [![image]({})]({}) {}".format(
         "🌐",
-        "`@damage`",
+        "`@damages`",
         "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/microsoft_building_damage_assessment/README.md",
         "https://github.com/microsoft/building-damage-assessment/raw/main/figures/damage.png",
         "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/microsoft_building_damage_assessment/README.md",

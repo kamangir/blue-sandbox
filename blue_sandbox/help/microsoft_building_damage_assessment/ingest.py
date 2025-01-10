@@ -26,13 +26,13 @@ def help_(
 
     return show_usage(
         [
-            "@damage",
+            "@damages",
             "ingest",
             f"[{options}]",
-            "[-|<object-name>]",
+            "[-|<dataset-object-name>]",
         ]
         + args,
-        "ingest <event> -> <object-name>.",
+        "ingest <event> -> <dataset-object-name>.",
         {
             "event: {}".format(" | ".join(list_of_events)): [],
         },
@@ -48,7 +48,7 @@ def help_list(
 
     usage_1 = show_usage(
         [
-            "@damage",
+            "@damages",
             "ingest",
             "list",
             f"[{options}]",
@@ -61,7 +61,7 @@ def help_list(
 
     usage_2 = show_usage(
         [
-            "@damage",
+            "@damages",
             "ingest",
             "list",
             f"[{options}]",

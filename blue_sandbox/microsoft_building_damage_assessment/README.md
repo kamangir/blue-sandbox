@@ -1,14 +1,14 @@
-# 🌐 `@damage`: Satellite imagery damage assessment workflow
+# 🌐 `@damages`: Satellite imagery damage assessment workflow
 
-🌐 `@damage` is a work in progress on [Satellite imagery damage assessment workflow](https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md).
+🌐 `@damages` is a work in progress on [Satellite imagery damage assessment workflow](https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md).
 
 ```mermaid
 graph LR
-    ingest["@damage<br>ingest -<br>&lt;dataset-object-name&gt;"]
-    label["@damage<br>label -<br>&lt;dataset-object-name&gt;"]
-    fine_tune["@damage<br>fine_tune -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
-    predict["@damage<br>predict -<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
-    summarize["@damage<br>summarize -<br>&lt;prediction-object-name&gt;"]
+    ingest["@damages<br>ingest -<br>&lt;dataset-object-name&gt;"]
+    label["@damages<br>label -<br>&lt;dataset-object-name&gt;"]
+    fine_tune["@damages<br>fine_tune -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
+    predict["@damages<br>predict -<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
+    summarize["@damages<br>summarize -<br>&lt;prediction-object-name&gt;"]
 
     dataset["dataset"]:::folder
     model["model"]:::folder
@@ -48,7 +48,7 @@ Includes ... acquisition ... of post disaster imagery from [Maxar's Open Data pr
 To see the list of all events,
 
 ```bash
-@damage ingest list events
+@damages ingest list events
 ```
 ```bash
 ⚙️  aws s3 ls --no-sign-request s3://maxar-opendata/events/
@@ -61,7 +61,7 @@ To see the list of all events,
 To see the list of acquisitions for `<event>`,
 
 ```bash
-@damage ingest list \
+@damages ingest list \
     event=Maui-Hawaii-fires-Aug-23 04/
 ```
 ```bash
@@ -79,11 +79,11 @@ To see the list of acquisitions for `<event>`,
 Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). We download the imagery captured over Lahaina on 8/12/2023, and merge the files into a single cloud optimized GeoTIFF (COG).
 
 ```bash
-@damage ingest \
+@damages ingest \
     event=Maui-Hawaii-fires-Aug-23
 ```
 
-- [ ] `@damage ingest` += `count` <- how many tifs to download and merge 🚧 + proper handling of `event_name` 🚧 
+- [ ] `@damages ingest` += `count` <- how many tifs to download and merge 🚧 + proper handling of `event_name` 🚧 
 
 🔥
 
