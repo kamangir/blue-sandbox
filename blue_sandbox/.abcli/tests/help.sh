@@ -9,6 +9,7 @@ function test_blue_sandbox_help() {
         \
         "@damage" \
         "@damage ingest" \
+        "@damage ingest list" \
         \
         "blue_sandbox"; do
         abcli_eval ,$options \
