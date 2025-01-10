@@ -126,7 +126,7 @@ train
 | [`Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.tar.gz) | [`Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm.tar.gz) |  |  |  |
 | ![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm.png?raw=true) |  |  |  |
 
-🚧
+🔥
 
 ### Step 1.1
 
@@ -149,27 +149,6 @@ If a TiTiler deployment isn't feasible then tiles in [XYZ tile format](https://d
 
 ### Step 1.2
 `project_setup.py` should create a link to a [satellite-imagery-labeling-tool](https://github.com/microsoft/satellite-imagery-labeling-tool/) instance with the post-disaster imagery visible. There is detailed documentation on how to setup and use the annotation tool [here](https://github.com/microsoft/satellite-imagery-labeling-tool/tree/main/docs). The next step is to create annotations using this tool, download those annotations, and save in the location pointed to be `labels.fn` in the config file.
-
-### Tips and tricks
-
-#### How to label effectively
-Through trial-and-error we have found that the following strategies result in effective labels:
-- Labeling features with high preicision is more important than rapidly labeling large areas with low precision
-- Do not label a feature that you are uncertain about
-- Label features that are directly adjacent to each other. For example, if you are labeling a building, then label the background area around it as well. This is important because unlabeled areas are not used in training the model, therefore if you label a building, but do not label around it, then model will not be penalized for making a large blurry prediction around the building (vs. a precise prediction that follows the lines of the building).
-- Label diverse features. For example, labeling 20 identical looking buildings is not particularly useful to the model training.
-- When labeling damage, only label the damaged parts of buildings. I.e. label the pixels that you want the model to identify as "damaged" and nothing else.
-
-#### Prepare imagery for labelling
-If your rendered RGB imagery has low contrast, then manual labeling can be difficult to impossible. You can use QGIS to play around with different normalization and contrast settings as shown in the following figure:
-
-![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/high_contrast_example.png?raw=true)
-
-You can save the contrast adjusted image as a rendered GeoTIFF by right clicking the layer in the Layers panel, then exporting, and selecting the "Rendered image" option as shown in the following figure (remember to set the compression level to high here):
-
-![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/rendering_example.png?raw=true)
-
-
 
 ## 2. train and inference
 
