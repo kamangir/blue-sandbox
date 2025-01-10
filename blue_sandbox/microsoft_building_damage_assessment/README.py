@@ -11,9 +11,9 @@ list_of_steps: Dict[str, Dict] = {
         "object_name": DAMAGES_TEST_DATASET_OBJECT_NAME,
         "image_name": DAMAGES_TEST_DATASET_OBJECT_NAME,
     },
-    "train": "",
-    "predict": "",
-    "summarize": "",
+    "train": {"object_name": "", "image_name": ""},
+    "predict": {"object_name": "", "image_name": ""},
+    "summarize": {"object_name": "", "image_name": ""},
 }
 
 items = (
@@ -21,22 +21,22 @@ items = (
     + [
         (
             "[`{}`](https://kamangir-public.s3.ca-central-1.amazonaws.com/{}.tar.gz)".format(
-                object_name,
-                object_name,
+                step["object_name"],
+                step["image_name"],
             )
-            if object_name
+            if step["object_name"]
             else ""
         )
-        for object_name in list_of_steps.values()
+        for step in list_of_steps.values()
     ]
     + [
         (
             "[![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/{}.png?raw=true)](#)".format(
-                object_name,
+                step["image_name"],
             )
-            if object_name
+            if step["image_name"]
             else ""
         )
-        for object_name in list_of_steps.values()
+        for step in list_of_steps.values()
     ]
 )

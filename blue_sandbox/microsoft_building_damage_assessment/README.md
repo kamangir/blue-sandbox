@@ -111,8 +111,8 @@ runme
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 | `ingest` | `label` | `train` | `predict` | `summarize` |
-| [`{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3'}`](https://kamangir-public.s3.ca-central-1.amazonaws.com/{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3'}.tar.gz) | [`{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm'}`](https://kamangir-public.s3.ca-central-1.amazonaws.com/{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm'}.tar.gz) |  |  |  |
-| [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3'}.png?raw=true)](#) | [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/{'object_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm', 'image_name': 'Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm'}.png?raw=true)](#) |  |  |  |
+| [`Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3.tar.gz) | [`Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm.tar.gz) |  |  |  |
+| [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-KCUag3.png?raw=true)](#) | [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm.png?raw=true)](#) |  |  |  |
 
 
 ### Step 1.1
