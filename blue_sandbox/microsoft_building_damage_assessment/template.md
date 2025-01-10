@@ -48,7 +48,8 @@ includes Image acquisition ... of Post disaster imagery ... through different ..
 ... we will use ... imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) for the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). ... download the imagery captured over Lahaina on 8/12/2023, and merges the files into a single cloud optimized GeoTIFF (COG).
 
 ```bash
-@damage ingest event=Maui-Hawaii-fires-Aug-23\
+@damage ingest \
+    event=Maui-Hawaii-fires-Aug-23
 ```
 
 🔥
