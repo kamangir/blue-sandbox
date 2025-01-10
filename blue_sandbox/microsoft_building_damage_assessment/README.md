@@ -106,7 +106,7 @@ ingest_and_label
 
 🔥
 
-```
+```bash
 train() {
     @select Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm
 
