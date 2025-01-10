@@ -61,7 +61,8 @@ to see the list of all events,
 to see the list of acquisitions for `<event>`,
 
 ```bash
-@damage ingest list event=Maui-Hawaii-fires-Aug-23 04/
+@damage ingest list \
+    event=Maui-Hawaii-fires-Aug-23 04/
 ```
 ```bash
 ⚙️  aws s3 ls --no-sign-request s3://maxar-opendata/events/Maui-Hawaii-fires-Aug-23/ard/04/
@@ -78,7 +79,8 @@ to see the list of acquisitions for `<event>`,
 Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). We download the imagery captured over Lahaina on 8/12/2023, and merge the files into a single cloud optimized GeoTIFF (COG).
 
 ```bash
-@damage ingest event=Maui-Hawaii-fires-Aug-23
+@damage ingest \
+    event=Maui-Hawaii-fires-Aug-23
 ```
 
 🔥
