@@ -4,7 +4,7 @@ from blue_options.terminal import show_usage, xtra
 
 list_of_events = [
     "Maui-Hawaii-fires-Aug-23",
-    "<event_name>",
+    "...",
 ]
 
 
