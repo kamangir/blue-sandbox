@@ -2,6 +2,13 @@
 
 function blue_sandbox_microsoft_building_damage_assessment_ingest() {
     local options=$1
+
+    local show_list=$(abcli_option_int "$options" list 0)
+    if [[ "$show_list" == 1 ]]; then
+        blue_sandbox_microsoft_building_damage_assessment_ingest_list "${@:2}"
+        return
+    fi
+
     local do_dryrun=$(abcli_option_int "$options" dryrun 0)
     local do_download=$(abcli_option_int "$options" download $(abcli_not $do_dryrun))
     local do_gdal=$(abcli_option_int "$options" gdal 1)
@@ -23,6 +30,8 @@ function blue_sandbox_microsoft_building_damage_assessment_ingest() {
     cd data/demo/raw/
 
     if [[ "$do_download" == 1 ]]; then
+        # TODO: use $event_name and $count (options +=)
+
         abcli_eval ,$options \
             wget https://maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/ard/04/122000330002/2023-08-12/10300100EB15FF00-visual.tif
         [[ $? -ne 0 ]] && return 1
@@ -65,3 +74,5 @@ function blue_sandbox_microsoft_building_damage_assessment_ingest() {
 
     return $status
 }
+
+abcli_source_caller_suffix_path /ingest

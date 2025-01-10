@@ -43,13 +43,42 @@ purpose: ... given post-disaster imagery ... to identify whether each known buil
 
 ## 1. ingest
 
-includes Image acquisition ... of Post disaster imagery ... through different ... providers, e.g. Sentinel-2, Planet, Maxar, or NOAA ... and label generation.
+Includes ... acquisition ... of post disaster imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) (other options: Sentinel-2, Planet, and NOAA), and label generation. 
 
-... we will use ... imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) for the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). ... download the imagery captured over Lahaina on 8/12/2023, and merges the files into a single cloud optimized GeoTIFF (COG).
+to see the list of all events,
 
 ```bash
-@damage ingest \
-    event=Maui-Hawaii-fires-Aug-23
+@damage ingest list
+```
+```bash
+⚙️  aws s3 ls --no-sign-request s3://maxar-opendata/events/
+                           PRE BayofBengal-Cyclone-Mocha-May-23/
+                           PRE Belize-Wildfires-June24/
+                           PRE Brazil-Flooding-May24/
+...
+```
+
+to see the list of acquisitions for `<event>`,
+
+```bash
+@damage ingest list event=Maui-Hawaii-fires-Aug-23 04/
+```
+```bash
+⚙️  aws s3 ls --no-sign-request s3://maxar-opendata/events/Maui-Hawaii-fires-Aug-23/ard/04/
+                           PRE 122000303330/
+                           PRE 122000303331/
+                           PRE 122000303332/
+                           PRE 122000303333/
+                           PRE 122000312220/
+                           PRE 122000312222/
+                           PRE 122000312223/
+...
+```
+
+Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). We download the imagery captured over Lahaina on 8/12/2023, and merge the files into a single cloud optimized GeoTIFF (COG).
+
+```bash
+@damage ingest event=Maui-Hawaii-fires-Aug-23
 ```
 
 🔥
@@ -92,30 +121,6 @@ Through trial-and-error we have found that the following strategies result in ef
 - Label features that are directly adjacent to each other. For example, if you are labeling a building, then label the background area around it as well. This is important because unlabeled areas are not used in training the model, therefore if you label a building, but do not label around it, then model will not be penalized for making a large blurry prediction around the building (vs. a precise prediction that follows the lines of the building).
 - Label diverse features. For example, labeling 20 identical looking buildings is not particularly useful to the model training.
 - When labeling damage, only label the damaged parts of buildings. I.e. label the pixels that you want the model to identify as "damaged" and nothing else.
-
-#### Downloading imagery from Maxar's Open Data Program
-Run the command below to browse disasters event names with Maxar imagery available on AWS:
-```
-aws s3 ls --no-sign-request s3://maxar-opendata/events/{EVENT_NAME}/ard
-```
-
-To download all imagery for a specific event use the following commands:
-```
-aws s3 cp --no-sign-request --recursive s3://maxar-opendata/events/{EVENT_NAME}/ard/ .
-```
-
-All events in Maxar's catalogue can be viewed using the following command:
-```
-aws s3 ls --no-sign-request s3://maxar-opendata/events/
-```
-
-#### Collate groups of imagery into COGs
-Some imagery will be distributed as groups of tiles. You can merge smaller images into a single large COG using the following commands:
-```
-gdalbuildvrt {VRT_NAME}.vrt  {DOWNLOADED_IMAGERY}/*.tif
-
-gdalwarp -co BIGTIFF=YES -co NUM_THREADS=ALL_CPUS -co COMPRESS=LZW -co PREDICTOR=2 -of COG {VRT_NAME}.vrt {LARGE_COG_NAME}.tif
-```
 
 #### Prepare imagery for labelling
 If your rendered RGB imagery has low contrast, then manual labeling can be difficult to impossible. You can use QGIS to play around with different normalization and contrast settings as shown in the following figure:
