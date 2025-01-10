@@ -1,14 +1,14 @@
-# 🌐 `@damage`: Satellite imagery damage assessment workflow
+# 🌐 `@damages`: Satellite imagery damage assessment workflow
 
-🌐 `@damage` is a work in progress on [Satellite imagery damage assessment workflow](https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md).
+🌐 `@damages` is a work in progress on [Satellite imagery damage assessment workflow](https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md), [reference](https://www.satellite-image-deep-learning.com/p/building-damage-assessment).
 
 ```mermaid
 graph LR
-    ingest["@damage<br>ingest -<br>&lt;dataset-object-name&gt;"]
-    label["@damage<br>label -<br>&lt;dataset-object-name&gt;"]
-    fine_tune["@damage<br>fine_tune -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
-    predict["@damage<br>predict -<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
-    summarize["@damage<br>summarize -<br>&lt;prediction-object-name&gt;"]
+    ingest["@damages<br>ingest -<br>&lt;dataset-object-name&gt;"]
+    label["@damages<br>label -<br>&lt;dataset-object-name&gt;"]
+    fine_tune["@damages<br>fine_tune -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
+    predict["@damages<br>predict -<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
+    summarize["@damages<br>summarize -<br>&lt;prediction-object-name&gt;"]
 
     dataset["dataset"]:::folder
     model["model"]:::folder
@@ -45,10 +45,10 @@ purpose: ... given post-disaster imagery ... to identify whether each known buil
 
 Includes ... acquisition ... of post disaster imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) (other options: Sentinel-2, Planet, and NOAA), and label generation. 
 
-to see the list of all events,
+To see the list of all events,
 
 ```bash
-@damage ingest list
+@damages ingest list events
 ```
 ```bash
 ⚙️  aws s3 ls --no-sign-request s3://maxar-opendata/events/
@@ -58,10 +58,11 @@ to see the list of all events,
 ...
 ```
 
-to see the list of acquisitions for `<event>`,
+To see the list of acquisitions for `<event>`,
 
 ```bash
-@damage ingest list event=Maui-Hawaii-fires-Aug-23 04/
+@damages ingest list \
+    event=Maui-Hawaii-fires-Aug-23 04/
 ```
 ```bash
 ⚙️  aws s3 ls --no-sign-request s3://maxar-opendata/events/Maui-Hawaii-fires-Aug-23/ard/04/
@@ -77,14 +78,36 @@ to see the list of acquisitions for `<event>`,
 
 Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). We download the imagery captured over Lahaina on 8/12/2023, and merge the files into a single cloud optimized GeoTIFF (COG).
 
-```bash
-@damage ingest event=Maui-Hawaii-fires-Aug-23
-```
+- [ ] `@damages ingest` += `count` <- how many tifs to download and merge 🚧 + proper handling of `event_name` 🚧 
+
+- [ ] `@damages label` += proper handling of `event_name` 🚧 
 
 🔥
 
+```bash
+runme() {
+    local options=$1
+    local event_name=$(@option "$options" event Maui-Hawaii-fires-Aug-23)
+
+    @select $event_name-ingest-$(@@timestamp)
+
+    @damages ingest event=$event_name,~upload .
+
+    @damages label ~upload .
+
+    @wait "+= .qgz?"
+
+    @upload - .
+
+    @publish tar .
+}
+
+runme
+``` 
+
 --table--
 
+🚧
 
 ### Step 1.1
 

@@ -26,8 +26,8 @@ function blue_sandbox_microsoft_building_damage_assessment_ingest() {
     pushd $object_path >/dev/null
 
     # https://github.com/microsoft/building-damage-assessment/blob/main/SATELLITE_WORKFLOW.md#1-image-acquisition-and-label-generation
-    mkdir -pv data/demo/raw/
-    cd data/demo/raw/
+    mkdir -pv raw
+    cd raw
 
     if [[ "$do_download" == 1 ]]; then
         # TODO: use $event_name and $count (options +=)
@@ -56,8 +56,6 @@ function blue_sandbox_microsoft_building_damage_assessment_ingest() {
         rm -v 10300100EB15FF00-visual.tif*
         rm -v maxar_lahaina_8_12_2023-visual.vrt
     fi
-
-    cd ../../..
 
     popd >/dev/null
 

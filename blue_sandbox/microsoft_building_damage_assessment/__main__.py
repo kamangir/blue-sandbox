@@ -5,6 +5,7 @@ from blueness.argparse.generic import sys_exit
 
 from blue_sandbox import NAME
 from blue_sandbox.microsoft_building_damage_assessment.ingest import ingest
+from blue_sandbox.microsoft_building_damage_assessment.label import label
 from blue_sandbox.help.microsoft_building_damage_assessment import list_of_events
 from blue_sandbox.logger import logger
 
@@ -14,7 +15,7 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="ingest",
+    help="ingest | label",
 )
 parser.add_argument(
     "--object_name",
@@ -39,6 +40,11 @@ if args.task == "ingest":
     success = ingest(
         object_name=args.object_name,
         event_name=args.event_name,
+        verbose=args.verbose == 1,
+    )
+elif args.task == "label":
+    success = label(
+        object_name=args.object_name,
         verbose=args.verbose == 1,
     )
 else:
