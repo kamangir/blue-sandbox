@@ -9,7 +9,7 @@ list_of_steps: Dict[str, Dict] = {
 }
 
 items = (
-    [step for step in list_of_steps.keys()]
+    [f"`{step}`" for step in list_of_steps]
     + [
         (
             "[`{}`](https://kamangir-public.s3.ca-central-1.amazonaws.com/{}.tar.gz)".format(
