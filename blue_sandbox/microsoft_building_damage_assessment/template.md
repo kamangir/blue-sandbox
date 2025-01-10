@@ -37,11 +37,11 @@ graph LR
 
 purpose: ... given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
 
-1) [ingest](#1-ingest)
+1) [ingest and labeling](#1-ingest-and-labelling)
 2) [train and inference](#2-train-and-inference)
 3) [summarization](#3-summarization)
 
-## 1. ingest
+## 1. ingest and labelling
 
 Includes ... acquisition ... of post disaster imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) (other options: Sentinel-2, Planet, and NOAA), and label generation. 
 
