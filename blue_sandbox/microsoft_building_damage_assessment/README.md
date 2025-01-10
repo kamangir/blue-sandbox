@@ -43,7 +43,7 @@ purpose: ... given post-disaster imagery ... to identify whether each known buil
 
 ## 1. ingest
 
-Includes ... acquisition ... of post disaster imagery, from Sentinel-2, Planet, or NOAA, and label generation. Here, we focus on acquisitions from [Maxar's Open Data program](https://www.maxar.com/open-data/).
+Includes ... acquisition ... of post disaster imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) (other options: Sentinel-2, Planet, and NOAA), and label generation. 
 
 to see the list of all events,
 
