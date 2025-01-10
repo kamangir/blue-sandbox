@@ -81,6 +81,8 @@ Here, we use the [Maui wildfires in August, 2023](https://radiantearth.github.io
 @damage ingest event=Maui-Hawaii-fires-Aug-23
 ```
 
+🔥
+
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 | `ingest` | `label` | `train` | `predict` | `summarize` |
