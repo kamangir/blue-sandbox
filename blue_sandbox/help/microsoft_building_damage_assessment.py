@@ -11,9 +11,9 @@ def help_ingest(
 ) -> str:
     options = "".join(
         [
-            xtra("dryrun,", mono=mono),
+            xtra("~download,dryrun,", mono=mono),
             "event=<event>",
-            xtra(",~upload", mono=mono),
+            xtra(",~gdal,~rm,~upload", mono=mono),
         ]
     )
 

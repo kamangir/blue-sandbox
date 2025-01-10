@@ -3,6 +3,9 @@ import os
 from blue_objects import file, README
 
 from blue_sandbox import NAME, VERSION, ICON, REPO_NAME
+from blue_sandbox.microsoft_building_damage_assessment import (
+    README as microsoft_building_damage_assessment_README,
+)
 
 
 items = [
@@ -34,6 +37,8 @@ def build():
         VERSION=VERSION,
         REPO_NAME=REPO_NAME,
     ) and README.build(
+        items=microsoft_building_damage_assessment_README.items,
+        cols=len(microsoft_building_damage_assessment_README.list_of_steps),
         path=os.path.join(file.path(__file__), "microsoft_building_damage_assessment"),
         ICON=ICON,
         NAME=NAME,

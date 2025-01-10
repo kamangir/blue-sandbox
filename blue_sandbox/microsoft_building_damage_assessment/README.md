@@ -48,26 +48,27 @@ includes Image acquisition ... of Post disaster imagery ... through different ..
 ... we will use ... imagery from [Maxar's Open Data program](https://www.maxar.com/open-data/) for the [Maui wildfires in August, 2023](https://radiantearth.github.io/stac-browser/#/external/maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/collection.json). ... download the imagery captured over Lahaina on 8/12/2023, and merges the files into a single cloud optimized GeoTIFF (COG).
 
 ```bash
-@damage \
-    ingest \
-    event=Maui-Hawaii-fires-Aug-23,~upload - \
+@select Maui-Hawaii-fires-Aug-23-damage-$(@@timestamp)
+
+@damage ingest \
+    event=Maui-Hawaii-fires-Aug-23 . \
     --verbose 1
+
+# add a QGIS project
+
+@publish ~download,tar .
 ```
+
+|   |   |   |   |   |
+| --- | --- | --- | --- | --- |
+| ingest | label | train | predict | summarize |
+| [`Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC) |  |  |  |  |
+| [![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.png?raw=true)](#) |  |  |  |  |
 
 🔥
 
-```
-mkdir -p data/demo/raw/
-cd data/demo/raw/
-wget https://maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/ard/04/122000330002/2023-08-12/10300100EB15FF00-visual.tif
-wget https://maxar-opendata.s3.amazonaws.com/events/Maui-Hawaii-fires-Aug-23/ard/04/122000330020/2023-08-12/10300100EB15FF00-visual.tif
-gdalbuildvrt maxar_lahaina_8_12_2023-visual.vrt *.tif*
-gdalwarp -co BIGTIFF=YES -co NUM_THREADS=ALL_CPUS -co COMPRESS=LZW -co PREDICTOR=2 -of COG maxar_lahaina_8_12_2023-visual.vrt maxar_lahaina_8_12_2023-visual.tif
-rm 10300100EB15FF00-visual.tif*
-rm maxar_lahaina_8_12_2023-visual.vrt
-cd  ../../..
-```
-_Tip:_ Download the resulting GeoTIFF file to your laptop, and view it in QGIS to make sure it is what you expect.
+
+
 
 🚧
 
