@@ -48,7 +48,7 @@ Includes ... acquisition ... of post disaster imagery from [Maxar's Open Data pr
 to see the list of all events,
 
 ```bash
-@damage ingest list
+@damage ingest list events
 ```
 ```bash
 ⚙️  aws s3 ls --no-sign-request s3://maxar-opendata/events/
