@@ -127,15 +127,6 @@ train
 
 🚧
 
-```bash
-@damages tensorboard - <model-report-id>
-``` 
-
-
-```
-tensorboard --logdir logs/maui_demo_0/ --port 8889
-```
-
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/imagery.png?raw=true)
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/damage.png?raw=true)
 
