@@ -21,15 +21,15 @@ function blue_sandbox_microsoft_building_damage_assessment_install() {
     fi
 
     local exists=$(abcli_conda_exists name=bda)
-    if [[ "$exists" == 1 ]]; then
-        conda activate bda
-        [[ $? -ne 0 ]] && return 1
-    else
+    if [[ "$exists" == 0 ]]; then
         # https://github.com/microsoft/building-damage-assessment?tab=readme-ov-file#setup
         conda env create \
             -f $abcli_path_git/building-damage-assessment/environment.yml
         [[ $? -ne 0 ]] && return 1
     fi
+
+    conda activate bda
+    [[ $? -ne 0 ]] && return 1
 
     pushd $abcli_path_git/blue-sandbox >/dev/null
     pip3 install -e .
