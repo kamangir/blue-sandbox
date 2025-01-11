@@ -47,7 +47,7 @@ def train(
         "storage_account"
     ] = "https://kamangir.blob.core.windows.net/"
     config["infrastructure"]["sas_token"] = decode_token(ENCODED_BLOB_SAS_TOKEN)
-    config["infrastructure"]["relative_path"] = model_object_name
+    config["infrastructure"]["relative_path"] = dataset_object_name
 
     if not file.save_yaml(
         objects.path_of(
