@@ -18,6 +18,4 @@ tqdm
 
 azure-storage-blob
 fiona
-pytorch-lightning
-torchgeo[all]<0.6
 tensorboard
