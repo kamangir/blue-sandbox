@@ -29,7 +29,7 @@ def train(
     if not success:
         return False
 
-    config["experiment_dir"] = "."
+    config["experiment_dir"] = objects.object_path(model_object_name)
     config["experiment_name"] = model_object_name
 
     config["imagery"]["rgb_fn"] = config["imagery"]["raw_fn"] = objects.path_of(
