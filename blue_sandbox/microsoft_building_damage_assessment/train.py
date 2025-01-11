@@ -37,9 +37,13 @@ def train(
         object_name=dataset_object_name,
     )
 
-    config["labels"]["fn"] = objects.path_of(
-        filename="label.geojson",
-        object_name=dataset_object_name,
+    config["inference"]["output_subdir"] = objects.path_of(
+        filename="outputs/",
+        object_name=model_object_name,
+    )
+    config["inference"]["checkpoint_fn"] = objects.path_of(
+        filename="checkpoints/last.ckpt",
+        object_name=model_object_name,
     )
 
     config["infrastructure"]["container_name"] = "sandbox"
@@ -49,13 +53,19 @@ def train(
     config["infrastructure"]["sas_token"] = decode_token(ENCODED_BLOB_SAS_TOKEN)
     config["infrastructure"]["relative_path"] = dataset_object_name
 
-    log_dir = objects.path_of(
-        filename="logs/",
+    config["labels"]["fn"] = objects.path_of(
+        filename="label.geojson",
         object_name=dataset_object_name,
     )
-    if not path.create(log_dir):
-        return False
-    config["training"]["log_dir"] = log_dir
+
+    config["training"]["log_dir"] = objects.path_of(
+        filename="logs/",
+        object_name=model_object_name,
+    )
+    config["training"]["checkpoint_subdir"] = objects.path_of(
+        filename="checkpoints/",
+        object_name=model_object_name,
+    )
 
     if not file.save_yaml(
         objects.path_of(

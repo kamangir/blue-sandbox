@@ -106,6 +106,8 @@ ingest_and_label
 
 ## 2. train and inference
 
+🔥
+
 ```bash
 train() {
     @select $DAMAGES_TEST_DATASET_OBJECT_NAME
@@ -127,31 +129,16 @@ train
 | [`Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.tar.gz) | [`Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm`](https://kamangir-public.s3.ca-central-1.amazonaws.com/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm.tar.gz) |  |  |  |
 | ![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm.png?raw=true) |  |  |  |
 
-🔥
+🚧
+
+```bash
+@damages tensorboard - <model-report-id>
+``` 
 
 
-```
-```
-
-**OR**, more simply:
-```
-python run_workflow.py --config configs/example_config.yml
-```
-
-
-More specifically, the `create_masks.py` script will create a new directory in based on the **experiment_dir** key in the config file, with the training images in `images/`, the rasterized version of the labels in `masks/`, and a copy of the original labels in `labels/`. Next, the `fine_tune.py` script will use the `images/` and `masks/` directory to fine-tune a semantic segmentation model, saving model checkpoints in `checkpoints/` and TensorBoard logs to the directory specified by the **training.log_dir** key in the config file. Finally, `inference.py` will create predictions over the entire input image (using the latest model checkpoint) and save the results to the `outputs/` directory.
-
-You can use tensorboard to monitor training:
 ```
 tensorboard --logdir logs/maui_demo_0/ --port 8889
 ```
-
-In particular, the "Images" tab in tensorboard will show examples of the input imagery, target mask, and model predictions. See the following figure for an example:
-![image](https://github.com/microsoft/building-damage-assessment/blob/main/figures/tensorboard.png?raw=true)
-
-If, after 20-30 epochs of training, the model results do not look reasonable, then we advise labeling more examples of the three classes (taking into account the mistakes that the model is making), creating a copy of the config file pointing to the updated GeoJSON, and re-running the `create_masks.py`, `fine_tune.py`, and `inference.py` scripts. It is also helpful to intermittently run inference with the latest checkpoint while the model is training to see if the results are useful.
-
-The following figures show imagery and the resulting predictions after 8 epochs of training with the example labels (green is the "Building" class and red is the "Damaged Building" class):
 
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/imagery.png?raw=true)
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/damage.png?raw=true)
