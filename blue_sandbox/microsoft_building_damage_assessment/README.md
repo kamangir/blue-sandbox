@@ -129,22 +129,9 @@ train
 
 🔥
 
-... before running `project_setup.py`:
-- **experiment_name** and **experiment_dir**: These define the "name" of the current run and the directory where all the outputs will be saved
-- **infrastructure**: The labeling workflow requires a TiTiler server to dynamically generated XYZ tiles from the imagery, and a Azure Blob Storage account to host the imagery
-- **imagery**: The path to and normalization details of imagery that will be used for training and inference
-- **labels**: The path to the GeoJSON labels that will be used for training, what class labels are used, and how to buffer the labels
-- **training**: The training parameters for the model
-- **inference**: The inference parameters for the model
+... a Azure Blob Storage account to host the imagery...
 
-After filling out the first three sections of the config file, run the following command to generate the experiment directory structure and a link to the labeling tool:
-```
-python project_setup.py --config configs/example_config.yml
-```
-
-
-If a TiTiler deployment isn't feasible then tiles in [XYZ tile format](https://developers.planet.com/docs/planetschool/xyz-tiles-and-slippy-maps/) can be pre-rendered with the [gdal2tiles.py](https://gdal.org/programs/gdal2tiles.html) command.
-
+🔥
 
 ### Step 1.2
 `project_setup.py` should create a link to a [satellite-imagery-labeling-tool](https://github.com/microsoft/satellite-imagery-labeling-tool/) instance with the post-disaster imagery visible. There is detailed documentation on how to setup and use the annotation tool [here](https://github.com/microsoft/satellite-imagery-labeling-tool/tree/main/docs). The next step is to create annotations using this tool, download those annotations, and save in the location pointed to be `labels.fn` in the config file.

@@ -2,6 +2,7 @@ blueness
 blue-options
 blue_objects
 abcli
+
 boto3
 geojson
 geopandas
@@ -14,3 +15,5 @@ pylint
 pytest
 python-dotenv[cli]
 tqdm
+
+azure-storage-blob

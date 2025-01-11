@@ -5,6 +5,8 @@ from blue_objects import mlflow, metadata, file, objects
 from blue_objects.env import abcli_path_git
 
 from blue_sandbox import NAME
+from blue_sandbox.env import ENCODED_BLOB_SAS_TOKEN
+from blue_sandbox.microsoft_building_damage_assessment.sas_token import decode_token
 from blue_sandbox.logger import logger
 
 
@@ -29,10 +31,22 @@ def train(
 
     config["experiment_dir"] = "."
     config["experiment_name"] = model_object_name
-    config["imagery"]["rgb_fn"] = config["imagery"]["raw_fn"] = (
-        f"../{dataset_object_name}/raw/maxar_lahaina_8_12_2023-visual.tif"
+
+    config["imagery"]["rgb_fn"] = config["imagery"]["raw_fn"] = objects.path_of(
+        filename="raw/maxar_lahaina_8_12_2023-visual.tif",
+        object_name=dataset_object_name,
     )
-    config["labels"]["fn"] = f"../{dataset_object_name}/label.geojson"
+
+    config["labels"]["fn"] = objects.path_of(
+        filename="label.geojson",
+        object_name=dataset_object_name,
+    )
+
+    config["infrastructure"]["container_name"] = "sandbox"
+    config["infrastructure"][
+        "storage_account"
+    ] = "https://kamangir.blob.core.windows.net/"
+    config["infrastructure"]["sas_token"] = decode_token(ENCODED_BLOB_SAS_TOKEN)
 
     if not file.save_yaml(
         objects.path_of(

@@ -20,12 +20,14 @@ function blue_sandbox_microsoft_building_damage_assessment_train() {
         --dataset_object_name $dataset_object_name \
         --model_object_name $model_object_name \
         "${@:4}"
-    local status="$?"
+    [[ $? -ne 0 ]] && return 1
+
+    abcli_eval dryrun=$do_dryrun,path=$abcli_path_git/building-damage-assessment \
+        python3 project_setup.py \
+        --skip_health_check \
+        --config $ABCLI_OBJECT_ROOT/$model_object_name/config.yml
+    [[ $? -ne 0 ]] && return 1
 
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $model_object_name
-
-    [[ "$status" -ne 0 ]] && return $status
-
-    return $status
 }
