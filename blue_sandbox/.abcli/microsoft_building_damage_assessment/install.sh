@@ -41,3 +41,9 @@ function blue_sandbox_microsoft_building_damage_assessment_install() {
 
     return 0
 }
+
+function abcli_install_microsoft_building_damage_assessment() {
+    blue_sandbox_microsoft_building_damage_assessment_install "$@"
+}
+
+abcli_install_module microsoft_building_damage_assessment 1.1.1

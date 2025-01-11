@@ -1,7 +1,10 @@
 blueness
+abcli
 blue-options
 blue_objects
-abcli
+blue_geo
+blueflow
+blue_plugin
 
 boto3
 geojson
