@@ -33,6 +33,16 @@ function blue_sandbox_microsoft_building_damage_assessment_train() {
         --config $ABCLI_OBJECT_ROOT/$model_object_name/config.yml
     [[ $? -ne 0 ]] && return 1
 
+    abcli_eval dryrun=$do_dryrun,path=$abcli_path_git/building-damage-assessment \
+        python3 fine_tune.py \
+        --config $ABCLI_OBJECT_ROOT/$model_object_name/config.yml
+    [[ $? -ne 0 ]] && return 1
+
+    abcli_eval dryrun=$do_dryrun,path=$abcli_path_git/building-damage-assessment \
+        python3 inference.py \
+        --config $ABCLI_OBJECT_ROOT/$model_object_name/config.yml
+    [[ $? -ne 0 ]] && return 1
+
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $model_object_name
 

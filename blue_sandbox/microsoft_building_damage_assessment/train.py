@@ -1,7 +1,7 @@
 import os
 
 from blueness import module
-from blue_objects import mlflow, metadata, file, objects
+from blue_objects import mlflow, metadata, file, objects, path
 from blue_objects.env import abcli_path_git
 
 from blue_sandbox import NAME
@@ -48,6 +48,14 @@ def train(
     ] = "https://kamangir.blob.core.windows.net/"
     config["infrastructure"]["sas_token"] = decode_token(ENCODED_BLOB_SAS_TOKEN)
     config["infrastructure"]["relative_path"] = dataset_object_name
+
+    log_dir = objects.path_of(
+        filename="logs/",
+        object_name=dataset_object_name,
+    )
+    if not path.create(log_dir):
+        return False
+    config["training"]["log_dir"] = log_dir
 
     if not file.save_yaml(
         objects.path_of(

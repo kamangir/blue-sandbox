@@ -131,9 +131,6 @@ train
 
 
 ```
-python create_masks.py --config configs/example_config.yml
-python fine_tune.py --config configs/example_config.yml
-python inference.py --config configs/example_config.yml
 ```
 
 **OR**, more simply:
