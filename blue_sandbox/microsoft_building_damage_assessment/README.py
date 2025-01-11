@@ -8,10 +8,13 @@ list_of_steps: Dict[str, Dict] = {
         "image_name": "Maui-Hawaii-fires-Aug-23-damage-2025-01-09-GgnjQC",
     },
     "label": {
-        "object_name": DAMAGES_TEST_DATASET_OBJECT_NAME,
+        "object_name": "",
         "image_name": DAMAGES_TEST_DATASET_OBJECT_NAME,
     },
-    "train": {"object_name": "", "image_name": ""},
+    "train": {
+        "object_name": "",
+        "image_name": "Maui-Hawaii-fires-Aug-23-model-2025-01-10-NQb8IS",
+    },
     "predict": {"object_name": "", "image_name": ""},
     "summarize": {"object_name": "", "image_name": ""},
 }
