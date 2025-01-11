@@ -11,6 +11,7 @@ function test_blue_sandbox_help() {
         "@damages ingest" \
         "@damages ingest list" \
         "@damages label" \
+        "@damages train" \
         \
         "blue_sandbox"; do
         abcli_eval ,$options \

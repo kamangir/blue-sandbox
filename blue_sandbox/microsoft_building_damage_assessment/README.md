@@ -6,7 +6,7 @@
 graph LR
     ingest["@damages<br>ingest -<br>&lt;dataset-object-name&gt;"]
     label["@damages<br>label -<br>&lt;dataset-object-name&gt;"]
-    fine_tune["@damages<br>fine_tune -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
+    train["@damages<br>train -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
     predict["@damages<br>predict -<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
     summarize["@damages<br>summarize -<br>&lt;prediction-object-name&gt;"]
 
@@ -19,9 +19,9 @@ graph LR
     dataset --> label
     label --> dataset
 
-    dataset --> fine_tune
-    model --> fine_tune
-    fine_tune --> model
+    dataset --> train
+    model --> train
+    train --> model
 
     dataset --> predict
     model --> predict
@@ -128,9 +128,7 @@ train
 
 🔥
 
-### Step 1.1
-
-The first step (after acquiring imagery of course!) is to create a configuration file based off of the `configs/example_config.yml` file. This file will contain all the arguments needed throughout the workflow including: a path to the imagery, what class labels to use, training parameters, and more. The first three sections of the config file should be filled out before running `project_setup.py`:
+... before running `project_setup.py`:
 - **experiment_name** and **experiment_dir**: These define the "name" of the current run and the directory where all the outputs will be saved
 - **infrastructure**: The labeling workflow requires a TiTiler server to dynamically generated XYZ tiles from the imagery, and a Azure Blob Storage account to host the imagery
 - **imagery**: The path to and normalization details of imagery that will be used for training and inference
