@@ -14,6 +14,9 @@ function blue_sandbox_microsoft_building_damage_assessment_train() {
 
     abcli_log "training $dataset_object_name -> $model_object_name ..."
 
+    conda activate bda
+    [[ $? -ne 0 ]] && return 1
+
     abcli_eval dryrun=$do_dryrun \
         python3 -m blue_sandbox.microsoft_building_damage_assessment \
         train \
