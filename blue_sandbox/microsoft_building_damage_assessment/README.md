@@ -118,14 +118,11 @@ train() {
     @select $event_name-model-$(@@timestamp)
 
     @damages train - .. .
+
+    @damages tensorboard - .
 }
 
 train
-```
-
-```bash
-@damages tensorboard - \
-    Maui-Hawaii-fires-Aug-23-model-2025-01-10-NQb8IS
 ```
 
 |   |   |   |   |   |
