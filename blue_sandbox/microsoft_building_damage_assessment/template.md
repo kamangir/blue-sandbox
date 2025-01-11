@@ -104,7 +104,7 @@ ingest_and_label() {
 ingest_and_label
 ``` 
 
-🔥
+## 2. train and inference
 
 ```bash
 train() {
@@ -125,7 +125,6 @@ train
 
 🔥
 
-## 2. train and inference
 
 ```
 python create_masks.py --config configs/example_config.yml
