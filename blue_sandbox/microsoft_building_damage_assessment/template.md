@@ -123,6 +123,11 @@ train() {
 train
 ```
 
+```bash
+@damages tensorboard - \
+    Maui-Hawaii-fires-Aug-23-model-2025-01-10-NQb8IS
+```
+
 --table--
 
 🚧
