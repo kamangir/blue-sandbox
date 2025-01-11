@@ -27,7 +27,7 @@ def train(
     if not success:
         return False
 
-    ...
+    # ToDo: fill the config.
 
     if not file.save_yaml(
         objects.path_of(

@@ -115,6 +115,7 @@ train() {
 
     @select $event_name-model-$(@@timestamp)
 
+    @damages train - .. .
 }
 
 train
