@@ -32,6 +32,7 @@ def train(
     config["imagery"]["rgb_fn"] = config["imagery"]["raw_fn"] = (
         f"../{dataset_object_name}/raw/maxar_lahaina_8_12_2023-visual.tif"
     )
+    config["labels"]["fn"] = f"../{dataset_object_name}/label.geojson"
 
     if not file.save_yaml(
         objects.path_of(
