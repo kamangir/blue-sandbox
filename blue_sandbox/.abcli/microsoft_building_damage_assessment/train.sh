@@ -25,5 +25,7 @@ function blue_sandbox_microsoft_building_damage_assessment_train() {
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $model_object_name
 
+    [[ "$status" -ne 0 ]] && return $status
+
     return $status
 }

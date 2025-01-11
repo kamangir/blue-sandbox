@@ -27,7 +27,11 @@ def train(
     if not success:
         return False
 
-    # ToDo: fill the config.
+    config["experiment_dir"] = "."
+    config["experiment_name"] = model_object_name
+    config["imagery"]["rgb_fn"] = config["imagery"]["raw_fn"] = (
+        f"../{dataset_object_name}/raw/maxar_lahaina_8_12_2023-visual.tif"
+    )
 
     if not file.save_yaml(
         objects.path_of(
