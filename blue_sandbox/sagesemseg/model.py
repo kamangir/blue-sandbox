@@ -76,6 +76,12 @@ class SageSemSegModel:
             )
         )
 
+    def attach_to_completed_training_job(
+        self,
+        job_name: str,
+    ):
+        self.estimator = sagemaker.estimator.Estimator.attach(job_name)
+
     def attach_to_endpoint(
         self,
         endpoint_name: str,
