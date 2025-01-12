@@ -4,8 +4,8 @@ from blueness import module
 from blueness.argparse.generic import sys_exit
 
 from blue_sandbox import NAME
-from blue_sandbox.sagemaker.dataset import upload as upload_dataset
-from blue_sandbox.sagemaker.model import SageSemSegModel
+from blue_sandbox.sagesemseg.dataset import upload as upload_dataset
+from blue_sandbox.sagesemseg.model import SageSemSegModel
 from blue_sandbox.logger import logger
 
 NAME = module.name(__file__, NAME)

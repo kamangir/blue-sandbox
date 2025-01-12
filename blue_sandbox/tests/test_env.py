@@ -12,3 +12,5 @@ def test_required_env():
 def test_blue_sandbox_env():
     assert env.DAMAGES_TEST_DATASET_OBJECT_NAME
     assert env.ENCODED_BLOB_SAS_TOKEN
+
+    assert env.SAGESEMSEG_COMPLETED_JOB
