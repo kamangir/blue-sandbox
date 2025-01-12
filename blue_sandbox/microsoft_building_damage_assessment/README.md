@@ -35,26 +35,13 @@ graph LR
 
 ## Status
 
-`@damages train` super slow [dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11).
+`@damages train`
 
-update `tine_tune.py` as described ⬇️.
+In [`fine_tune.py`](https://github.com/microsoft/building-damage-assessment/blob/main/fine_tune.py) `num_workers=24` is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`, changed to `6`. On both machines on Sagemaker, `fine_tune.py` has not converged after 3+ hours [dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11).
 
+`@damages ingest` provides assess to [Maxar's Open Data program](https://www.maxar.com/open-data/). Will refactor `@maxar ingest`.
 
-## Pros
-
-- Access to [Maxar's Open Data program](https://www.maxar.com/open-data/). `@damages ingest` is usable for other experiments.
-
-## Questions
-
-- question: is the imagery uploaded to azure for labelling? can this be ignored if labelling is done through QGIS?
-
-
-## Cons
-
-- In [`fine_tune.py`]() `num_workers=24` is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`. 
-- 3+ hours and `fine_tune.py` is still going.
-
-# ToDo
+question: is the imagery uploaded to azure for labelling? can this be ignored if labelling is done through QGIS?
 
 - [ ] remove `predict`.
 - [ ] validate `@damage summarize`.
