@@ -5,6 +5,7 @@ from PIL import Image
 from matplotlib import pyplot as plt
 import PIL
 import numpy as np
+import io
 
 from blue_options import string
 from blue_options.elapsed_timer import ElapsedTimer
@@ -199,6 +200,14 @@ class SageSemSegModel:
         self.predict_validation()
 
     def predict_validation(self):
+        self.predictor.deserializer = ImageDeserializer(
+            accept="image/png",
+        )
+
+        self.predictor.serializer = sagemaker.serializers.IdentitySerializer(
+            "image/png"
+        )
+
         path.create(
             objects.path_of(
                 object_name=self.model_object_name,
@@ -207,7 +216,7 @@ class SageSemSegModel:
         )
         filename_raw = objects.path_of(
             object_name=self.model_object_name,
-            filename="validation/test.jpg",
+            filename="validation/test.png",
         )
 
         host.shell(
@@ -223,20 +232,18 @@ class SageSemSegModel:
         aspect = im.size[0] / im.size[1]
         # https://stackoverflow.com/a/14351890/17619982
         im.thumbnail([width, int(width / aspect)], PIL.Image.LANCZOS)
-        im.save(filename, "JPEG")
         plt.imshow(im)
         if is_jupyter():
             plt.show()
         plt.close()
 
-        self.predictor.deserializer = ImageDeserializer(accept="image/png")
+        img_byte_arr = io.BytesIO()
+        im.save(img_byte_arr, format="PNG")
+        imbytes = img_byte_arr.getvalue()
 
-        self.predictor.serializer = sagemaker.serializers.IdentitySerializer(
-            "image/jpeg"
-        )
-
-        with open(filename, "rb") as imfile:
-            imbytes = imfile.read()
+        # im.save(filename, "JPEG")
+        # with open(filename, "rb") as imfile:
+        #    imbytes = imfile.read()
 
         # Extension exercise: Could you write a custom serializer which takes a filename as input instead?
 
