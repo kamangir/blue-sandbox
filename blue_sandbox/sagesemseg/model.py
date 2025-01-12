@@ -76,6 +76,12 @@ class SageSemSegModel:
             )
         )
 
+    def attach_to_endpoint(
+        self,
+        endpoint_name: str,
+    ):
+        self.predictor = sagemaker.predictor.Predictor(endpoint_name)
+
     def train(
         self,
         dataset_object_name: str,
@@ -184,6 +190,9 @@ class SageSemSegModel:
     def deploy(self, **kwargs):
         self.predictor = self.estimator.deploy(**kwargs)
 
+        self.predict_validation()
+
+    def predict_validation(self):
         path.create(
             objects.path_of(
                 object_name=self.model_object_name,
@@ -196,7 +205,7 @@ class SageSemSegModel:
         )
 
         host.shell(
-            f"wget -O {filename_raw} https://github.com/kamangir/blue-bracket/raw/main/images/helmet-1.jpg"
+            f"wget -O {filename_raw} https://upload.wikimedia.org/wikipedia/commons/b/b4/R1200RT_in_Hongkong.jpg"
         )
 
         filename = objects.path_of(
