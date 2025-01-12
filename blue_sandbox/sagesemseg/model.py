@@ -41,20 +41,29 @@ class ImageDeserializer(sagemaker.deserializers.BaseDeserializer):
 
 
 class SageSemSegModel:
-    def __init__(self):
+    def __init__(
+        self,
+        for_training: bool = True,
+    ):
+        self.for_training = for_training
+
         self.dataset_object_name = ""
         self.dataset_metadata = {}
         self.model_object_name = ""
         self.data_channels = {}
 
         timer = ElapsedTimer()
-        self.session = sagemaker.Session()
+        self.session = sagemaker.Session() if for_training else None
         timer.stop()
 
         self.estimator = None
 
-        self.training_image = sagemaker.image_uris.retrieve(
-            "semantic-segmentation", self.session.boto_region_name
+        self.training_image = (
+            sagemaker.image_uris.retrieve(
+                "semantic-segmentation", self.session.boto_region_name
+            )
+            if for_training
+            else None
         )
 
         self.predictor = None
@@ -74,6 +83,10 @@ class SageSemSegModel:
         epochs: int = 10,
         instance_type: str = "ml.p3.2xlarge",
     ) -> bool:
+        if not self.for_training:
+            logger.error("set for_training=True first.")
+            return False
+
         self.dataset_object_name = dataset_object_name
         self.model_object_name = model_object_name
 

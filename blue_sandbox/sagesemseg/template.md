@@ -25,7 +25,7 @@ graph LR
 
 ## Status 🔥
 
-[train](../../notebooks/sagesemseg/semantic_segmentation_pascalvoc-v9-train.ipynb) and [deploy](../../notebooks/sagesemseg/semantic_segmentation_pascalvoc-v9-deploy.ipynb) are done through notebooks.
+[train](../../notebooks/sagesemseg/semantic_segmentation_pascalvoc-v9-train.ipynb), [deploy](../../notebooks/sagesemseg/semantic_segmentation_pascalvoc-v9-deploy.ipynb), and [predict](../../notebooks/sagesemseg/semantic_segmentation_pascalvoc-v9-predict.ipynb) are done through notebooks.
 
 
 🔥
