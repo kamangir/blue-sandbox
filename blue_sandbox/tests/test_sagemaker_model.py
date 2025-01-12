@@ -2,7 +2,7 @@ import pytest
 
 from blue_objects.objects import unique_object
 
-from blue_sandbox.sagemaker.model import SageSemSegModel
+from blue_sandbox.sagesemseg.model import SageSemSegModel
 
 
 @pytest.mark.skip("causes cost.")
