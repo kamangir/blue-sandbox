@@ -7,7 +7,7 @@
 graph LR
     train["sagesemseg<br>train<br>[deploy]<br>&lt;dataset-object-name&gt;<br>&lt;model-object-name&gt;"]
     deploy["sagesemseg<br>deploy -<br>&lt;model-object-name&gt;"]
-    predict["sagesemseg<br>predict<br>deploy<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
+    predict["sagesemseg<br>predict<br>[deploy]<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
 
     dataset["dataset"]:::folder
     model["model"]:::folder
