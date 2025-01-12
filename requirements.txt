@@ -22,3 +22,5 @@ tqdm
 azure-storage-blob
 fiona
 tensorboard
+
+sagemaker>=2,<3
