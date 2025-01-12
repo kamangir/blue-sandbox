@@ -110,6 +110,9 @@ ingest_and_label
 
 ```bash
 train() {
+    local options=$1
+    local show_tensorboard=$(@option::int "$options" tensorboard 0)
+
     @select $DAMAGES_TEST_DATASET_OBJECT_NAME
 
     local event_name=$(@mlflow tags get . --tag event)
@@ -119,10 +122,11 @@ train() {
 
     @damages train - .. .
 
-    @damages tensorboard - .
+    [[ "$show_tensorboard" == 1 ]] &&
+        @damages tensorboard - .
 }
 
-train
+train ~tensorboard
 ```
 
 |   |   |   |   |   |
