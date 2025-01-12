@@ -54,9 +54,9 @@ question: is the imagery uploaded to azure for labelling? can this be ignored if
 
 more ToDos listed ⬇️
 
----
+## purpose
 
-purpose: ... given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
+given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
 
 1) [ingest and labeling](#1-ingest-and-labelling)
 2) [train and inference](#2-train-and-inference)
