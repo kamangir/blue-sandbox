@@ -35,13 +35,13 @@ graph LR
 
 ## Status
 
-`@damages train`
+Two running `@damages train`s at the time of writing..
 
-In [`fine_tune.py`](https://github.com/microsoft/building-damage-assessment/blob/main/fine_tune.py) `num_workers=24` is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`, changed to `6`. On both machines on Sagemaker, `fine_tune.py` has not converged after 3+ hours ([dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11)).
+The `num_workers=24` in [`fine_tune.py`](https://github.com/microsoft/building-damage-assessment/blob/main/fine_tune.py) is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`; changed it to `6`. On both machines on Sagemaker, `fine_tune.py` has not converged after 3+ hours ([dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11)).
 
 `@damages ingest` provides assess to [Maxar's Open Data program](https://www.maxar.com/open-data/). Will refactor into `@maxar ingest`.
 
-question: is the imagery uploaded to azure for labelling? can this be ignored if labelling is done through QGIS?
+question: is the imagery uploaded to azure only for labelling? can this be ignored if labelling is done through QGIS?
 
 - [ ] remove `predict`.
 - [ ] validate `@damage summarize`.
@@ -125,9 +125,7 @@ ingest_and_label() {
 ingest_and_label
 ``` 
 
-## 2. train and inference
-
-🔥
+## 2. train and inference 🎰
 
 ```bash
 train() {
