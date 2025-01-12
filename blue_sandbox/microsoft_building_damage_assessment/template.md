@@ -33,6 +33,40 @@ graph LR
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
+## Status
+
+`@damages train` super slow [dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11).
+
+update `tine_tune.py` as described ⬇️.
+
+
+## Pros
+
+- Access to [Maxar's Open Data program](https://www.maxar.com/open-data/). `@damages ingest` is usable for other experiments.
+
+## Questions
+
+- question: is the imagery uploaded to azure for labelling? can this be ignored if labelling is done through QGIS?
+
+
+## Cons
+
+- In [`fine_tune.py`]() `num_workers=24` is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`. 
+- 3+ hours and `fine_tune.py` is still going.
+
+# ToDo
+
+- [ ] remove `predict`.
+- [ ] validate `@damage summarize`.
+- [ ] digest,
+    - https://www.satellite-image-deep-learning.com/p/building-damage-assessment
+    - https://www.linkedin.com/posts/jlavista_our-hearts-go-out-to-everyone-affected-by-activity-7283234111329128449-sHiI?utm_source=share&utm_medium=member_desktop
+    - https://www.linkedin.com/posts/maxar-technologies-ltd_weve-been-closely-monitoring-the-historic-ugcPost-7283203547020574722-fqMn?utm_source=share&utm_medium=member_desktop
+    - https://www.linkedin.com/posts/jlavista_we-continue-to-analyze-satellite-data-related-activity-7283693403727392768-XI02?utm_source=share&utm_medium=member_desktop
+    - https://github.com/microsoft/building-damage-assessment/blob/main/DPM_WORKFLOW.md SAR
+
+more ToDos listed ⬇️
+
 ---
 
 purpose: ... given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
@@ -131,7 +165,8 @@ train ~tensorboard
 
 --table--
 
-🚧
+<details>
+<summary>pending ...</summary>
 
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/imagery.png?raw=true)
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/damage.png?raw=true)
@@ -155,3 +190,5 @@ This will calculate the percentage of each building that is predicted to be dama
 The final output looks like this:
 
 ![image](https://github.com/microsoft/building-damage-assessment/blob/main/figures/buildings.png?raw=true)
+
+<details>
