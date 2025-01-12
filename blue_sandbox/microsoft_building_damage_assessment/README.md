@@ -33,9 +33,14 @@ graph LR
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
-## Status
+## Status ⏸️
 
-Two running `@damages train`s at the time of writing. 🎰
+Aborted `@damages train` after 5+ hours and uploaded,
+
+```bash
+Maui-Hawaii-fires-Aug-23-model-2025-01-11-RHZZnn
+Maui-Hawaii-fires-Aug-23-model-2025-01-11-tEGj0W
+```
 
 The `num_workers=24` in [`fine_tune.py`](https://github.com/microsoft/building-damage-assessment/blob/main/fine_tune.py) is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`; changed it to `6`. On both machines on Sagemaker, `fine_tune.py` has not converged after 3+ hours ([dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11)).
 
