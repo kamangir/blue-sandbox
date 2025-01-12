@@ -223,10 +223,6 @@ class SageSemSegModel:
             f"wget -O {filename_raw} https://upload.wikimedia.org/wikipedia/commons/b/b4/R1200RT_in_Hongkong.jpg"
         )
 
-        filename = objects.path_of(
-            object_name=self.model_object_name,
-            filename="validation/test_resized.jpg",
-        )
         width = 800
         im = PIL.Image.open(filename_raw)
         aspect = im.size[0] / im.size[1]
