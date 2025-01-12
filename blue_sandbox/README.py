@@ -18,6 +18,7 @@ items = [
         experiment["title"],
     )
     for experiment_name, experiment in list_of_experiments.items()
+    if experiment_name != "template"
 ]
 
 
