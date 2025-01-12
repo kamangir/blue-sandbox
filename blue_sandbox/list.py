@@ -1,4 +1,11 @@
 list_of_experiments = {
+    "sagesemseg": {
+        "ICON": "🌀",
+        "title": "A SemSeg (Semantic Segmenter) trained and deployed on AWS Sagemaker.",
+        "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/sagesemseg/README.md",
+        "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
+        "status": "🔥",
+    },
     "`@damages`": {
         "ICON": "🌐",
         "title": "Satellite imagery damage assessment workflow",
@@ -10,7 +17,7 @@ list_of_experiments = {
         "ICON": "",
         "title": "",
         "url": "",
-        "marquee": "",
+        "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
         "status": "🎰",
     },
 }
