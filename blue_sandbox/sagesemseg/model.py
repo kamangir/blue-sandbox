@@ -244,7 +244,11 @@ class SageSemSegModel:
         # Extension exercise: Could you write a custom serializer which takes a filename as input instead?
 
         start_time = time.time()
-        cls_mask = self.predictor.predict(imbytes)
+        try:
+            cls_mask = self.predictor.predict(imbytes)
+        except Exception as e:
+            logger.error(e)
+            return False
         elapsed_time = time.time() - start_time
 
         logger.info(
@@ -264,6 +268,8 @@ class SageSemSegModel:
         )
         if is_jupyter():
             plt.show()
+
+        return True
 
     def delete_endpoint(self):
         self.predictor.delete_endpoint()
