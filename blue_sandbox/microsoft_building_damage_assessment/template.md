@@ -37,7 +37,7 @@ graph LR
 
 `@damages train`
 
-In [`fine_tune.py`](https://github.com/microsoft/building-damage-assessment/blob/main/fine_tune.py) `num_workers=24` is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`, changed to `6`. On both machines on Sagemaker, `fine_tune.py` has not converged after 3+ hours [dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11).
+In [`fine_tune.py`](https://github.com/microsoft/building-damage-assessment/blob/main/fine_tune.py) `num_workers=24` is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`, changed to `6`. On both machines on Sagemaker, `fine_tune.py` has not converged after 3+ hours ([dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11)).
 
 `@damages ingest` provides assess to [Maxar's Open Data program](https://www.maxar.com/open-data/). Will refactor into `@maxar ingest`.
 
