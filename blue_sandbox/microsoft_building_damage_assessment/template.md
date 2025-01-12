@@ -33,9 +33,30 @@ graph LR
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
----
+## Status
 
-purpose: ... given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
+Two running `@damages train`s at the time of writing. 🎰
+
+The `num_workers=24` in [`fine_tune.py`](https://github.com/microsoft/building-damage-assessment/blob/main/fine_tune.py) is not satisfied even on `ml-g4dn-xlarge` and `ml-g4dn-2xlarge`; changed it to `6`. On both machines on Sagemaker, `fine_tune.py` has not converged after 3+ hours ([dev notes](https://arash-kamangir.medium.com/%EF%B8%8F-conversations-with-ai-338-c636f0866a11)).
+
+`@damages ingest` provides assess to [Maxar's Open Data program](https://www.maxar.com/open-data/). Will refactor into `@maxar ingest`.
+
+question: is the imagery uploaded to azure only for labelling? can this be ignored if labelling is done through QGIS?
+
+- [ ] remove `predict`.
+- [ ] validate `@damage summarize`.
+- [ ] digest,
+    - https://www.satellite-image-deep-learning.com/p/building-damage-assessment
+    - https://www.linkedin.com/posts/jlavista_our-hearts-go-out-to-everyone-affected-by-activity-7283234111329128449-sHiI?utm_source=share&utm_medium=member_desktop
+    - https://www.linkedin.com/posts/maxar-technologies-ltd_weve-been-closely-monitoring-the-historic-ugcPost-7283203547020574722-fqMn?utm_source=share&utm_medium=member_desktop
+    - https://www.linkedin.com/posts/jlavista_we-continue-to-analyze-satellite-data-related-activity-7283693403727392768-XI02?utm_source=share&utm_medium=member_desktop
+    - https://github.com/microsoft/building-damage-assessment/blob/main/DPM_WORKFLOW.md SAR
+
+more ToDos listed ⬇️
+
+## purpose
+
+given post-disaster imagery ... to identify whether each known building footprint ... is damaged, and to what extent ... approach: ... fine-tune a pre-trained semantic segmentation model on a small amount of labeled data collected in the AOI itself ... model ... then ... generates per-pixel prediction over the entire imagery, which can then be summarized at the building level
 
 1) [ingest and labeling](#1-ingest-and-labelling)
 2) [train and inference](#2-train-and-inference)
@@ -104,12 +125,13 @@ ingest_and_label() {
 ingest_and_label
 ``` 
 
-## 2. train and inference
-
-🔥
+## 2. train and inference 🎰
 
 ```bash
 train() {
+    local options=$1
+    local show_tensorboard=$(@option::int "$options" tensorboard 0)
+
     @select $DAMAGES_TEST_DATASET_OBJECT_NAME
 
     local event_name=$(@mlflow tags get . --tag event)
@@ -119,15 +141,17 @@ train() {
 
     @damages train - .. .
 
-    @damages tensorboard - .
+    [[ "$show_tensorboard" == 1 ]] &&
+        @damages tensorboard - .
 }
 
-train
+train ~tensorboard
 ```
 
 --table--
 
-🚧
+<details>
+<summary>pending ...</summary>
 
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/imagery.png?raw=true)
 ![](https://github.com/microsoft/building-damage-assessment/blob/main/figures/damage.png?raw=true)
@@ -151,3 +175,5 @@ This will calculate the percentage of each building that is predicted to be dama
 The final output looks like this:
 
 ![image](https://github.com/microsoft/building-damage-assessment/blob/main/figures/buildings.png?raw=true)
+
+<details>

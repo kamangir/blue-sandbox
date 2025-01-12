@@ -6,25 +6,20 @@ from blue_sandbox import NAME, VERSION, ICON, REPO_NAME
 from blue_sandbox.microsoft_building_damage_assessment import (
     README as microsoft_building_damage_assessment_README,
 )
-
+from blue_sandbox.list import list_of_experiments
 
 items = [
-    "{}[`{}`]({}) [![image]({})]({}) {}".format(
-        "🌐",
-        "`@damages`",
-        "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/microsoft_building_damage_assessment/README.md",
-        "https://github.com/microsoft/building-damage-assessment/raw/main/figures/damage.png",
-        "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/microsoft_building_damage_assessment/README.md",
-        "Satellite imagery damage assessment workflow",
+    "{}[`{}`]({}) {} [![image]({})]({}) {}".format(
+        experiment["ICON"],
+        experiment_name,
+        experiment["url"],
+        experiment["status"],
+        experiment["marquee"],
+        experiment["url"],
+        experiment["title"],
     )
-] + [
-    "{}[`{}`](#) [![image]({})](#) {}".format(
-        ICON,
-        f"experiment {index}",
-        "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
-        f"description of experiment {index} ...",
-    )
-    for index in range(2, 4)
+    for experiment_name, experiment in list_of_experiments.items()
+    if experiment_name != "template"
 ]
 
 

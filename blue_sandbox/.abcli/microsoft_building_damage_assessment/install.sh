@@ -12,7 +12,8 @@ function blue_sandbox_microsoft_building_damage_assessment_install() {
         [[ $? -ne 0 ]] && return 1
     fi
 
-    [[ "$abcli_is_github_workflow" == true ]] &&
+    [[ "$abcli_is_github_workflow" == true ]] ||
+        [[ "$abcli_is_sagemaker_system" == true ]] &&
         return 0
 
     if [[ "$recreate_env" == 1 ]]; then
