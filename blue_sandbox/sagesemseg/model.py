@@ -1,3 +1,4 @@
+from typing import Tuple
 import sagemaker
 import json
 import time
@@ -233,9 +234,7 @@ class SageSemSegModel:
             plt.show()
         plt.close()
 
-        img_byte_arr = io.BytesIO()
-        im.save(img_byte_arr, format="PNG")
-        imbytes = img_byte_arr.getvalue()
+        np_im = np.array(im)
 
         # im.save(filename, "JPEG")
         # with open(filename, "rb") as imfile:
@@ -243,21 +242,9 @@ class SageSemSegModel:
 
         # Extension exercise: Could you write a custom serializer which takes a filename as input instead?
 
-        start_time = time.time()
-        try:
-            cls_mask = self.predictor.predict(imbytes)
-        except Exception as e:
-            logger.error(e)
-            return False
-        elapsed_time = time.time() - start_time
-
-        logger.info(
-            "{} -> {}: {}".format(
-                string.pretty_duration(elapsed_time),
-                string.pretty_shape_of_matrix(cls_mask),
-                np.unique(cls_mask),
-            )
-        )
+        success, cls_mask = self.predict(np_im, verbose=True)
+        if not success:
+            return success
 
         plt.imshow(cls_mask, cmap="jet")
         plt.savefig(
@@ -270,6 +257,37 @@ class SageSemSegModel:
             plt.show()
 
         return True
+
+    def predict(
+        self,
+        np_im: np.ndarray,
+        verbose: bool = False,
+    ) -> Tuple[bool, np.ndarray]:
+        start_time = time.time()
+
+        img_byte_arr = io.BytesIO()
+        PIL.Image.fromarray(np_im).save(img_byte_arr, format="PNG")
+        imbytes = img_byte_arr.getvalue()
+
+        try:
+            cls_mask = self.predictor.predict(imbytes)
+        except Exception as e:
+            logger.error(e)
+            return False, np.array([])
+
+        elapsed_time = time.time() - start_time
+
+        if verbose:
+            logger.info(
+                "{} -{}-> {}: {}".format(
+                    string.pretty_shape_of_matrix(np_im),
+                    string.pretty_duration(elapsed_time),
+                    string.pretty_shape_of_matrix(cls_mask),
+                    np.unique(cls_mask),
+                )
+            )
+
+        return True, cls_mask
 
     def delete_endpoint(self):
         self.predictor.delete_endpoint()
