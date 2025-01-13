@@ -3,7 +3,7 @@ list_of_experiments = {
         "ICON": "🌀",
         "title": "A SemSeg (Semantic Segmenter) trained and deployed on AWS Sagemaker.",
         "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/sagesemseg/README.md",
-        "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
+        "marquee": "https://github.com/kamangir/assets/blob/main/blue-sandbox/sagesemseg-predict.png?raw=true",
         "status": "⏸️",
     },
     "`@damages`": {
