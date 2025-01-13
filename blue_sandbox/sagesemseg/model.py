@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Dict
 import sagemaker
 import json
 import time
@@ -7,6 +7,7 @@ from matplotlib import pyplot as plt
 import PIL
 import numpy as np
 import io
+import textwrap
 
 from blue_options import string
 from blue_options.elapsed_timer import ElapsedTimer
@@ -15,6 +16,7 @@ from blue_options.host import is_jupyter
 from blue_objects.storage import instance as storage
 from blueflow.sagemaker import role
 
+from blue_sandbox.host import signature
 from blue_sandbox.logger import logger
 
 
@@ -54,6 +56,8 @@ class SageSemSegModel:
         self.model_object_name = ""
         self.data_channels = {}
 
+        self.endpoint_name = "unknown endpoint"
+
         timer = ElapsedTimer()
         self.session = sagemaker.Session() if for_training else None
         timer.stop()
@@ -88,6 +92,7 @@ class SageSemSegModel:
         self,
         endpoint_name: str,
     ):
+        self.endpoint_name = endpoint_name
         self.predictor = sagemaker.predictor.Predictor(endpoint_name)
 
     def train(
@@ -200,7 +205,10 @@ class SageSemSegModel:
 
         self.predict_validation()
 
-    def predict_validation(self):
+    def predict_validation(
+        self,
+        text_width: int = 80,
+    ):
         self.predictor.deserializer = ImageDeserializer(
             accept="image/png",
         )
@@ -229,32 +237,44 @@ class SageSemSegModel:
         aspect = im.size[0] / im.size[1]
         # https://stackoverflow.com/a/14351890/17619982
         im.thumbnail([width, int(width / aspect)], PIL.Image.LANCZOS)
-        plt.imshow(im)
-        if is_jupyter():
-            plt.show()
-        plt.close()
 
         np_im = np.array(im)
-
-        # im.save(filename, "JPEG")
-        # with open(filename, "rb") as imfile:
-        #    imbytes = imfile.read()
-
-        # Extension exercise: Could you write a custom serializer which takes a filename as input instead?
-
-        success, cls_mask = self.predict(np_im, verbose=True)
+        success, cls_mask, metadata = self.predict(np_im, verbose=True)
         if not success:
             return success
 
+        plt.figure(figsize=(10, 5))
+        plt.subplot(121)
+        plt.imshow(im)
+        plt.title(string.pretty_shape_of_matrix(np_im))
+        plt.subplot(122)
         plt.imshow(cls_mask, cmap="jet")
-        plt.savefig(
+        plt.title(string.pretty_shape_of_matrix(cls_mask))
+        plt.suptitle(
+            textwrap.fill(
+                " | ".join(
+                    [
+                        f"endpoint: {self.endpoint_name}",
+                        "took {}".format(
+                            string.pretty_duration(
+                                metadata["elapsed_time"],
+                                largest=True,
+                                short=True,
+                            )
+                        ),
+                    ]
+                    + signature()
+                ),
+                width=text_width,
+            ),
+        )
+        file.save_fig(
             objects.path_of(
                 object_name=self.model_object_name,
-                filename="validation/output.jpg",
-            )
+                filename="validation.png",
+            ),
+            log=True,
         )
-        if is_jupyter():
-            plt.show()
 
         return True
 
@@ -262,8 +282,8 @@ class SageSemSegModel:
         self,
         np_im: np.ndarray,
         verbose: bool = False,
-    ) -> Tuple[bool, np.ndarray]:
-        start_time = time.time()
+    ) -> Tuple[bool, np.ndarray, Dict[str, Dict]]:
+        timer = ElapsedTimer()
 
         img_byte_arr = io.BytesIO()
         PIL.Image.fromarray(np_im).save(img_byte_arr, format="PNG")
@@ -273,21 +293,24 @@ class SageSemSegModel:
             cls_mask = self.predictor.predict(imbytes)
         except Exception as e:
             logger.error(e)
-            return False, np.array([])
+            return False, np.array([]), {"error": e}
 
-        elapsed_time = time.time() - start_time
+        timer.stop()
 
         if verbose:
             logger.info(
                 "{} -{}-> {}: {}".format(
                     string.pretty_shape_of_matrix(np_im),
-                    string.pretty_duration(elapsed_time),
+                    timer.elapsed_pretty(
+                        largest=True,
+                        short=True,
+                    ),
                     string.pretty_shape_of_matrix(cls_mask),
                     np.unique(cls_mask),
                 )
             )
 
-        return True, cls_mask
+        return True, cls_mask, {"elapsed_time": timer.elapsed_time}
 
     def delete_endpoint(self):
         self.predictor.delete_endpoint()
