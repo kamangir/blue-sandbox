@@ -14,3 +14,4 @@ def test_blue_sandbox_env():
     assert env.ENCODED_BLOB_SAS_TOKEN
 
     assert env.SAGESEMSEG_COMPLETED_JOB
+    assert env.SAGESEMSEG_COMPLETED_JOB_35X
