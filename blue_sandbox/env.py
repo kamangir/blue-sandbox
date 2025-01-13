@@ -12,12 +12,12 @@ DAMAGES_TEST_DATASET_OBJECT_NAME = os.getenv(
 
 ENCODED_BLOB_SAS_TOKEN = os.getenv("ENCODED_BLOB_SAS_TOKEN", "")
 
-SAGESEMSEG_COMPLETED_JOB = os.getenv(
-    "SAGESEMSEG_COMPLETED_JOB",
+SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_debug_v2 = os.getenv(
+    "SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_debug_v2",
     "",
 )
 
-SAGESEMSEG_COMPLETED_JOB_35X = os.getenv(
-    "SAGESEMSEG_COMPLETED_JOB_35X",
+SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_full_v2 = os.getenv(
+    "SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_full_v2",
     "",
 )

@@ -27,6 +27,12 @@ graph LR
 
 [train](../../notebooks/sagesemseg/semantic_segmentation_pascalvoc-v9-train.ipynb), [deploy](../../notebooks/sagesemseg/semantic_segmentation_pascalvoc-v11-deploy.ipynb), and [predict](../../notebooks/sagesemseg/semantic_segmentation_pascalvoc-v11-predict.ipynb) are done through notebooks.
 
+Two completed jobs to deploy,
+
+- `$SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_debug_v2`
+- `$SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_full_v2` ⭐️  larger dataset, use for dev.
+
+`$SAGESEMSEG_COMPLETED_JOB_<object-name>` is trained on `<object-name>`.
 
 🔥
 
