@@ -62,6 +62,7 @@ sagesemseg train - .. . \
 - [ ] digest,
 <details>
 <summary>SageMaker datasets</summary>
+
 from [Semantic Segmentation on AWS Sagemaker](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/semantic_segmentation_pascalvoc/semantic_segmentation_pascalvoc.ipynb).
 
 example datasets: `pascal-voc-v1-full-v2`,
