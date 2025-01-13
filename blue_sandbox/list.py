@@ -18,7 +18,7 @@ list_of_experiments = {
         "title": "A code cemetery.",
         "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/cemetery/README.md",
         "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
-        "status": "",
+        "status": "🪦",
     },
     "template": {
         "ICON": "",
