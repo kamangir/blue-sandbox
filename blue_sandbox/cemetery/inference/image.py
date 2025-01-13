@@ -4,8 +4,8 @@ from blueness import module
 from blueness.argparse.generic import sys_exit
 from blue_objects.env import ABCLI_AWS_REGION
 
-from roofAI import NAME
-from roofAI.logger import logger
+from blue_sandbox import NAME
+from blue_sandbox.logger import logger
 
 
 NAME = module.name(__file__, NAME)

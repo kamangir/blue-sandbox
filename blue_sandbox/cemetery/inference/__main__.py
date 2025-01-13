@@ -3,13 +3,13 @@ import argparse
 from blueness import module
 from blueness.argparse.generic import sys_exit
 from blue_options.logger import crash_report
-
-from roofAI import NAME
-from roofAI.inference.classes import InferenceClient, InferenceObject
-from roofAI.inference.image import image_name
-from roofAI.inference.endpoints import invoke_endpoint
 from roofAI.semseg import Profile
-from roofAI.logger import logger
+
+from blue_sandbox import NAME
+from blue_sandbox.cemetery.inference.classes import InferenceClient, InferenceObject
+from blue_sandbox.cemetery.inference.image import image_name
+from blue_sandbox.cemetery.inference.endpoints import invoke_endpoint
+from blue_sandbox.logger import logger
 
 NAME = module.name(__file__, NAME)
 

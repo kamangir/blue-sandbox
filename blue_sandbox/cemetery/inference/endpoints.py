@@ -3,10 +3,10 @@ import boto3
 from tqdm import tqdm
 
 from blue_objects import path, file
-
 from roofAI.semseg import Profile
 from roofAI.dataset.classes import RoofAIDataset
-from roofAI.logger import logger
+
+from blue_sandbox.logger import logger
 
 
 def invoke_endpoint(
