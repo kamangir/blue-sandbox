@@ -15,7 +15,7 @@ list_of_experiments = {
     },
     "cemetery": {
         "ICON": "🪦",
-        "title": "A code cemetery.",
+        "title": "An AI cemetery.",
         "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/cemetery/README.md",
         "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
         "status": "🪦",
