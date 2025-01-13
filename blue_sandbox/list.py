@@ -13,6 +13,13 @@ list_of_experiments = {
         "marquee": "https://github.com/kamangir/assets/raw/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm.png?raw=true",
         "status": "⏸️",
     },
+    "cemetery": {
+        "ICON": "🪦",
+        "title": "A code cemetery.",
+        "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/cemetery/README.md",
+        "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
+        "status": "🪦",
+    },
     "template": {
         "ICON": "",
         "title": "",
