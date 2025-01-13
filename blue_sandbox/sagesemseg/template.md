@@ -2,7 +2,6 @@
 
 🌀 `sagesemseg` is A SemSeg (Semantic Segmenter) trained and deployed on AWS Sagemaker, based on [Amazon SageMaker Semantic Segmentation Algorithm](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/semantic_segmentation_pascalvoc/semantic_segmentation_pascalvoc.ipynb).
 
-
 ```mermaid
 graph LR
     train["sagesemseg<br>train<br>[deploy]<br>&lt;dataset-object-name&gt;<br>&lt;model-object-name&gt;"]
@@ -37,50 +36,13 @@ Two completed jobs to deploy,
 - Advantage: Deployment on Sagemaker is included: no GPU set-up.
 - Disadvantages:
     - `3 x uint8` ⛔️ one chip at a time ⛔️ 10s per chip ⛔️
-    - limitations on instance allocation make testing harder.
+    - limitations on instance allocation make testing harder.  ⛔️
 
 ![image](https://github.com/kamangir/assets/blob/main/blue-sandbox/sagesemseg-predict.png?raw=true)
 
-
-🔥
-
 - [ ] add `sagesemseg.sh` to [`.abcli`](../.abcli) -> refactor [`.abcli/sagesemseg`](../.abcli/sagesemseg/) from legacy script format.
 - [ ] refactor [`sagesemseg_train.sh`](../.abcli/tests/sagesemseg_train.sh).
-- 🔥
-
-consume 🔥
-
-# Semantic Segmentation on AWS Sagemaker
-
-Based on [Semantic Segmentation on AWS Sagemaker](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/semantic_segmentation_pascalvoc/semantic_segmentation_pascalvoc.ipynb), uses [roofAI.semseg.sagemaker](https://github.com/kamangir/roofAI/tree/main/roofAI/semseg/sagemaker).
-
-```bash
- > sagesemseg help
-sagesemseg cache_dataset \
-	[dataset=pascal-voc,suffix=<v1>,rm]
- . cache dataset.
-sagesemseg train \
-	[dryrun,~upload] \
-	[test|<dataset-object-name>] \
-	[-|<model-object-name>] \
-	[--deploy 0] \
-	[--delete_endpoint 0] \
-	[--epochs 10] \
-	[--instance_type ml.p3.2xlarge]
- . <dataset-object-name> -train-> <model-object-name>.
-sagesemseg upload_dataset \
-	[dataset=pascal-voc,suffix=<v1>] \
-	[dryrun,suffix=<v1>] \
-	[--count <count>]
- . upload dataset to SageMaker for training.
-```
-
-🔥
-
--> [`roofAI`](https://github.com/kamangir/roofAI).
-
-## future 🚧
-
+- [ ] digest,
 ```bash
 @conda activate sagemaker
 
@@ -97,3 +59,5 @@ roofAI dataset ingest \
 sagesemseg train - .. . \
     --instance_type ml.g4dn.2xlarge
 ```
+
+-> [`roofAI`](https://github.com/kamangir/roofAI).
