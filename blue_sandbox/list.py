@@ -1,4 +1,11 @@
 list_of_experiments = {
+    "palisades": {
+        "ICON": "🧑🏽‍🚒",
+        "title": "Post-disaster Land Cover Classification.",
+        "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/palisades/README.md",
+        "marquee": "https://github.com/kamangir/assets/raw/main/blue-geo/Maxar-Open-Datacube.png?raw=true",
+        "status": "🔥",
+    },
     "sagesemseg": {
         "ICON": "🌀",
         "title": "A SemSeg (Semantic Segmenter) trained and deployed on AWS Sagemaker.",
