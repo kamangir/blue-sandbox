@@ -35,13 +35,6 @@ def build():
                 REPO_NAME=REPO_NAME,
             ),
             README.build(
-                path=os.path.join(file.path(__file__), "cemetery"),
-                ICON=ICON,
-                NAME=NAME,
-                VERSION=VERSION,
-                REPO_NAME=REPO_NAME,
-            ),
-            README.build(
                 items=microsoft_building_damage_assessment_README.items,
                 cols=len(microsoft_building_damage_assessment_README.list_of_steps),
                 path=os.path.join(
@@ -52,12 +45,15 @@ def build():
                 VERSION=VERSION,
                 REPO_NAME=REPO_NAME,
             ),
+        ]
+        + [
             README.build(
-                path=os.path.join(file.path(__file__), "sagesemseg"),
+                path=os.path.join(file.path(__file__), experiment_name),
                 ICON=ICON,
                 NAME=NAME,
                 VERSION=VERSION,
                 REPO_NAME=REPO_NAME,
-            ),
+            )
+            for experiment_name in ["cemetery", "palisades", "sagesemseg"]
         ]
     )
