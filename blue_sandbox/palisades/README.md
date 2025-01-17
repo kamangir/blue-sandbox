@@ -4,8 +4,6 @@
 
 ```mermaid
 graph LR
-    palisades_ingest_query["palisades<br>ingest -<br>&lt;query-object-name&gt;<br>~ingest_datacubes"]
-
     palisades_ingest_query_ingest["palisades<br>ingest -<br>&lt;query-object-name&gt;<br>scope=&lt;scope&gt;"]
 
     palisades_ingest_target["palisades<br>ingest -<br>target=&lt;target&gt;<br>~ingest_datacubes"]
@@ -17,8 +15,6 @@ graph LR
     datacube_1["🧊 datacube 1"]:::folder
     datacube_2["🧊 datacube 2"]:::folder
     datacube_3["🧊 datacube 3"]:::folder
-
-    query_object --> palisades_ingest_query
 
     query_object --> palisades_ingest_query_ingest
     palisades_ingest_query_ingest --> datacube_1
