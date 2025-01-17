@@ -4,8 +4,8 @@
 
 ```mermaid
 graph LR
-    palisades_ingest_query["palisades<br>ingest -<br>&lt;query-object-name&gt;<br>&lt;ingest-object-name&gt;"]
-    palisades_ingest_target["palisades<br>ingest -<br>target=&lt;target&gt;<br>&lt;ingest-object-name&gt;"]
+    palisades_ingest_query["palisades<br>ingest -<br>&lt;query-object-name&gt;<br>ingest,scope=&lt;scope&gt;<br>&lt;ingest-object-name&gt;"]
+    palisades_ingest_target["palisades<br>ingest -<br>query,target=&lt;target&gt;<br>ingest,scope=&lt;scope&gt;<br>&lt;ingest-object-name&gt;"]
 
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
