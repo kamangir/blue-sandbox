@@ -13,9 +13,9 @@ graph LR
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
     ingest_object["📂 ingest object"]:::folder
-    datacube_1["🧊 datacube"]:::folder
-    datacube_2["🧊 datacube"]:::folder
-    datacube_3["🧊 datacube"]:::folder
+    datacube_1["🧊 datacube 1"]:::folder
+    datacube_2["🧊 datacube 2"]:::folder
+    datacube_3["🧊 datacube 3"]:::folder
 
     query_object --> palisades_ingest_query
     palisades_ingest_query --> ingest_object
@@ -63,5 +63,10 @@ palisades \
 ```
 
 ## Status 🔥
+
+```bash
+palisades ingest ~upload \
+	target=Palisades-Maxar --
+```
 
 🔥
