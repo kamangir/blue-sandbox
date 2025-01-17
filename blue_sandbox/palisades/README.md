@@ -108,10 +108,10 @@ palisades ingest upload \
 
 🔥
 
+🚧
+
 ```bash
 palisades ingest upload \
 	target=Palisades-Maxar \
 	scope=rgb,upload
 ```
-
-🚧
