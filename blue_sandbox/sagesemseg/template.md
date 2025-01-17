@@ -4,9 +4,9 @@
 
 ```mermaid
 graph LR
-    train["sagesemseg<br>train<br>[deploy]<br>&lt;dataset-object-name&gt;<br>&lt;model-object-name&gt;"]
-    deploy["sagesemseg<br>deploy -<br>&lt;model-object-name&gt;"]
-    predict["sagesemseg<br>predict<br>[deploy]<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
+    train["sagesemseg train [deploy] <dataset-object-name> <model-object-name>"]
+    deploy["sagesemseg deploy~- <model-object-name>"]
+    predict["sagesemseg predict deploy <model-object-name> <dataset-object-name> <prediction-object-name>"]
 
     dataset["dataset"]:::folder
     model["model"]:::folder
