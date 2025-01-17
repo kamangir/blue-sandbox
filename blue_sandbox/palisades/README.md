@@ -55,7 +55,8 @@ palisades \
 
 </details>
 
-## Status 🔥
+
+## round one - step by step
 
 1️⃣ running a query,
 
@@ -107,6 +108,8 @@ palisades ingest upload \
 3️⃣ labelling the datacubes,
 
 🔥
+
+## round one - one shot 🚧
 
 🚧
 
