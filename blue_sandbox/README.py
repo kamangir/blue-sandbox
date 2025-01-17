@@ -27,45 +27,43 @@ items = [
 
 def build():
     return all(
-        [
-            README.build(
-                items=thing.get("items", []),
-                cols=thing.get("cols", 3),
-                path=os.path.join(file.path(__file__), thing["path"]),
-                help_function=thing.get("help_function", None),
-                ICON=ICON,
-                NAME=NAME,
-                VERSION=VERSION,
-                REPO_NAME=REPO_NAME,
-            )
-            for thing in (
-                [
-                    {
-                        "items": items,
-                        "path": "..",
-                    },
-                    {
-                        "items": microsoft_building_damage_assessment_README.items,
-                        "cols": len(
-                            microsoft_building_damage_assessment_README.list_of_steps
-                        ),
-                        "path": "microsoft_building_damage_assessment",
-                    },
-                    {
-                        "path": "cemetery",
-                    },
-                    {
-                        "path": "palisades",
-                        "help_function": lambda tokens: get_help(
-                            tokens,
-                            help_palisades,
-                            mono=True,
-                        ),
-                    },
-                    {
-                        "path": "sagesemseg",
-                    },
-                ]
-            )
-        ]
+        README.build(
+            items=thing.get("items", []),
+            cols=thing.get("cols", 3),
+            path=os.path.join(file.path(__file__), thing["path"]),
+            help_function=thing.get("help_function", None),
+            ICON=ICON,
+            NAME=NAME,
+            VERSION=VERSION,
+            REPO_NAME=REPO_NAME,
+        )
+        for thing in (
+            [
+                {
+                    "items": items,
+                    "path": "..",
+                },
+                {
+                    "items": microsoft_building_damage_assessment_README.items,
+                    "cols": len(
+                        microsoft_building_damage_assessment_README.list_of_steps
+                    ),
+                    "path": "microsoft_building_damage_assessment",
+                },
+                {
+                    "path": "cemetery",
+                },
+                {
+                    "path": "palisades",
+                    "help_function": lambda tokens: get_help(
+                        tokens,
+                        help_palisades,
+                        mono=True,
+                    ),
+                },
+                {
+                    "path": "sagesemseg",
+                },
+            ]
+        )
     )
