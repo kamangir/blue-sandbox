@@ -21,6 +21,11 @@ graph LR
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
+```bash
+palisades help
+```
+--help-- palisades ingest help
+
 ## Status 🔥
 
 🔥

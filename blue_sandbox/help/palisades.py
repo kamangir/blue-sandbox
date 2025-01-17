@@ -3,6 +3,7 @@ from typing import List
 from blue_options.terminal import show_usage, xtra
 
 from blue_geo.watch.targets.target_list import TargetList
+from blue_geo.help.datacube import ingest_options, scope_details
 
 
 target_list = TargetList(catalog="maxar_open_data")
@@ -12,12 +13,17 @@ def help_ingest(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("dryrun", mono=mono)
+    options = "".join(
+        [
+            xtra("~download,dryrun,", mono=mono),
+            "upload",
+        ]
+    )
 
     target_options = "".join(
         [
-            xtra("<query-object-name> | ", mono),
-            "target=<target>",
+            "query,target=<target>",
+            xtra(" | <query-object-name>", mono),
         ]
     )
 
@@ -27,11 +33,13 @@ def help_ingest(
             "ingest",
             f"[{options}]",
             f"[{target_options}]",
+            f"[ingest,{ingest_options(mono=mono)}]",
             "[-|<ingest-object-name>]",
         ],
         "ingest <target>.",
         {
             "target: {}".format(" | ".join(target_list.get_list())): [],
+            **scope_details,
         },
         mono=mono,
     )
