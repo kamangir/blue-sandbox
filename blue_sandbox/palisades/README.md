@@ -9,7 +9,7 @@ graph LR
 
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
-    ingest_object["📂 query object"]:::folder
+    ingest_object["📂 ingest object"]:::folder
 
     query_object --> palisades_ingest_query
     palisades_ingest_query --> ingest_object
