@@ -33,7 +33,7 @@ def help_ingest(
             "ingest",
             f"[{options}]",
             f"[{target_options}]",
-            f"[ingest,{ingest_options(mono=mono)}]",
+            f"[ingest_datacubes,{ingest_options(mono=mono)}]",
             "[-|<ingest-object-name>]",
         ],
         "ingest <target>.",
