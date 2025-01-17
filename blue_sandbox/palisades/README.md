@@ -24,6 +24,7 @@ graph LR
 ```bash
 palisades help
 ```
+
 --help-- palisades ingest help
 
 ## Status 🔥
