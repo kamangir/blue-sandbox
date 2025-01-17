@@ -19,7 +19,7 @@ function test_blue_sandbox_palisades_ingest_query() {
         blue_sandbox_palisades \
         ingest \
         ~upload \
-        $PALISADES_TEST_QUERY_OBJECT_NAME \
+        $PALISADES_QUERY_OBJECT_PALISADES_MAXAR \
         ~ingest_datacubes
 }
 

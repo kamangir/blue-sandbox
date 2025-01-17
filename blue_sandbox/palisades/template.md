@@ -46,15 +46,16 @@ graph LR
 
 ```bash
 palisades ingest ~upload \
-	target=Palisades-Maxar - -
+	target=Palisades-Maxar  \
+	~ingest_datacubes
 ```
 
 ```bash
-$PALISADES_TEST_QUERY_OBJECT_NAME
+$PALISADES_QUERY_OBJECT_PALISADES_MAXAR
 ```
 
 <details>
-<summary>metadata.yaml</summary>
+<summary>details</summary>
 
 ```yaml
 datacube_id:
@@ -70,16 +71,32 @@ datacube_id:
 - datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-10400100A1AFE700
 ```
 
+Also created `$PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST` from `Palisades-Maxar-test`.
+
+```yaml
+datacube_id:
+- datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102212-103001010B9A1B00
+- datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00
+```
+
 </details>
 
 2️⃣ ingesting the datacubes,
 
-🚧
+```bash
+palisades ingest upload \
+	$PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST \
+	scope=rgb,upload
+```
+
+3️⃣ labelling the datacubes,
+
+🔥
 
 ```bash
 palisades ingest upload \
-	$PALISADES_TEST_QUERY_OBJECT_NAME \
-	ingest_datacubes,scope=rgb,upload
+	$PALISADES_QUERY_OBJECT_PALISADES_MAXAR \
+	scope=rgb,upload
 ```
 
-🔥
+🚧
