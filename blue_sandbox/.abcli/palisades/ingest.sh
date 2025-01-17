@@ -15,13 +15,15 @@ function blue_sandbox_palisades_ingest() {
 
         abcli_download - $query_object_name
     else
-        query_object_name=$object_name-query-$(abcli_string_timestamp_short)
+        query_object_name=palisades-$target-query-$(abcli_string_timestamp_short)
 
         blue_geo_watch_query \
             $target_options \
             $query_object_name
         [[ $? -ne 0 ]] && return 1
     fi
+
+    local ingest_object_name=$(abcli_clarify_object $3 $query_object_name-ingest-$(abcli_string_timestamp))
 
     abcli_log "🪄"
 }

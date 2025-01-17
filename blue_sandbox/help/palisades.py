@@ -5,6 +5,9 @@ from blue_options.terminal import show_usage, xtra
 from blue_geo.watch.targets.target_list import TargetList
 
 
+target_list = TargetList(catalog="maxar_open_data")
+
+
 def help_ingest(
     tokens: List[str],
     mono: bool,
@@ -18,15 +21,13 @@ def help_ingest(
         ]
     )
 
-    target_list = TargetList()
-
     return show_usage(
         [
             "palisades",
             "ingest",
             f"[{options}]",
-            "[.|<object-name>]",
             f"[{target_options}]",
+            "[-|<ingest-object-name>]",
         ],
         "ingest <target>.",
         {

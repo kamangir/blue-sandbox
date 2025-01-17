@@ -4,7 +4,16 @@
 
 ```mermaid
 graph LR
-    dataset["🪄"]:::folder
+    palisades_ingest["palisades ingest~- <query-object-name>|target=<target> <ingest-object-name>"]
+
+    target["🎯 target"]:::folder
+    query_object["📂 query object"]:::folder
+    ingest_object["📂 query object"]:::folder
+
+    target --> palisades_ingest
+    query_object --> palisades_ingest
+    palisades_ingest --> query_object
+    palisades_ingest --> ingest_object
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
