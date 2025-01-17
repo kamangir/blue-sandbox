@@ -25,7 +25,23 @@ graph LR
 palisades help
 ```
 
---help-- palisades ingest help
+```bash
+palisades \
+	ingest \
+	[~download,dryrun,upload] \
+	[query,target=<target> | <query-object-name>] \
+	[ingest,~copy_template,dryrun,overwrite,scope=<scope>,upload] \
+	[-|<ingest-object-name>]
+ . ingest <target>.
+   target: Brown-Mountain-Truck-Trail | Brown-Mountain-Truck-Trail-all | Brown-Mountain-Truck-Trail-test | Palisades-Maxar | Palisades-Maxar-test
+   scope: all + metadata + raster + rgb + rgbx + <.jp2> + <.tif> + <.tiff>
+      all: ALL files.
+      metadata (default): any < 1 MB.
+      raster: all raster.
+      rgb: rgb.
+      rgbx: rgb and what is needed to build rgb.
+      <suffix>: any *<suffix>.
+```
 
 ## Status 🔥
 
