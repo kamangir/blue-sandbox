@@ -5,6 +5,7 @@ from blue_sandbox import ALIAS
 from blue_sandbox.help.microsoft_building_damage_assessment import (
     help_functions as help_microsoft_building_damage_assessment,
 )
+from blue_sandbox.help.palisades import help_functions as help_palisades
 
 
 help_functions = generic_help_functions(plugin_name=ALIAS)
@@ -12,5 +13,6 @@ help_functions = generic_help_functions(plugin_name=ALIAS)
 help_functions.update(
     {
         "microsoft_building_damage_assessment": help_microsoft_building_damage_assessment,
+        "palisades": help_palisades,
     }
 )

@@ -21,3 +21,13 @@ SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_full_v2 = os.getenv(
     "SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_full_v2",
     "",
 )
+
+PALISADES_TEST_QUERY_OBJECT_NAME = os.getenv(
+    "PALISADES_TEST_QUERY_OBJECT_NAME",
+    "",
+)
+
+PALISADES_TEST_QUERY_OBJECT_NAME_2D = os.getenv(
+    "PALISADES_TEST_QUERY_OBJECT_NAME_2D",
+    "",
+)

@@ -6,8 +6,8 @@
 graph LR
     ingest["@damages<br>ingest -<br>&lt;dataset-object-name&gt;"]
     label["@damages<br>label -<br>&lt;dataset-object-name&gt;"]
-    train["@damages<br>train -<br>&lt;dataset-object-name&gt;&lt;model-object-name&gt;"]
-    predict["@damages<br>predict -<br>&lt;model-object-name&gt;&lt;dataset-object-name&gt;&lt;prediction-object-name&gt;"]
+    train["@damages<br>train -<br>&lt;dataset-object-name&gt;<br>&lt;model-object-name&gt;"]
+    predict["@damages<br>predict -<br>&lt;model-object-name&gt;<br>&lt;dataset-object-name&gt;<br>&lt;prediction-object-name&gt;"]
     summarize["@damages<br>summarize -<br>&lt;prediction-object-name&gt;"]
 
     dataset["dataset"]:::folder
@@ -132,7 +132,7 @@ ingest_and_label() {
 ingest_and_label
 ``` 
 
-## 2. train and inference 🎰
+## 2. train and inference ⏸️
 
 ```bash
 train() {

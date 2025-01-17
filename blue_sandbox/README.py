@@ -1,11 +1,13 @@
 import os
 
 from blue_objects import file, README
+from blue_options.help.functions import get_help
 
 from blue_sandbox import NAME, VERSION, ICON, REPO_NAME
 from blue_sandbox.microsoft_building_damage_assessment import (
     README as microsoft_building_damage_assessment_README,
 )
+from blue_sandbox.help.palisades import help_functions as help_palisades
 from blue_sandbox.list import list_of_experiments
 
 items = [
@@ -25,35 +27,43 @@ items = [
 
 def build():
     return all(
-        [
-            README.build(
-                items=items,
-                path=os.path.join(file.path(__file__), ".."),
-                ICON=ICON,
-                NAME=NAME,
-                VERSION=VERSION,
-                REPO_NAME=REPO_NAME,
-            ),
-            README.build(
-                items=microsoft_building_damage_assessment_README.items,
-                cols=len(microsoft_building_damage_assessment_README.list_of_steps),
-                path=os.path.join(
-                    file.path(__file__), "microsoft_building_damage_assessment"
-                ),
-                ICON=ICON,
-                NAME=NAME,
-                VERSION=VERSION,
-                REPO_NAME=REPO_NAME,
-            ),
-        ]
-        + [
-            README.build(
-                path=os.path.join(file.path(__file__), experiment_name),
-                ICON=ICON,
-                NAME=NAME,
-                VERSION=VERSION,
-                REPO_NAME=REPO_NAME,
-            )
-            for experiment_name in ["cemetery", "palisades", "sagesemseg"]
-        ]
+        README.build(
+            items=thing.get("items", []),
+            cols=thing.get("cols", 3),
+            path=os.path.join(file.path(__file__), thing["path"]),
+            help_function=thing.get("help_function", None),
+            ICON=ICON,
+            NAME=NAME,
+            VERSION=VERSION,
+            REPO_NAME=REPO_NAME,
+        )
+        for thing in (
+            [
+                {
+                    "items": items,
+                    "path": "..",
+                },
+                {
+                    "items": microsoft_building_damage_assessment_README.items,
+                    "cols": len(
+                        microsoft_building_damage_assessment_README.list_of_steps
+                    ),
+                    "path": "microsoft_building_damage_assessment",
+                },
+                {
+                    "path": "cemetery",
+                },
+                {
+                    "path": "palisades",
+                    "help_function": lambda tokens: get_help(
+                        tokens,
+                        help_palisades,
+                        mono=True,
+                    ),
+                },
+                {
+                    "path": "sagesemseg",
+                },
+            ]
+        )
     )
