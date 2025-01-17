@@ -17,3 +17,4 @@ def test_blue_sandbox_env():
     assert env.SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_full_v2
 
     assert env.PALISADES_TEST_QUERY_OBJECT_NAME
+    assert env.PALISADES_TEST_QUERY_OBJECT_NAME_2D
