@@ -95,7 +95,7 @@ palisades ingest upload \
 
 ```bash
 palisades ingest upload \
-	$PALISADES_QUERY_OBJECT_PALISADES_MAXAR \
+	target=Palisades-Maxar \
 	scope=rgb,upload
 ```
 
