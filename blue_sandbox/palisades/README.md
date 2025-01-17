@@ -72,9 +72,9 @@ palisades ingest ~upload \
 	target=Palisades-Maxar --
 ```
 
-objects:
-- `$PALISADES_TEST_QUERY_OBJECT_NAME`
-- `$PALISADES_TEST_QUERY_OBJECT_NAME_2D` - 2 datacubes.
+```bash
+$PALISADES_TEST_QUERY_OBJECT_NAME
+```
 
 <details>
 <summary>metadata.yaml</summary>
@@ -97,9 +97,11 @@ datacube_id:
 
 2️⃣ ingesting the datacubes,
 
+🚧
+
 ```bash
 palisades ingest upload \
-	$PALISADES_TEST_QUERY_OBJECT_NAME_2D \
+	$PALISADES_TEST_QUERY_OBJECT_NAME \
 	ingest_datacubes,scope=rgb,upload
 ```
 
