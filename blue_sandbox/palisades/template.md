@@ -46,7 +46,7 @@ graph LR
 
 ```bash
 palisades ingest ~upload \
-	target=Palisades-Maxar --
+	target=Palisades-Maxar - -
 ```
 
 ```bash
