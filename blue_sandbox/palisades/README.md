@@ -40,9 +40,8 @@ graph LR
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
-```bash
-palisades help
-```
+<details>
+<summary>palisades help</summary>
 
 ```bash
 palisades \
@@ -61,6 +60,8 @@ palisades \
       rgbx: rgb and what is needed to build rgb.
       <suffix>: any *<suffix>.
 ```
+
+</details>
 
 ## Status 🔥
 
