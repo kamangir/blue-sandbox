@@ -22,7 +22,7 @@ def help_ingest(
 
     target_options = "".join(
         [
-            "query,target=<target>",
+            "target=<target>",
             xtra(" | <query-object-name>", mono),
         ]
     )
