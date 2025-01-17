@@ -39,7 +39,7 @@ function blue_sandbox_palisades_ingest() {
 
     local datacube_id
     local do_ingest_datacubes=$(abcli_option_int "$datacube_ingest_options" ingest_datacubes 0)
-    if [[ "$ingest_datacubes" == 1 ]]; then
+    if [[ "$do_ingest_datacubes" == 1 ]]; then
         for datacube_id in $(echo $list_of_datacubes | tr + " "); do
             blue_geo_datacube_ingest \
                 ,$datacube_ingest_options \

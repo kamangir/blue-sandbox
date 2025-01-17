@@ -98,7 +98,7 @@ datacube_id:
 2️⃣ ingesting the datacubes,
 
 ```bash
-palisades ingest upload] \
+palisades ingest upload \
 	$PALISADES_TEST_QUERY_OBJECT_NAME_2D \
 	ingest_datacubes,scope=rgb,upload
 ```
