@@ -132,7 +132,7 @@ ingest_and_label() {
 ingest_and_label
 ``` 
 
-## 2. train and inference 🎰
+## 2. train and inference ⏸️
 
 ```bash
 train() {
