@@ -5,7 +5,7 @@
 ```mermaid
 graph LR
     train["sagesemseg train [deploy] <dataset-object-name> <model-object-name>"]
-    deploy["sagesemseg deploy~- <model-object-name>"]
+    deploy["sagesemseg deploy~~- <model-object-name>"]
     predict["sagesemseg predict deploy <model-object-name> <dataset-object-name> <prediction-object-name>"]
 
     dataset["dataset"]:::folder
