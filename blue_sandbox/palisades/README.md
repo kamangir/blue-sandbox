@@ -65,12 +65,12 @@ palisades ingest ~upload \
 	~ingest_datacubes
 ```
 
-<details>
-<summary>details</summary>
-
 ```bash
 $PALISADES_QUERY_OBJECT_PALISADES_MAXAR
 ```
+
+<details>
+<summary>details</summary>
 
 ```yaml
 datacube_id:
