@@ -26,8 +26,6 @@ function blue_sandbox_palisades_ingest() {
         [[ $? -ne 0 ]] && return 1
     fi
 
-    local ingest_object_name=$(abcli_clarify_object $4 $query_object_name-ingest-$(abcli_string_timestamp))
-
     local list_of_datacubes=$(blue_geo_catalog_query_read all \
         $query_object_name \
         --log 0 \
@@ -38,7 +36,7 @@ function blue_sandbox_palisades_ingest() {
         --delim +
 
     local datacube_id
-    local do_ingest_datacubes=$(abcli_option_int "$datacube_ingest_options" ingest_datacubes 0)
+    local do_ingest_datacubes=$(abcli_option_int "$datacube_ingest_options" ingest_datacubes 1)
     if [[ "$do_ingest_datacubes" == 1 ]]; then
         for datacube_id in $(echo $list_of_datacubes | tr + " "); do
             blue_geo_datacube_ingest \
@@ -46,6 +44,4 @@ function blue_sandbox_palisades_ingest() {
                 $datacube_id
         done
     fi
-
-    abcli_log "🪄"
 }

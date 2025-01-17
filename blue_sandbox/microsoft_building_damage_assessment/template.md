@@ -4,11 +4,11 @@
 
 ```mermaid
 graph LR
-    ingest["@damages ingest~- <dataset-object-name>"]
-    label["@damages label~- <dataset-object-name>"]
-    train["@damages train~- <dataset-object-name> <model-object-name>"]
-    predict["@damages predict~- <model-object-name> <dataset-object-name> <prediction-object-name>"]
-    summarize["@damages summarize~- <prediction-object-name>"]
+    ingest["@damages ingest~~- <dataset-object-name>"]
+    label["@damages label~~- <dataset-object-name>"]
+    train["@damages train~~- <dataset-object-name> <model-object-name>"]
+    predict["@damages predict~~- <model-object-name> <dataset-object-name> <prediction-object-name>"]
+    summarize["@damages summarize~~- <prediction-object-name>"]
 
     dataset["dataset"]:::folder
     model["model"]:::folder

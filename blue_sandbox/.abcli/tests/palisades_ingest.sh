@@ -8,8 +8,8 @@ function test_blue_sandbox_palisades_ingest_target() {
         ingest \
         ~upload \
         target=Palisades-Maxar \
-        - \
-        -
+        ~ingest_datacubes
+
 }
 
 function test_blue_sandbox_palisades_ingest_query() {
@@ -20,8 +20,7 @@ function test_blue_sandbox_palisades_ingest_query() {
         ingest \
         ~upload \
         $PALISADES_TEST_QUERY_OBJECT_NAME \
-        - \
-        -
+        ~ingest_datacubes
 }
 
 function test_blue_sandbox_palisades_ingest_target_ingest_datacubes() {
@@ -32,6 +31,5 @@ function test_blue_sandbox_palisades_ingest_target_ingest_datacubes() {
         ingest \
         ~upload \
         target=Palisades-Maxar-test \
-        ingest_datacubes,scope=rgb \
-        -
+        scope=rgb
 }
