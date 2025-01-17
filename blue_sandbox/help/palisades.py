@@ -14,12 +14,7 @@ def help_ingest(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = "".join(
-        [
-            xtra("~download,dryrun,", mono=mono),
-            "upload",
-        ]
-    )
+    options = xtra("~download,dryrun,", mono=mono)
 
     target_options = "".join(
         [

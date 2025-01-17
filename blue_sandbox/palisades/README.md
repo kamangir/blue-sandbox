@@ -39,7 +39,7 @@ graph LR
 ```bash
 palisades \
 	ingest \
-	[~download,dryrun,upload] \
+	[~download,dryrun,] \
 	[target=<target> | <query-object-name>] \
 	[~ingest_datacubes | ~copy_template,dryrun,overwrite,scope=<scope>,upload]
  . ingest <target>.
@@ -109,7 +109,7 @@ palisades ingest upload \
 
 🔥
 
-## round one - one shot 🚧
+## round two - single shot 🚧
 
 🚧
 

@@ -94,7 +94,7 @@ palisades ingest upload \
 
 🔥
 
-## round one - one shot 🚧
+## round two - single shot 🚧
 
 🚧
 

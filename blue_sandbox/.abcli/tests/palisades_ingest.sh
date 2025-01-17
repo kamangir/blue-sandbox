@@ -1,30 +1,27 @@
 #! /usr/bin/env bash
 
-function test_blue_sandbox_palisades_ingest_target() {
+function test_blue_sandbox_palisades_ingest() {
     local options=$1
 
     abcli_eval ,$options \
         blue_sandbox_palisades \
         ingest \
         ~upload \
-        target=Palisades-Maxar \
+        target=Palisades-Maxar-test \
         ~ingest_datacubes
+    [[ $? -ne 0 ]] && return 1
 
-}
-
-function test_blue_sandbox_palisades_ingest_query() {
-    local options=$1
+    abcli_hr
 
     abcli_eval ,$options \
         blue_sandbox_palisades \
         ingest \
         ~upload \
-        $PALISADES_QUERY_OBJECT_PALISADES_MAXAR \
+        $PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST \
         ~ingest_datacubes
-}
+    [[ $? -ne 0 ]] && return 1
 
-function test_blue_sandbox_palisades_ingest_target_ingest_datacubes() {
-    local options=$1
+    abcli_hr
 
     abcli_eval ,$options \
         blue_sandbox_palisades \
