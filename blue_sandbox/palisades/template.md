@@ -50,12 +50,12 @@ palisades ingest ~upload \
 	~ingest_datacubes
 ```
 
+<details>
+<summary>details</summary>
+
 ```bash
 $PALISADES_QUERY_OBJECT_PALISADES_MAXAR
 ```
-
-<details>
-<summary>details</summary>
 
 ```yaml
 datacube_id:
@@ -71,7 +71,7 @@ datacube_id:
 - datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-10400100A1AFE700
 ```
 
-Also created `$PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST` from `Palisades-Maxar-test`.
+Also ingest `Palisades-Maxar-test` into `$PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST`.
 
 ```yaml
 datacube_id:
