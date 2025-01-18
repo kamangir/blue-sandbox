@@ -3,9 +3,18 @@
 function test_blue_sandbox_palisades_label() {
     local options=$1
 
+    local query_object_name=palisades-dataset-v1
+
     abcli_eval ,$options \
         blue_sandbox_palisades_label \
         download,offset=0 \
         ~QGIS \
-        palisades-dataset-v1
+        $query_object_name
+    [[ $? -ne 0 ]] && return 1
+
+    abcli_eval ,$options \
+        roofAI_dataset_review - \
+        $query_object_name \
+        --index 0 \
+        --subset train
 }
