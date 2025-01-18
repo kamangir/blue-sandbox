@@ -132,7 +132,7 @@ datacube_id:
   palisades-dataset-v1)
 ```
 
-<details>
+</details>
 
 ```bash
 palisades label \
