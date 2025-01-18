@@ -87,7 +87,7 @@ datacube_id:
 - datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-10400100A1AFE700
 ```
 
-Also ingest `Palisades-Maxar-test` into `$PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST`.
+Also ingested `Palisades-Maxar-test` into `$PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST`.
 
 ```yaml
 datacube_id:
@@ -119,10 +119,35 @@ datacube.label
 
 ![image](https://github.com/kamangir/assets/blob/main/palisades/QGIS-datacube-label.png?raw=true)
 
+4️⃣ a dataset,
+
+Created a single datacube dataset: `palisades-dataset-v1`.
+
+```yaml
+datacube_id:
+- datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00
+```
+
+
+```bash
+@datacube label upload \
+    $(@catalog query read - \
+    palisades-dataset-v1)
+```
+
+![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset.png?raw=true)
+
+5️⃣ reviewing the dataset,
+
 🔥
 
-4️⃣ labelling the datacubes,
+6️⃣ ingesting from the dataset,
 
+🚧
+
+7️⃣ train,
+
+🚧
 
 ## round two - single shot 🚧
 
