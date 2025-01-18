@@ -10,16 +10,22 @@ graph LR
 
     palisades_ingest_target_ingest["palisades<br>ingest -<br>target=&lt;target&gt;<br>scope=&lt;scope&gt;"]
 
+    palisades_label["palisades<br>label<br>offset=&lt;offset&gt; -<br>&lt;query-object-name&gt;"]
+
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
     datacube_1["🧊 datacube 1"]:::folder
     datacube_2["🧊 datacube 2"]:::folder
     datacube_3["🧊 datacube 3"]:::folder
 
+    query_object --> datacube_1
+    query_object --> datacube_2
+    query_object --> datacube_2
+
     query_object --> palisades_ingest_query_ingest
     palisades_ingest_query_ingest --> datacube_1
     palisades_ingest_query_ingest --> datacube_2
-    palisades_ingest_query_ingest --> datacube_3
+    palisades_ingest_query_ingest --> datacube_2
 
     target --> palisades_ingest_target
     palisades_ingest_target --> query_object
@@ -30,6 +36,9 @@ graph LR
     palisades_ingest_target_ingest --> datacube_2
     palisades_ingest_target_ingest --> datacube_3
 
+    query_object --> palisades_label
+    palisades_label --> datacube_1
+
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
@@ -39,7 +48,7 @@ graph LR
 ```bash
 palisades \
 	ingest \
-	[~download,dryrun,] \
+	[~download,dryrun] \
 	[target=<target> | <query-object-name>] \
 	[~ingest_datacubes | ~copy_template,dryrun,overwrite,scope=<scope>,upload]
  . ingest <target>.
@@ -128,14 +137,40 @@ datacube_id:
 - datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00
 ```
 
+<details>
+<summary>details</summary>
 
 ```bash
-@datacube label upload \
-    $(@catalog query read - \
-    palisades-dataset-v1)
+@datacube label \
+  upload \
+  $(@catalog query read - \
+  palisades-dataset-v1)
 ```
 
+<details>
+
+```bash
+palisades label \
+	offset=0 \
+	upload \
+	palisades-dataset-v1
+```
+
+
 ![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset.png?raw=true)
+
+```yaml
+blue_geo.datacube.label.rasterize.rasterize_the_label:
+  counts:
+    affected: 1178601
+    unaffected: 1412780
+  label_count: 51
+  label_filename: label.shp
+  list_of_classes:
+  - affected
+  - unaffected
+  reference_filename: 11-031311102213-103001010B9A1B00-103001010B9A1B00-visual.tif
+```
 
 5️⃣ reviewing the dataset,
 

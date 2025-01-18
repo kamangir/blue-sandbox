@@ -17,6 +17,7 @@ function test_blue_sandbox_help() {
         \
         "palisades" \
         "palisades ingest" \
+        "palisades label" \
         \
         "blue_sandbox"; do
         abcli_eval ,$options \
