@@ -1,6 +1,6 @@
-# 🧑🏽‍🚒 `palisades`: Post-disaster Land Cover Classification
+# 🧑🏽‍🚒 `palisades`: Post-Disaster Land Cover Classification
 
-🧑🏽‍🚒 `palisades` generates post-disaster land cover classification by applying a [SemSeg](https://github.com/kamangir/roofAI) on [Maxar Open Data](https://github.com/kamangir/blue-geo/tree/main/blue_geo/catalog/maxar_open_data) acquisitions.
+[SemSeg](https://github.com/kamangir/roofAI) on [Maxar Open Data](https://github.com/kamangir/blue-geo/tree/main/blue_geo/catalog/maxar_open_data) acquisitions. 
 
 ```mermaid
 graph LR
@@ -150,6 +150,14 @@ blue_geo.datacube.label.rasterize.rasterize_the_label:
 5️⃣ reviewing the dataset,
 
 🔥
+
+```bash
+roofAI dataset review - \
+	palisades-dataset-v1
+```
+
+
+🚧
 
 6️⃣ ingesting from the dataset,
 
