@@ -122,18 +122,6 @@ datacube_id:
 - datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00
 ```
 
-<details>
-<summary>details</summary>
-
-```bash
-@datacube label \
-  upload \
-  $(@catalog query read - \
-  palisades-dataset-v1)
-```
-
-</details>
-
 ```bash
 palisades label \
 	offset=0 \
