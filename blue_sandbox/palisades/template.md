@@ -113,7 +113,7 @@ datacube.label
 
 ![image](https://github.com/kamangir/assets/blob/main/palisades/QGIS-datacube-label.png?raw=true)
 
-4️⃣ creating a a dataset,
+4️⃣ creating a single-datacube dataset,
 
 ```bash
 palisades-dataset-v1
