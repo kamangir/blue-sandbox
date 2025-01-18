@@ -51,12 +51,7 @@ def help_label(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = "".join(
-        [
-            xtra("~download,dryrun,", mono=mono),
-            "offset=<offset>",
-        ]
-    )
+    options = "download,offset=<offset>"
 
     return show_usage(
         [
