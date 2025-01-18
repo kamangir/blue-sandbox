@@ -20,12 +20,12 @@ graph LR
 
     query_object --> datacube_1
     query_object --> datacube_2
-    query_object --> datacube_2
+    query_object --> datacube_3
 
     query_object --> palisades_ingest_query_ingest
     palisades_ingest_query_ingest --> datacube_1
     palisades_ingest_query_ingest --> datacube_2
-    palisades_ingest_query_ingest --> datacube_2
+    palisades_ingest_query_ingest --> datacube_3
 
     target --> palisades_ingest_target
     palisades_ingest_target --> query_object
