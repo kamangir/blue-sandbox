@@ -105,9 +105,24 @@ palisades ingest upload \
 	scope=rgb,upload
 ```
 
-3️⃣ labelling the datacubes,
+3️⃣ labelling one datacube,
+
+```bash
+@select $BLUE_GEO_PALISADES_TEST_DATACUBE
+@datacube ingest scope=rgb .
+@datacube label - .
+```
+
+```python
+datacube.label
+```
+
+![image](https://github.com/kamangir/assets/blob/main/palisades/QGIS-datacube-label.png?raw=true)
 
 🔥
+
+4️⃣ labelling the datacubes,
+
 
 ## round two - single shot 🚧
 
