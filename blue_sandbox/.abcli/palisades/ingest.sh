@@ -23,12 +23,6 @@ function blue_sandbox_palisades_ingest() {
             $target_options \
             $query_object_name
         [[ $? -ne 0 ]] && return 1
-
-        abcli_eval dryrun=$do_dryrun \
-            python3 -m blue_sandbox.palisades \
-            complete_ingest \
-            --query_object_name $query_object_name
-        [[ $? -ne 0 ]] && return 1
     fi
 
     local do_ingest_datacubes=$(abcli_option_int "$datacube_ingest_options" ingest_datacubes 1)

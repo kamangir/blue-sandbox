@@ -182,9 +182,25 @@ kind: distributed
 source: catalog_query
 ```
 
-6️⃣ ingesting from the dataset,
+6️⃣ ingesting from the dataset, 🔥
 
 🔥
+
+```bash
+roofai dataset ingest \
+  source=palisades-dataset-v1 - \
+  --test_count 1000 \
+  --train_count 8000 \
+  --val_count 1000
+```
+
+| | |
+|-|-|
+| ![image](https://github.com/kamangir/assets/blob/main/palisades/roofai_ingest_palisades-dataset-v1_2025-01-19-tew1po/data.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/palisades/roofai_ingest_palisades-dataset-v1_2025-01-19-tew1po/label.png?raw=true) |
+
+![image](https://github.com/kamangir/assets/blob/main/palisades/roofai_ingest_palisades-dataset-v1_2025-01-19-358cnk/datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-10560-06960.png?raw=true)
+
+🚧
 
 7️⃣ train,
 
