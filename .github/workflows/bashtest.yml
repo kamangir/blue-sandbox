@@ -35,7 +35,7 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           ENCODED_BLOB_SAS_TOKEN: ${{ secrets.ENCODED_BLOB_SAS_TOKEN }}
         run: |
-          run: echo "$GITHUB_EVENT"
+          echo "$GITHUB_EVENT"
           echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
           echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
           echo "DATABRICKS_HOST: $DATABRICKS_HOST"
