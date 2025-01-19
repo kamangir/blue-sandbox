@@ -71,8 +71,8 @@ palisades \
 
 ```bash
 palisades ingest ~upload \
-	target=Palisades-Maxar  \
-	~ingest_datacubes
+  target=Palisades-Maxar  \
+  ~ingest_datacubes
 ```
 
 ```bash
@@ -110,8 +110,8 @@ datacube_id:
 
 ```bash
 palisades ingest upload \
-	$PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST \
-	scope=rgb,upload
+  $PALISADES_QUERY_OBJECT_PALISADES_MAXAR_TEST \
+  scope=rgb,upload
 ```
 
 3️⃣ labelling one datacube,
@@ -141,9 +141,9 @@ datacube_id:
 
 ```bash
 palisades label \
-	offset=0 \
-	upload \
-	palisades-dataset-v1
+  offset=0 \
+  upload \
+  palisades-dataset-v1
 ```
 
 
