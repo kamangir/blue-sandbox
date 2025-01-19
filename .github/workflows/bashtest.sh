@@ -3,8 +3,6 @@
 function bashtest() {
     # set -x # verbose-mode
 
-    echo "GITHUB_EVENT: $GITHUB_EVENT"
-
     local plugin_name=$1
 
     cd ..
