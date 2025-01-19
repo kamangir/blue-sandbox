@@ -12,14 +12,10 @@ function test_blue_sandbox_palisades_label() {
         $query_object_name
     [[ $? -ne 0 ]] && return 1
 
-    abcli_log_warning "image size may cause gitlab error, disabled."
-    return 0
-
-    # TODO: enable with a dataset with smaller images.
-
+    # test is empty; train causes the github worker to crash.
     abcli_eval ,$options \
         roofai_dataset_review - \
         $query_object_name \
         --index 0 \
-        --subset train
+        --subset test
 }

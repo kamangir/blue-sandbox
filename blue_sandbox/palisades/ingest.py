@@ -20,7 +20,6 @@ def complete_ingest(
             value,
         )
         for keyword, value in {
-            "classes": ["affected", "unaffected"],
             "kind": "distributed",
             "source": "catalog_query",
         }.items()
