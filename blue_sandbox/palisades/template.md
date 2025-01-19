@@ -135,13 +135,15 @@ palisades label \
 ![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset.png?raw=true)
 
 ```yaml
-blue_geo.datacube.label.rasterize.rasterize_the_label:
+rasterize:
   counts:
     affected: 1178601
+    background: 0
     unaffected: 1412780
   label_count: 51
   label_filename: label.shp
   list_of_classes:
+  - background
   - affected
   - unaffected
   reference_filename: 11-031311102213-103001010B9A1B00-103001010B9A1B00-visual.tif
@@ -157,6 +159,13 @@ roofai dataset review download \
 ```
 
 ![image](https://github.com/kamangir/assets/blob/main/palisades/datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00.png?raw=true)
+
+```yaml
+datacube_id:
+- datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00
+kind: distributed
+source: catalog_query
+```
 
 6️⃣ ingesting from the dataset,
 
