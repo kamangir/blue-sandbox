@@ -88,4 +88,4 @@ image width = 500, and height = 375, while height seems to be flexible.
 
 </details>
 
--> [`roofAI`](https://github.com/kamangir/roofAI).
+-> [`roofai`](https://github.com/kamangir/roofai).
