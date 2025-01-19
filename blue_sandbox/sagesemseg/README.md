@@ -48,7 +48,7 @@ Two completed jobs to deploy,
 
 @select roofAI-sagemaker-dataset-AIRS-1000-v4
 
-roofAI dataset ingest \
+roofai dataset ingest \
     source=AIRS,target=sagemaker,upload . \
     --test_count 0 \
     --train_count 1000 \

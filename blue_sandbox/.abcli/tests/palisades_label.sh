@@ -13,7 +13,7 @@ function test_blue_sandbox_palisades_label() {
     [[ $? -ne 0 ]] && return 1
 
     abcli_eval ,$options \
-        roofAI_dataset_review - \
+        roofai_dataset_review - \
         $query_object_name \
         --index 0 \
         --subset train

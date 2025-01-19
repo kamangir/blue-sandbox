@@ -167,7 +167,7 @@ blue_geo.datacube.label.rasterize.rasterize_the_label:
 🔥
 
 ```bash
-roofAI dataset review - \
+roofai dataset review - \
 	palisades-dataset-v1
 ```
 
