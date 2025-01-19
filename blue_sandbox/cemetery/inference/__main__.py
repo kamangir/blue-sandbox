@@ -3,7 +3,7 @@ import argparse
 from blueness import module
 from blueness.argparse.generic import sys_exit
 from blue_options.logger import crash_report
-from roofAI.semseg import Profile
+from roofai.semseg import Profile
 
 from blue_sandbox import NAME
 from blue_sandbox.cemetery.inference.classes import InferenceClient, InferenceObject

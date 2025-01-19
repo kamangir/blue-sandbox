@@ -3,8 +3,8 @@ import boto3
 from tqdm import tqdm
 
 from blue_objects import path, file
-from roofAI.semseg import Profile
-from roofAI.dataset.classes import RoofAIDataset
+from roofai.semseg import Profile
+from roofai.dataset.classes import RoofAIDataset
 
 from blue_sandbox.logger import logger
 

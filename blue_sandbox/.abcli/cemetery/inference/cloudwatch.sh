@@ -1,17 +1,17 @@
 #! /usr/bin/env bash
 
 function cloudwatch() {
-    roofAI_cloudwatch "$@"
+    blue_sandbox_cemetery_cloudwatch "$@"
 }
 
-function roofAI_cloudwatch() {
+function blue_sandbox_cemetery_cloudwatch() {
     local task=${1:=help}
 
     if [ "$task" == "help" ]; then
         local options="endpoint"
         abcli_show_usage "cloudwatch browse$EOP$ABCUL[$options]$ABCUL[<endpoint-name>]$EOPE" \
             "browse endpoint on cloudwatch." \
-            "default endpoint: $(roofAI_inference_default_endpoint)"
+            "default endpoint: $(blue_sandbox_cemetery_inference_default_endpoint)"
         return
     fi
 
@@ -23,7 +23,7 @@ function roofAI_cloudwatch() {
 
         local url=""
         if [[ "$object_type" == endpoint ]]; then
-            local endpoint_name=$(abcli_clarify_input $3 $(roofAI_inference_default_endpoint))
+            local endpoint_name=$(abcli_clarify_input $3 $(blue_sandbox_cemetery_inference_default_endpoint))
             abcli_log "🔗 endpoint: $endpoint_name"
             url="https://$ABCLI_AWS_REGION.console.aws.amazon.com/cloudwatch/home?region=$ABCLI_AWS_REGION#logEventViewer:group=/aws/sagemaker/Endpoints/$endpoint_name"
         else
@@ -35,6 +35,6 @@ function roofAI_cloudwatch() {
         return
     fi
 
-    abcli_log_error "-roofAI: cloudwatch: $task: command not found."
+    abcli_log_error "blue_sandbox: cemetery: cloudwatch: $task: command not found."
     return 1
 }

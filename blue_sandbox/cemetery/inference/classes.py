@@ -4,7 +4,7 @@ from typing import List, Any, Tuple
 from sagemaker import image_uris
 import sagemaker
 
-from roofAI.logger import logger
+from roofai.logger import logger
 
 
 class InferenceObject(Enum):
