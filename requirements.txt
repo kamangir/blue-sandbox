@@ -5,7 +5,7 @@ blue_objects
 blue_geo
 blueflow
 blue_plugin
-roofAI
+roofai
 
 boto3
 geojson

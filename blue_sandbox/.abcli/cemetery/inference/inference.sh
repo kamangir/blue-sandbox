@@ -73,7 +73,7 @@ function roofAI_inference() {
             abcli_upload solid,~warn_if_exists $object_name
 
         abcli_eval dryrun=$do_dryrun \
-            python3 -m roofAI.inference create \
+            python3 -m blue_sandbox.cemetry.inference create \
             --suffix $(abcli_option "$options" suffix -) \
             --config_suffix $(abcli_option "$options" config_suffix -) \
             --object_type "$object_type" \
@@ -84,7 +84,7 @@ function roofAI_inference() {
 
     if [[ ",delete,describe," == *",$task,"* ]]; then
         abcli_eval dryrun=$do_dryrun \
-            python3 -m roofAI.inference $task \
+            python3 -m blue_sandbox.cemetry.inference $task \
             --object_type "$object_type" \
             --object_name "$3" \
             "${@:4}"
@@ -107,7 +107,7 @@ function roofAI_inference() {
         abcli_log "endpoint[$endpoint_name].invoke($dataset_object_name) -> $prediction_object_name."
 
         abcli_eval dryrun=$do_dryrun \
-            python3 -m roofAI.inference $task \
+            python3 -m blue_sandbox.cemetry.inference $task \
             --endpoint_name $endpoint_name \
             --dataset_path $ABCLI_OBJECT_ROOT/$dataset_object_name \
             --prediction_path $ABCLI_OBJECT_ROOT/$prediction_object_name \
@@ -122,7 +122,7 @@ function roofAI_inference() {
 
     if [[ "$task" == "list" ]]; then
         abcli_eval dryrun=$do_dryrun \
-            python3 -m roofAI.inference $task \
+            python3 -m blue_sandbox.cemetry.inference $task \
             --object_type "$object_type" \
             --object_name $(abcli_option "$options" contains -) \
             "${@:3}"
@@ -138,7 +138,7 @@ function roofAI_inference() {
                 763104351884.dkr.ecr.$ABCLI_AWS_REGION.amazonaws.com
         [[ $? -ne 0 ]] && return 1
 
-        local image_name=$(python3 -m roofAI.inference.image get --what name)
+        local image_name=$(python3 -m blue_sandbox.cemetry.inference.image get --what name)
         abcli_log "🔗 image name: $image_name"
         abcli_eval dryrun=$do_dryrun \
             docker pull $image_name
@@ -146,7 +146,7 @@ function roofAI_inference() {
         return
     fi
 
-    abcli_log_error "-roofAI: inference: $task: command not found."
+    abcli_log_error "roofAI: inference: $task: command not found."
     return 1
 }
 
