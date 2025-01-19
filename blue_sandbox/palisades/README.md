@@ -166,7 +166,7 @@ blue_geo.datacube.label.rasterize.rasterize_the_label:
 
 ```bash
 roofai dataset review download \
-	palisades-dataset-v1 \
+  palisades-dataset-v1 \
   --index 0 \
   --subset train
 ```
