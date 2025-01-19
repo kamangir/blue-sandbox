@@ -164,19 +164,18 @@ blue_geo.datacube.label.rasterize.rasterize_the_label:
 
 5️⃣ reviewing the dataset,
 
-🔥
-
 ```bash
-roofai dataset review - \
-	palisades-dataset-v1
+roofai dataset review download \
+	palisades-dataset-v1 \
+  --index 0 \
+  --subset train
 ```
 
-
-🚧
+![image](https://github.com/kamangir/assets/blob/main/palisades/datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00.png?raw=true)
 
 6️⃣ ingesting from the dataset,
 
-🚧
+🔥
 
 7️⃣ train,
 
