@@ -200,7 +200,7 @@ num:
 source: palisades-dataset-v1
 ```
 
-7️⃣ train, 🔥
+7️⃣ train,
 
 dataset: `125 X test + 1,002 X train + 125 X val`.
 
