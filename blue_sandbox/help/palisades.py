@@ -1,6 +1,7 @@
 from typing import List
 
 from blue_options.terminal import show_usage, xtra
+from roofai.help.semseg import train_options, device_and_profile_details
 
 from blue_geo.watch.targets.target_list import TargetList
 from blue_geo.help.datacube import scope_details
@@ -66,7 +67,43 @@ def help_label(
     )
 
 
+def help_train(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = xtra("dryrun,~download,review", mono=mono)
+
+    ingest_options = "".join(
+        [
+            "count=<10000>",
+            xtra(",dryrun,upload", mono=mono),
+        ]
+    )
+
+    return show_usage(
+        [
+            "palisades",
+            "train",
+            f"[{options}]",
+            "[.|<query-object-name>]",
+            f"[{ingest_options}]",
+            "[-|<dataset-object-name>]",
+            "[{},epochs=<5>]".format(
+                train_options(
+                    mono=mono,
+                    show_download=False,
+                )
+            ),
+            "[-|<model-object-name>]",
+        ],
+        "train palisades.",
+        device_and_profile_details,
+        mono=mono,
+    )
+
+
 help_functions = {
     "ingest": help_ingest,
     "label": help_label,
+    "train": help_train,
 }
