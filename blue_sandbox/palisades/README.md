@@ -223,9 +223,9 @@ dataset: `125 X test + 1,002 X train + 125 X val`.
 palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp
 ```
 
-| | |
-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp/predict-00000.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp/train-summary.png?raw=true) |
+![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp/predict-00000.png?raw=true)
+
+![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp/train-summary.png?raw=true)
 
 ```json
 {
