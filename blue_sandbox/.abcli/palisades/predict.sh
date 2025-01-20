@@ -14,7 +14,7 @@ function blue_sandbox_palisades_predict() {
 
     local datacube_id=$(abcli_clarify_object $3 .)
 
-    local prediction_object_name=$(abcli_clarify_object $4 $datacube_id-prediction-$(abcli_string_timestamp_short))
+    local prediction_object_name=$(abcli_clarify_object $4 predict-$datacube_id-$(abcli_string_timestamp_short))
 
     abcli_log "semseg[$model_object_name].predict($datacube_id) -$device-> $prediction_object_name."
 
