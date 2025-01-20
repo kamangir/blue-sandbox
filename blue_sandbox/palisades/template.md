@@ -238,11 +238,11 @@ palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp
 ```
 
 ```bash
-palisades train review \
- palisades-dataset-v1 \
- count=100000 - \
- profile=FULL,upload,epochs=5 -
- ```
+palisades train - \
+  palisades-dataset-v1 \
+  count=100000 - \
+  profile=FULL,upload,epochs=5 -
+```
 
 8️⃣ geoimage predict, 🔥
 
