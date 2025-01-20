@@ -178,7 +178,7 @@ roofai dataset ingest \
 ```
 
 ```bash
-palisades-dataset-v1_ingest_2025-01-19-vuqbu3
+palisades-dataset-v1-ingest-2025-01-19-v48x7l
 ```
 
 | | |
