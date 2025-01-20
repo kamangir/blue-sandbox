@@ -23,7 +23,7 @@ graph LR
     datacube_3["🧊 datacube 3"]:::folder
     dataset_object["🏛️ dataset object"]:::folder
     model_object["🏛️ model object"]:::folder
-    prediction_object["prediction object"]:::folder
+    prediction_object["📂 prediction object"]:::folder
 
     query_object --> datacube_1
     query_object --> datacube_2
@@ -75,6 +75,38 @@ palisades \
       rgb: rgb.
       rgbx: rgb and what is needed to build rgb.
       <suffix>: any *<suffix>.
+```
+```bash
+palisades \
+	label \
+	[download,offset=<offset>] \
+	[~download,dryrun,~QGIS,~rasterize,~sync,upload] \
+	[.|<query-object-name>]
+ . label <query-object-name>.
+```
+```bash
+palisades \
+	train \
+	[dryrun,~download,review] \
+	[.|<query-object-name>] \
+	[count=<10000>,dryrun,upload] \
+	[-|<dataset-object-name>] \
+	[device=<device>,dryrun,profile=<profile>,upload,epochs=<5>] \
+	[-|<model-object-name>]
+ . train palisades.
+   device: cpu | cuda
+   profile: FULL | DECENT | QUICK | DEBUG | VALIDATION
+```
+```bash
+palisades \
+	predict \
+	[device=<device>,~download,dryrun,profile=<profile>,upload] \
+	[..|<model-object-name>] \
+	[.|<datacube-id>] \
+	[-|<prediction-object-name>]
+ . <datacube-id> -<model-object-name>-> <prediction-object-name>
+   device: cpu | cuda
+   profile: FULL | DECENT | QUICK | DEBUG | VALIDATION
 ```
 
 </details>

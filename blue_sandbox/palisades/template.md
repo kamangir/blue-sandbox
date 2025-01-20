@@ -23,7 +23,7 @@ graph LR
     datacube_3["🧊 datacube 3"]:::folder
     dataset_object["🏛️ dataset object"]:::folder
     model_object["🏛️ model object"]:::folder
-    prediction_object["prediction object"]:::folder
+    prediction_object["📂 prediction object"]:::folder
 
     query_object --> datacube_1
     query_object --> datacube_2
@@ -61,6 +61,9 @@ graph LR
 <summary>palisades help</summary>
 
 --help-- palisades ingest help
+--help-- palisades label help
+--help-- palisades train help
+--help-- palisades predict help
 
 </details>
 
