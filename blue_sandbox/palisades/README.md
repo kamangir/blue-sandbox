@@ -217,14 +217,48 @@ source: palisades-dataset-v1
 
 7️⃣ train, 🔥
 
-🔥
-
-## round two - single shot 🚧
-
-🚧
+dataset: `125 X test + 1,002 X train + 125 X val`.
 
 ```bash
-palisades ingest upload \
-	target=Palisades-Maxar \
-	scope=rgb,upload
+palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp
 ```
+
+| | |
+|-|-|
+| ![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp/predict-00000.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp/train-summary.png?raw=true) |
+
+```json
+{
+  "activation": "sigmoid",
+  "classes": [
+    "affected"
+  ],
+  "elapsed_time": 289.52636790275574,
+  "encoder_name": "se_resnext50_32x4d",
+  "encoder_weights": "imagenet",
+  "epics": {
+...
+    "4": {
+      "train": {
+        "dice_loss": 0.27682340807384914,
+        "iou_score": 0.5929118207996587
+      },
+      "valid": {
+        "dice_loss": 0.18688242530822755,
+        "iou_score": 0.7735828969767486
+      }
+    }
+  }
+}
+```
+
+```bash
+palisades train review \
+ palisades-dataset-v1 \
+ count=100000 - \
+ profile=FULL,upload,epochs=5 -
+ ```
+
+8️⃣ geoimage predict, 🔥
+
+🚧
