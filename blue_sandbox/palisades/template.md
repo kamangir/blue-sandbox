@@ -188,19 +188,15 @@ palisades-dataset-v1_ingest_2025-01-19-vuqbu3
 ![image](https://github.com/kamangir/assets/blob/main/palisades/roofai_ingest_palisades-dataset-v1_2025-01-19-358cnk/datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-10560-06960.png?raw=true)
 
 ```yaml
-bucket: kamangir
-channel: {}
 classes:
 - background
 - affected
 - unaffected
-ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.34.1
 kind: CamVid
 num:
   test: 125
   train: 1001
   val: 125
-prefix: bolt/palisades-dataset-v1_ingest_2025-01-19-vuqbu3
 source: palisades-dataset-v1
 ```
 
