@@ -12,11 +12,15 @@ graph LR
 
     palisades_label["palisades<br>label<br>offset=&lt;offset&gt; -<br>&lt;query-object-name&gt;"]
 
+    palisades_train["palisades<br>train -<br>&lt;query-object-name&gt;<br>count=&lt;count&gt;<br>&lt;dataset-object-name&gt;<br>epochs=&lt;5&gt;<br>&lt;model-object-name&gt;"]
+
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
     datacube_1["🧊 datacube 1"]:::folder
     datacube_2["🧊 datacube 2"]:::folder
     datacube_3["🧊 datacube 3"]:::folder
+    dataset_object["🏛️ dataset object"]:::folder
+    model_object["🏛️ model object"]:::folder
 
     query_object --> datacube_1
     query_object --> datacube_2
@@ -38,6 +42,10 @@ graph LR
 
     query_object --> palisades_label
     palisades_label --> datacube_1
+
+    query_object --> palisades_train
+    palisades_train --> dataset_object
+    palisades_train --> model_object
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
