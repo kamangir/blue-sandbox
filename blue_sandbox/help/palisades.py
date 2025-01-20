@@ -1,7 +1,11 @@
 from typing import List
 
 from blue_options.terminal import show_usage, xtra
-from roofai.help.semseg import train_options, device_and_profile_details
+from roofai.help.semseg import (
+    train_options,
+    device_and_profile_details,
+    predict_options,
+)
 
 from blue_geo.watch.targets.target_list import TargetList
 from blue_geo.help.datacube import scope_details
@@ -67,6 +71,25 @@ def help_label(
     )
 
 
+def help_predict(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    return show_usage(
+        [
+            "palisades",
+            "predict",
+            f"[{predict_options(mono=mono)}]",
+            "[..|<model-object-name>]",
+            "[.|<datacube-id>]",
+            "[-|<prediction-object-name>]",
+        ],
+        "<datacube-id> -<model-object-name>-> <prediction-object-name>",
+        device_and_profile_details,
+        mono=mono,
+    )
+
+
 def help_train(
     tokens: List[str],
     mono: bool,
@@ -105,5 +128,6 @@ def help_train(
 help_functions = {
     "ingest": help_ingest,
     "label": help_label,
+    "predict": help_predict,
     "train": help_train,
 }

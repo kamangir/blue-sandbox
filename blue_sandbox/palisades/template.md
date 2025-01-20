@@ -14,6 +14,8 @@ graph LR
 
     palisades_train["palisades train~~- <query-object-name> count=<count> <dataset-object-name> epochs=<5> <model-object-name>"]
 
+    palisades_predict["palisades predict~~- <model-object-name> <datacube-id> <prediction-object-name>"]
+
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
     datacube_1["🧊 datacube 1"]:::folder
@@ -21,6 +23,7 @@ graph LR
     datacube_3["🧊 datacube 3"]:::folder
     dataset_object["🏛️ dataset object"]:::folder
     model_object["🏛️ model object"]:::folder
+    model_object["prediction object"]:::folder
 
     query_object --> datacube_1
     query_object --> datacube_2
@@ -46,6 +49,10 @@ graph LR
     query_object --> palisades_train
     palisades_train --> dataset_object
     palisades_train --> model_object
+
+    model_object --> palisades_predict
+    datacube_1 --> palisades_predict
+    palisades_predict --> prediction_object
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
