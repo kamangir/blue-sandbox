@@ -24,6 +24,7 @@ graph LR
     dataset_object["🏛️ dataset object"]:::folder
     model_object["🏛️ model object"]:::folder
     model_object["prediction object"]:::folder
+    prediction_object["prediction object"]:::folder
 
     query_object --> datacube_1
     query_object --> datacube_2
