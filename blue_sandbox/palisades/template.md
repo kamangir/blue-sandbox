@@ -167,9 +167,7 @@ kind: distributed
 source: catalog_query
 ```
 
-6️⃣ ingesting from the dataset, 🔥
-
-🔥
+6️⃣ ingesting from the dataset,
 
 ```bash
 roofai dataset ingest \
@@ -179,17 +177,36 @@ roofai dataset ingest \
   --val_count 1000
 ```
 
+```bash
+palisades-dataset-v1_ingest_2025-01-19-vuqbu3
+```
+
 | | |
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/palisades/roofai_ingest_palisades-dataset-v1_2025-01-19-tew1po/data.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/palisades/roofai_ingest_palisades-dataset-v1_2025-01-19-tew1po/label.png?raw=true) |
 
 ![image](https://github.com/kamangir/assets/blob/main/palisades/roofai_ingest_palisades-dataset-v1_2025-01-19-358cnk/datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-10560-06960.png?raw=true)
 
-🚧
+```yaml
+bucket: kamangir
+channel: {}
+classes:
+- background
+- affected
+- unaffected
+ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.34.1
+kind: CamVid
+num:
+  test: 125
+  train: 1001
+  val: 125
+prefix: bolt/palisades-dataset-v1_ingest_2025-01-19-vuqbu3
+source: palisades-dataset-v1
+```
 
-7️⃣ train,
+7️⃣ train, 🔥
 
-🚧
+🔥
 
 ## round two - single shot 🚧
 
