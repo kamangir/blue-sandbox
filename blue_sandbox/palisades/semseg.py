@@ -17,7 +17,7 @@ from blue_geo.catalog import get_datacube
 from blue_geo.catalog.generic.generic.scope import DatacubeScope
 
 from blue_sandbox import NAME
-from blue_sandbox.palisades.geodataloader import GeoDataset
+from blue_sandbox.palisades.geo.dataset import GeoDataset
 from blue_sandbox.logger import logger
 
 
