@@ -18,6 +18,8 @@ function test_blue_sandbox_help() {
         "palisades" \
         "palisades ingest" \
         "palisades label" \
+        "palisades predict" \
+        "palisades train" \
         \
         "blue_sandbox"; do
         abcli_eval ,$options \

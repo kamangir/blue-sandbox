@@ -12,11 +12,18 @@ graph LR
 
     palisades_label["palisades<br>label<br>offset=&lt;offset&gt; -<br>&lt;query-object-name&gt;"]
 
+    palisades_train["palisades<br>train -<br>&lt;query-object-name&gt;<br>count=&lt;count&gt;<br>&lt;dataset-object-name&gt;<br>epochs=&lt;5&gt;<br>&lt;model-object-name&gt;"]
+
+    palisades_predict["palisades<br>predict -<br>&lt;model-object-name&gt;<br>&lt;datacube-id&gt;<br>&lt;prediction-object-name&gt;"]
+
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
     datacube_1["🧊 datacube 1"]:::folder
     datacube_2["🧊 datacube 2"]:::folder
     datacube_3["🧊 datacube 3"]:::folder
+    dataset_object["🏛️ dataset object"]:::folder
+    model_object["🏛️ model object"]:::folder
+    prediction_object["📂 prediction object"]:::folder
 
     query_object --> datacube_1
     query_object --> datacube_2
@@ -39,6 +46,14 @@ graph LR
     query_object --> palisades_label
     palisades_label --> datacube_1
 
+    query_object --> palisades_train
+    palisades_train --> dataset_object
+    palisades_train --> model_object
+
+    model_object --> palisades_predict
+    datacube_1 --> palisades_predict
+    palisades_predict --> prediction_object
+
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
@@ -60,6 +75,38 @@ palisades \
       rgb: rgb.
       rgbx: rgb and what is needed to build rgb.
       <suffix>: any *<suffix>.
+```
+```bash
+palisades \
+	label \
+	[download,offset=<offset>] \
+	[~download,dryrun,~QGIS,~rasterize,~sync,upload] \
+	[.|<query-object-name>]
+ . label <query-object-name>.
+```
+```bash
+palisades \
+	train \
+	[dryrun,~download,review] \
+	[.|<query-object-name>] \
+	[count=<10000>,dryrun,upload] \
+	[-|<dataset-object-name>] \
+	[device=<device>,dryrun,profile=<profile>,upload,epochs=<5>] \
+	[-|<model-object-name>]
+ . train palisades.
+   device: cpu | cuda
+   profile: FULL | DECENT | QUICK | DEBUG | VALIDATION
+```
+```bash
+palisades \
+	predict \
+	[device=<device>,~download,dryrun,profile=<profile>,upload] \
+	[..|<model-object-name>] \
+	[.|<datacube-id>] \
+	[-|<prediction-object-name>]
+ . <datacube-id> -<model-object-name>-> <prediction-object-name>
+   device: cpu | cuda
+   profile: FULL | DECENT | QUICK | DEBUG | VALIDATION
 ```
 
 </details>
@@ -215,16 +262,50 @@ num:
 source: palisades-dataset-v1
 ```
 
-7️⃣ train, 🔥
+7️⃣ train,
 
-🔥
-
-## round two - single shot 🚧
-
-🚧
+dataset: `125 X test + 1,002 X train + 125 X val`.
 
 ```bash
-palisades ingest upload \
-	target=Palisades-Maxar \
-	scope=rgb,upload
+palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp
 ```
+
+![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp/predict-00000.png?raw=true)
+
+![image](https://github.com/kamangir/assets/blob/main/palisades/palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp/train-summary.png?raw=true)
+
+```json
+{
+  "activation": "sigmoid",
+  "classes": [
+    "affected"
+  ],
+  "elapsed_time": 289.52636790275574,
+  "encoder_name": "se_resnext50_32x4d",
+  "encoder_weights": "imagenet",
+  "epics": {
+...
+    "4": {
+      "train": {
+        "dice_loss": 0.27682340807384914,
+        "iou_score": 0.5929118207996587
+      },
+      "valid": {
+        "dice_loss": 0.18688242530822755,
+        "iou_score": 0.7735828969767486
+      }
+    }
+  }
+}
+```
+
+```bash
+palisades train - \
+  palisades-dataset-v1 \
+  count=100000 - \
+  profile=FULL,upload,epochs=5 -
+```
+
+8️⃣ geoimage predict, 🔥
+
+🚧
