@@ -15,12 +15,6 @@ function test_blue_sandbox_help() {
         "@damages tensorboard" \
         "@damages train" \
         \
-        "palisades" \
-        "palisades ingest" \
-        "palisades label" \
-        "palisades predict" \
-        "palisades train" \
-        \
         "blue_sandbox"; do
         abcli_eval ,$options \
             abcli_help $module

@@ -7,7 +7,6 @@ from blue_sandbox import NAME, VERSION, ICON, REPO_NAME
 from blue_sandbox.microsoft_building_damage_assessment import (
     README as microsoft_building_damage_assessment_README,
 )
-from blue_sandbox.help.palisades import help_functions as help_palisades
 from blue_sandbox.list import list_of_experiments
 
 items = [
@@ -29,7 +28,7 @@ def build():
     return all(
         README.build(
             items=thing.get("items", []),
-            cols=thing.get("cols", 3),
+            cols=thing.get("cols", 2),
             path=os.path.join(file.path(__file__), thing["path"]),
             help_function=thing.get("help_function", None),
             ICON=ICON,
@@ -52,14 +51,6 @@ def build():
                 },
                 {
                     "path": "cemetery",
-                },
-                {
-                    "path": "palisades",
-                    "help_function": lambda tokens: get_help(
-                        tokens,
-                        help_palisades,
-                        mono=True,
-                    ),
                 },
                 {
                     "path": "sagesemseg",
