@@ -14,7 +14,7 @@ graph LR
 
     palisades_train["palisades train~~- <query-object-name> count=<count> <dataset-object-name> epochs=<5> <model-object-name>"]
 
-    palisades_predict["palisades predict~~-~~- <model-object-name> <datacube-id> <prediction-object-name>"]
+    palisades_predict["palisades predict~~ingest~~- <model-object-name> <datacube-id> <prediction-object-name>"]
 
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
