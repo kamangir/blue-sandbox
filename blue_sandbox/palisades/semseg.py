@@ -148,7 +148,7 @@ def predict(
     )
 
     weight_matrix[weight_matrix == 0] = 1  # output_matrix is zero at them anyways :)
-    output_matrix = (output_matrix / weight_matrix * 255).astype(np.uint8)
+    output_matrix = (output_matrix * 255 / weight_matrix).astype(np.uint8)
 
     with rasterio.open(reference_full_filename) as src:
         profile = src.profile
