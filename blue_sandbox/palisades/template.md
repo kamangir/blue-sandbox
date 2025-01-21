@@ -271,7 +271,9 @@ blue_sandbox_palisades_predict \
 
 [predict-datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-2025-01-20-x54yb0](https://kamangir-public.s3.ca-central-1.amazonaws.com/predict-datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-2025-01-20-x54yb0.tar.gz)
 
-![image](https://github.com/kamangir/assets/blob/main/palisades/predict-datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-2025-01-20-x54yb0/640.gif?raw=true)
+| | |
+|-|-|
+| ![image](https://github.com/kamangir/assets/blob/main/palisades/predict-datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-2025-01-20-x54yb0/640.gif?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/palisades/predict-datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-2025-01-20-x54yb0/640-2.gif?raw=true) |
 
 ```yaml
 predict:
