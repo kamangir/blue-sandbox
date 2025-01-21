@@ -29,12 +29,12 @@ function blue_sandbox_palisades_predict() {
         "${@:5}"
     local status="$?"
 
-    [[ "$do_upload" == 1 ]] &&
-        abcli_upload - $prediction_object_name
-
     abcli_mlflow_tags_set \
         $prediction_object_name \
         datacube_id=$datacube_id,model=$model_object_name,profile=$profile
+
+    [[ "$do_upload" == 1 ]] &&
+        abcli_upload - $prediction_object_name
 
     return $status
 }
