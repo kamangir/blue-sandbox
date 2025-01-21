@@ -100,7 +100,7 @@ def predict(
     stack_of_masks = np.concatenate(list_of_masks, axis=0)
 
     logger.info(f"stitching {stack_of_masks.shape[0]:,} chips...")
-    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=float)
+    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.float16)
     weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
     chip_index: int = 0
     for y in range(
@@ -122,7 +122,7 @@ def predict(
                 x : x + dataset.chip_width,
             ] += (
                 stack_of_masks[chip_index, 0] > 0.5
-            ).astype(np.uint8)
+            ).astype(np.float16)
 
             weight_matrix[
                 y : y + dataset.chip_height,
@@ -144,7 +144,11 @@ def predict(
             "tif",
         ),
         object_name=prediction_object_name,
+        create=True,
     )
+
+    weight_matrix[weight_matrix == 0] = 1  # output_matrix is zero at them anyways :)
+    output_matrix = (output_matrix / weight_matrix * 255).astype(np.uint8)
 
     with rasterio.open(reference_full_filename) as src:
         profile = src.profile
@@ -152,13 +156,12 @@ def predict(
         profile.update(
             dtype=output_matrix.dtype,
             count=1,
+            photometric="MINISBLACK",
         )
 
         with rasterio.open(output_filename, "w", **profile) as dst:
             dst.write(output_matrix, 1)
 
-    weight_matrix[weight_matrix == 0] = 1  # output_matrix is zero at them anyways :)
-    output_matrix = output_matrix / weight_matrix
     if not log_matrix(
         matrix=output_matrix,
         header=[],
