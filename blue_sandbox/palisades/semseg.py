@@ -163,7 +163,12 @@ def predict(
             f"device: {device}",
             f"profile: {profile}",
             f"batch_size: {batch_size}",
-            f"took {timer.elapsed_pretty()}",
+            "took {}".format(
+                timer.elapsed_pretty(
+                    largest=True,
+                    short=True,
+                )
+            ),
         ],
         footer=[
             fullname(),
