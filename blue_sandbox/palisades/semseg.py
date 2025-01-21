@@ -148,20 +148,6 @@ def predict(
     weight_matrix[weight_matrix == 0] = 1  # output_matrix is zero at them anyways :)
     output_matrix = output_matrix / weight_matrix
 
-    with rasterio.open(reference_full_filename) as src:
-        profile = src.profile
-
-        profile.update(
-            dtype=output_matrix.dtype,
-            compress="lzw",
-            count=1,
-            photometric="MINISBLACK",  # Grayscale
-        )
-        logger.info(f"profile:{profile}")
-
-        with rasterio.open(output_filename, "w", **profile) as dst:
-            dst.write(output_matrix, 1)
-
     if not log_matrix(
         matrix=output_matrix,
         header=[],
@@ -172,6 +158,25 @@ def predict(
         verbose=True,
     ):
         return False
+
+    output_matrix = output_matrix * 255
+    output_matrix[output_matrix < 0] = output_matrix
+    output_matrix[output_matrix > 255] = 255
+    output_matrix = output_matrix.astype(np.uint8)
+
+    with rasterio.open(reference_full_filename) as src:
+        profile = src.profile
+
+        profile.update(
+            dtype=output_matrix.dtype,
+            # compress="lzw",
+            count=1,
+            photometric="MINISBLACK",  # Grayscale
+        )
+        logger.info(f"profile:{profile}")
+
+        with rasterio.open(output_filename, "w", **profile) as dst:
+            dst.write(output_matrix, 1)
 
     return post_to_object(
         prediction_object_name,
