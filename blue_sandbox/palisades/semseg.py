@@ -131,7 +131,7 @@ def predict(
         if chip_index >= len(dataset):
             break
 
-    output_matrix = weight_matrix / (weight_matrix + 1e-10)
+    output_matrix = output_matrix / (weight_matrix + 1e-10)
     if not log_matrix(
         matrix=output_matrix,
         header=[],
