@@ -14,7 +14,7 @@ graph LR
 
     palisades_train["palisades train~~- <query-object-name> count=<count> <dataset-object-name> epochs=<5> <model-object-name>"]
 
-    palisades_predict["palisades predict~~- <model-object-name> <datacube-id> <prediction-object-name>"]
+    palisades_predict["palisades predict~~ingest~~- <model-object-name> <datacube-id> <prediction-object-name>"]
 
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
@@ -263,7 +263,7 @@ palisades train - \
 
 
 ```bash
-blue_sandbox_palisades_predict \
+palisades predict ingest \
     profile=FULL,upload \
     palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp \
     datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00

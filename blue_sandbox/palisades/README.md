@@ -14,7 +14,7 @@ graph LR
 
     palisades_train["palisades<br>train -<br>&lt;query-object-name&gt;<br>count=&lt;count&gt;<br>&lt;dataset-object-name&gt;<br>epochs=&lt;5&gt;<br>&lt;model-object-name&gt;"]
 
-    palisades_predict["palisades<br>predict -<br>&lt;model-object-name&gt;<br>&lt;datacube-id&gt;<br>&lt;prediction-object-name&gt;"]
+    palisades_predict["palisades<br>predict ingest -<br>&lt;model-object-name&gt;<br>&lt;datacube-id&gt;<br>&lt;prediction-object-name&gt;"]
 
     target["🎯 target"]:::folder
     query_object["📂 query object"]:::folder
@@ -100,6 +100,7 @@ palisades \
 ```bash
 palisades \
 	predict \
+	[ingest,~tag] \
 	[device=<device>,~download,dryrun,profile=<profile>,upload] \
 	[..|<model-object-name>] \
 	[.|<datacube-id>] \
@@ -307,7 +308,7 @@ palisades train - \
 
 
 ```bash
-blue_sandbox_palisades_predict \
+palisades predict ingest \
     profile=FULL,upload \
     palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp \
     datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00

@@ -7,17 +7,20 @@ import cv2
 import rasterio
 
 from blueness import module
+from blue_options.elapsed_timer import ElapsedTimer
 from blue_objects import objects, file
 from blue_objects.metadata import post_to_object
 from blue_objects.logger.matrix import log_matrix
-from blue_options.elapsed_timer import ElapsedTimer
-from roofai.semseg.model import SemSegModel
-from roofai.semseg import Profile
-from roofai.semseg.augmentation import get_validation_augmentation, get_preprocessing
+from blue_geo import fullname as blue_geo_fullname
 from blue_geo.catalog import get_datacube
 from blue_geo.catalog.generic.generic.scope import DatacubeScope
+from roofai.semseg.model import SemSegModel
+from roofai.semseg import Profile
+from roofai import fullname as roofai_fullname
+from roofai.semseg.augmentation import get_validation_augmentation, get_preprocessing
 
 from blue_sandbox import NAME
+from blue_sandbox import fullname
 from blue_sandbox.palisades.geo.dataset import GeoDataset
 from blue_sandbox.logger import logger
 
@@ -92,7 +95,7 @@ def predict(
 
         x_tensor = torch.from_numpy(np.stack(images)).to(model.device)
         pr_masks = model.model.predict(x_tensor)
-        pr_masks = pr_masks.cpu().numpy().round()
+        pr_masks = pr_masks.cpu().numpy()
         list_of_masks += [pr_masks]
     timer.stop()
     logger.info(f"took {timer.elapsed_pretty()}")
@@ -100,7 +103,7 @@ def predict(
     stack_of_masks = np.concatenate(list_of_masks, axis=0)
 
     logger.info(f"stitching {stack_of_masks.shape[0]:,} chips...")
-    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.float16)
+    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.float32)
     weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
     chip_index: int = 0
     for y in range(
@@ -120,9 +123,7 @@ def predict(
             output_matrix[
                 y : y + dataset.chip_height,
                 x : x + dataset.chip_width,
-            ] += (
-                stack_of_masks[chip_index, 0] > 0.5
-            ).astype(np.float16)
+            ] += stack_of_masks[chip_index, 0]
 
             weight_matrix[
                 y : y + dataset.chip_height,
@@ -148,30 +149,57 @@ def predict(
     )
 
     weight_matrix[weight_matrix == 0] = 1  # output_matrix is zero at them anyways :)
-    output_matrix = (output_matrix / weight_matrix * 255).astype(np.uint8)
+    output_matrix = output_matrix / weight_matrix
+
+    if not log_matrix(
+        matrix=output_matrix,
+        header=objects.signature(
+            info=reference_filename,
+            object_name=prediction_object_name,
+        )
+        + [
+            datacube_id,
+            model.signature,
+            f"device: {device}",
+            f"profile: {profile}",
+            f"batch_size: {batch_size}",
+            "took {}".format(
+                timer.elapsed_pretty(
+                    largest=True,
+                    short=True,
+                )
+            ),
+        ],
+        footer=[
+            fullname(),
+            blue_geo_fullname(),
+            roofai_fullname(),
+        ],
+        dynamic_range=[0, 1.0],
+        filename=file.add_extension(output_filename, "png"),
+        colormap=cv2.COLORMAP_JET,
+        verbose=True,
+    ):
+        return False
+
+    output_matrix = output_matrix * 255
+    output_matrix[output_matrix < 0] = 0
+    output_matrix[output_matrix > 255] = 255
+    output_matrix = output_matrix.astype(np.uint8)
 
     with rasterio.open(reference_full_filename) as src:
         profile = src.profile
 
         profile.update(
             dtype=output_matrix.dtype,
+            # compress="lzw",
             count=1,
-            photometric="MINISBLACK",
+            photometric="MINISBLACK",  # Grayscale
         )
+        logger.info(f"profile:{profile}")
 
         with rasterio.open(output_filename, "w", **profile) as dst:
             dst.write(output_matrix, 1)
-
-    if not log_matrix(
-        matrix=output_matrix,
-        header=[],
-        footer=[],
-        dynamic_range=[0, 1],
-        filename=file.add_extension(output_filename, "png"),
-        colormap=cv2.COLORMAP_JET,
-        verbose=True,
-    ):
-        return False
 
     return post_to_object(
         prediction_object_name,

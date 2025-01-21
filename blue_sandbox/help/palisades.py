@@ -75,10 +75,18 @@ def help_predict(
     tokens: List[str],
     mono: bool,
 ) -> str:
+    options = "".join(
+        [
+            "ingest",
+            xtra(",~tag", mono=mono),
+        ]
+    )
+
     return show_usage(
         [
             "palisades",
             "predict",
+            f"[{options}]",
             f"[{predict_options(mono=mono)}]",
             "[..|<model-object-name>]",
             "[.|<datacube-id>]",
