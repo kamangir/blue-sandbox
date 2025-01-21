@@ -28,7 +28,7 @@ def build():
     return all(
         README.build(
             items=thing.get("items", []),
-            cols=thing.get("cols", 3),
+            cols=thing.get("cols", 2),
             path=os.path.join(file.path(__file__), thing["path"]),
             help_function=thing.get("help_function", None),
             ICON=ICON,
