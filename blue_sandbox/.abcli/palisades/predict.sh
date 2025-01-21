@@ -5,7 +5,7 @@ function blue_sandbox_palisades_predict() {
     local do_ingest=$(abcli_option_int "$options" ingest 0)
     local do_tag=$(abcli_option_int "$options" tag 1)
 
-    local predict_options=$1
+    local predict_options=$2
     $abcli_gpu_status_cache && local device=cuda || local device=cpu
     local device=$(abcli_option "$predict_options" device $device)
     local do_dryrun=$(abcli_option_int "$predict_options" dryrun 0)
