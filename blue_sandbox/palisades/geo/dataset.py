@@ -20,7 +20,7 @@ class GeoDataset(BaseDataset):
         augmentation=None,
         preprocessing=None,
         count=-1,
-        chip_overlap: float = 0.25,
+        chip_overlap: float = 0.5,
     ):
         self.chip_height = DatasetTarget.TORCH.chip_height
         self.chip_width = DatasetTarget.TORCH.chip_width
