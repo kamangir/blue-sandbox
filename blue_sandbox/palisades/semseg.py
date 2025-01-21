@@ -98,8 +98,8 @@ def predict(
     stack_of_masks = np.concatenate(list_of_masks, axis=0)
 
     logger.info(f"stitching {stack_of_masks.shape[0]:,} chips...")
-    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=float)
-    weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=float)
+    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
+    weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
     chip_index: int = 0
     for y in range(
         0,
@@ -118,12 +118,14 @@ def predict(
             output_matrix[
                 y : y + dataset.chip_height,
                 x : x + dataset.chip_width,
-            ] += stack_of_masks[chip_index, 0]
+            ] += (
+                stack_of_masks[chip_index, 0] > 0.5
+            ).astype(np.uint8)
 
             weight_matrix[
                 y : y + dataset.chip_height,
                 x : x + dataset.chip_width,
-            ] += 1.0
+            ] += 1
 
             chip_index += 1
             if chip_index >= len(dataset):
@@ -131,7 +133,7 @@ def predict(
         if chip_index >= len(dataset):
             break
 
-    output_matrix = output_matrix / (weight_matrix + 1e-10)
+    output_matrix = output_matrix / weight_matrix
     if not log_matrix(
         matrix=output_matrix,
         header=[],
