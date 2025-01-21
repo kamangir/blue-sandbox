@@ -262,6 +262,25 @@ palisades train - \
   profile=FULL,upload,epochs=5 -
 ```
 
-8️⃣ geoimage predict, 🔥
+8️⃣ geoimage predict,
 
-🚧
+
+```bash
+blue_sandbox_palisades_predict \
+    profile=FULL,upload \
+    palisades-dataset-v1-ingest-2025-01-20-520ze1-model-2025-01-20-s5xtkp \
+    datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00
+```
+
+```bash
+predict-datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-2025-01-20-x54yb0
+```
+
+![image](https://github.com/kamangir/assets/blob/main/palisades/predict-datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-2025-01-20-x54yb0/640.gif?raw=true)
+
+```yaml
+predict:
+  elapsed_time: 150.75683450698853
+```
+
+✅
