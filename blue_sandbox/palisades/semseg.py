@@ -52,11 +52,12 @@ def predict(
     logger.info(f"reference: {reference_filename}")
 
     logger.info(
-        "{}.predict: {}/{} -{}-> {}".format(
+        "{}.predict: {}/{} -{}-batch-size:{}-> {}".format(
             NAME,
             datacube_id,
             reference_filename,
             device,
+            batch_size,
             prediction_object_name,
         )
     )
@@ -83,17 +84,20 @@ def predict(
     )
     timer = ElapsedTimer()
     list_of_masks: List[np.ndarray] = []
-    for n in tqdm(index_list):
-        image, _ = dataset[n]
+    for i in tqdm(range(0, len(index_list), batch_size)):
+        batch_indices = index_list[i : i + batch_size]
+        images = [dataset[n][0] for n in batch_indices]
 
-        x_tensor = torch.from_numpy(image).to(model.device).unsqueeze(0)
-        pr_mask = model.model.predict(x_tensor)
-        pr_mask = pr_mask.squeeze().cpu().numpy().round()
-        list_of_masks += [pr_mask]
+        x_tensor = torch.from_numpy(np.stack(images)).to(model.device)
+        pr_masks = model.model.predict(x_tensor)
+        pr_masks = pr_masks.cpu().numpy().round()
+        list_of_masks += [pr_masks]
     timer.stop()
     logger.info(f"took {timer.elapsed_pretty()}")
 
-    logger.info(f"stitching {len(list_of_masks)} tiles...")
+    stack_of_masks = np.concatenate(list_of_masks, axis=0)
+
+    logger.info(f"stitching {stack_of_masks.shape[0]:,} chips...")
     output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=float)
     weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=float)
     chip_index: int = 0
@@ -114,7 +118,7 @@ def predict(
             output_matrix[
                 y : y + dataset.chip_height,
                 x : x + dataset.chip_width,
-            ] += list_of_masks[chip_index]
+            ] += stack_of_masks[chip_index, 0]
 
             weight_matrix[
                 y : y + dataset.chip_height,

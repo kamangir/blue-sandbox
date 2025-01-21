@@ -53,7 +53,7 @@ class GeoDataset(BaseDataset):
         self.preprocessing = preprocessing
 
         logger.info(
-            "{}.GeoDataset({}): {}x{}: {:,} item(s).".format(
+            "{}.GeoDataset({}): {}x{}: {:,} chip(s).".format(
                 NAME,
                 file.name_and_extension(filename),
                 self.chip_height,
