@@ -92,7 +92,7 @@ def predict(
 
         x_tensor = torch.from_numpy(np.stack(images)).to(model.device)
         pr_masks = model.model.predict(x_tensor)
-        pr_masks = pr_masks.cpu().numpy().round()
+        pr_masks = pr_masks.cpu().numpy()
         list_of_masks += [pr_masks]
     timer.stop()
     logger.info(f"took {timer.elapsed_pretty()}")
@@ -100,7 +100,7 @@ def predict(
     stack_of_masks = np.concatenate(list_of_masks, axis=0)
 
     logger.info(f"stitching {stack_of_masks.shape[0]:,} chips...")
-    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.float16)
+    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.float32)
     weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
     chip_index: int = 0
     for y in range(
@@ -120,7 +120,7 @@ def predict(
             output_matrix[
                 y : y + dataset.chip_height,
                 x : x + dataset.chip_width,
-            ] += stack_of_masks[chip_index, 0].astype(np.float16)
+            ] += stack_of_masks[chip_index, 0]
 
             weight_matrix[
                 y : y + dataset.chip_height,
@@ -153,9 +153,11 @@ def predict(
 
         profile.update(
             dtype=output_matrix.dtype,
+            compress="lzw",
             count=1,
-            photometric="MINISBLACK",
+            photometric="MINISBLACK",  # Grayscale
         )
+        logger.info(f"profile:{profile}")
 
         with rasterio.open(output_filename, "w", **profile) as dst:
             dst.write(output_matrix, 1)
