@@ -98,7 +98,7 @@ def predict(
     stack_of_masks = np.concatenate(list_of_masks, axis=0)
 
     logger.info(f"stitching {stack_of_masks.shape[0]:,} chips...")
-    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
+    output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=float)
     weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
     chip_index: int = 0
     for y in range(
@@ -133,6 +133,7 @@ def predict(
         if chip_index >= len(dataset):
             break
 
+    weight_matrix[weight_matrix == 0] = 1  # output_matrix is zero at them anyways :)
     output_matrix = output_matrix / weight_matrix
     if not log_matrix(
         matrix=output_matrix,
@@ -150,6 +151,7 @@ def predict(
             object_name=prediction_object_name,
         ),
         colormap=cv2.COLORMAP_JET,
+        verbose=True,
     ):
         return False
 
