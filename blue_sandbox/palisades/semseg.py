@@ -120,9 +120,7 @@ def predict(
             output_matrix[
                 y : y + dataset.chip_height,
                 x : x + dataset.chip_width,
-            ] += (
-                stack_of_masks[chip_index, 0] > 0.5
-            ).astype(np.float16)
+            ] += stack_of_masks[chip_index, 0].astype(np.float16)
 
             weight_matrix[
                 y : y + dataset.chip_height,
@@ -148,7 +146,7 @@ def predict(
     )
 
     weight_matrix[weight_matrix == 0] = 1  # output_matrix is zero at them anyways :)
-    output_matrix = (output_matrix * 255 / weight_matrix).astype(np.uint8)
+    output_matrix = output_matrix / weight_matrix
 
     with rasterio.open(reference_full_filename) as src:
         profile = src.profile
@@ -166,7 +164,7 @@ def predict(
         matrix=output_matrix,
         header=[],
         footer=[],
-        dynamic_range=[0, 255],
+        dynamic_range=[0, 1.0],
         filename=file.add_extension(output_filename, "png"),
         colormap=cv2.COLORMAP_JET,
         verbose=True,
