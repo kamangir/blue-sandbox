@@ -155,11 +155,7 @@ def predict(
     ):
         return False
 
-    # TODO: generate whole image
-
     # TODO: generate geoimage
-
-    # TODO: generate geojson
 
     return post_to_object(
         prediction_object_name,
