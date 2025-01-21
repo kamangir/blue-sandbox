@@ -4,6 +4,7 @@ import numpy as np
 from tqdm import tqdm
 import torch
 import cv2
+import rasterio
 
 from blueness import module
 from blue_objects import objects, file
@@ -49,6 +50,10 @@ def predict(
         return False
 
     reference_filename = list_of_files[0]
+    reference_full_filename = objects.path_of(
+        filename=reference_filename,
+        object_name=datacube_id,
+    )
     logger.info(f"reference: {reference_filename}")
 
     logger.info(
@@ -68,10 +73,7 @@ def predict(
     )
 
     dataset = GeoDataset(
-        filename=objects.path_of(
-            filename=reference_filename,
-            object_name=datacube_id,
-        ),
+        filename=reference_full_filename,
         augmentation=get_validation_augmentation(),
         preprocessing=get_preprocessing(preprocessing_fn),
         count=model.profile.data_count,
@@ -133,6 +135,28 @@ def predict(
         if chip_index >= len(dataset):
             break
 
+    output_filename = objects.path_of(
+        filename=file.add_extension(
+            file.add_suffix(
+                reference_filename,
+                suffix="prediction",
+            ),
+            "tif",
+        ),
+        object_name=prediction_object_name,
+    )
+
+    with rasterio.open(reference_full_filename) as src:
+        profile = src.profile
+
+        profile.update(
+            dtype=output_matrix.dtype,
+            count=1,
+        )
+
+        with rasterio.open(output_filename, "w", **profile) as dst:
+            dst.write(output_matrix, 1)
+
     weight_matrix[weight_matrix == 0] = 1  # output_matrix is zero at them anyways :)
     output_matrix = output_matrix / weight_matrix
     if not log_matrix(
@@ -140,22 +164,11 @@ def predict(
         header=[],
         footer=[],
         dynamic_range=[0, 1],
-        filename=objects.path_of(
-            filename=file.add_extension(
-                file.add_suffix(
-                    reference_filename,
-                    suffix="prediction",
-                ),
-                "png",
-            ),
-            object_name=prediction_object_name,
-        ),
+        filename=file.add_extension(output_filename, "png"),
         colormap=cv2.COLORMAP_JET,
         verbose=True,
     ):
         return False
-
-    # TODO: generate geoimage
 
     return post_to_object(
         prediction_object_name,
