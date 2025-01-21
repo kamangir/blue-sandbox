@@ -1,10 +1,10 @@
 list_of_experiments = {
     "palisades": {
         "ICON": "🧑🏽‍🚒",
-        "title": "Post-disaster Land Cover Classification.",
-        "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/palisades/README.md",
-        "marquee": "https://github.com/kamangir/assets/raw/main/blue-geo/Maxar-Open-Datacube.png?raw=true",
-        "status": "🔥",
+        "title": "Geospatial AI for Post-Disaster Damage Assessment using Maxar Open Data.",
+        "url": "https://github.com/kamangir/palisades",
+        "marquee": "https://github.com/kamangir/assets/blob/main/palisades/predict-datacube-maxar_open_data-WildFires-LosAngeles-Jan-2025-11-031311102213-103001010B9A1B00-2025-01-20-x54yb0/640.gif?raw=true",
+        "status": "🎓",
     },
     "sagesemseg": {
         "ICON": "🌀",
