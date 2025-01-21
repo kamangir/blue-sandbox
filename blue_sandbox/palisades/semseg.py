@@ -166,7 +166,7 @@ def predict(
         matrix=output_matrix,
         header=[],
         footer=[],
-        dynamic_range=[0, 1],
+        dynamic_range=[0, 255],
         filename=file.add_extension(output_filename, "png"),
         colormap=cv2.COLORMAP_JET,
         verbose=True,
