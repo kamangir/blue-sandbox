@@ -5,9 +5,9 @@ from torch.utils.data import Dataset as BaseDataset
 
 from blueness import module
 from blue_objects import file
-from roofai import NAME
 from roofai.dataset.classes import DatasetTarget
 
+from blue_sandbox import NAME
 from blue_sandbox.logger import logger
 
 NAME = module.name(__file__, NAME)

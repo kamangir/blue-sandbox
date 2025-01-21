@@ -31,6 +31,7 @@ def predict(
     device: str,
     profile: Profile = Profile.VALIDATION,
     in_notebook: bool = False,
+    batch_size: int = 32,
 ) -> bool:
     model = SemSegModel(
         model_filename=objects.path_of(
