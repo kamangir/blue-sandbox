@@ -9,8 +9,13 @@ setup(
     description=DESCRIPTION,
     packages=[
         NAME,
+        f"{NAME}.cemetery",
+        f"{NAME}.cemetery.DALLE",
+        f"{NAME}.cemetery.inference",
         f"{NAME}.help",
         f"{NAME}.microsoft_building_damage_assessment",
+        f"{NAME}.palisades",
+        f"{NAME}.sagesemseg",
     ],
     include_package_data=True,
     package_data={
