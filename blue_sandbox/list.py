@@ -22,7 +22,12 @@ list_of_experiments = {
     },
     "gpt": {
         "title": "co-authored with ChapGPT.",
-        "url": "/blue_sandbox/cemetery/gpt",
+        "url": "./blue_sandbox/cemetery/gpt",
+    },
+    "code generation": {
+        "title": "",
+        "thumbnail": "https://github.com/kamangir/openai-commands/blob/main/assets/completion_i2i_function.png?raw=true",
+        "url": "./blue_sandbox/cemetery/code_generation",
     },
     "cemetery": {
         "title": "An AI cemetery.",
