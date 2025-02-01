@@ -8,7 +8,7 @@ VisuaLyze run
 
 ![image](https://github.com/kamangir/openai-commands/assets/1007567/7c0ed5f7-6941-451c-a17e-504c6adab23f)
 
-sample output for [`onlinefoods`](./assets/VisuaLyze/onlinefoods/).
+sample output for [`onlinefoods`](../../assets/VisuaLyze/onlinefoods/).
 
 ```python
 import pandas as pd
