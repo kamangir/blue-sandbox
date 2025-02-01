@@ -26,7 +26,7 @@ list_of_experiments = {
     },
     "code generation": {
         "title": "",
-        "thumbnail": "https://github.com/kamangir/openai-commands/blob/main/assets/completion_i2i_function.png?raw=true",
+        "marquee": "https://github.com/kamangir/openai-commands/blob/main/assets/completion_i2i_function.png?raw=true",
         "url": "./blue_sandbox/cemetery/code_generation",
     },
     "cemetery": {
