@@ -22,7 +22,7 @@ list_of_experiments = {
     },
     "gpt": {
         "title": "co-authored with ChapGPT.",
-        "url": "/blue_sandbox/gpt",
+        "url": "/blue_sandbox/cemetery/gpt",
     },
     "cemetery": {
         "title": "An AI cemetery.",
