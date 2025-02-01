@@ -23,3 +23,8 @@ SAGESEMSEG_COMPLETED_JOB_pascal_voc_v1_full_v2 = os.getenv(
 )
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+
+VISUALYZE_PORT = os.getenv(
+    "VISUALYZE_PORT",
+    "",
+)

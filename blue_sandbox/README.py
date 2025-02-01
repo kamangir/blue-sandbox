@@ -10,8 +10,7 @@ from blue_sandbox.microsoft_building_damage_assessment import (
 from blue_sandbox.list import list_of_experiments
 
 items = [
-    "{}[`{}`]({}) {} [![image]({})]({}) {}".format(
-        experiment["ICON"],
+    "[`{}`]({}) {} [![image]({})]({}) {}".format(
         experiment_name,
         experiment["url"],
         experiment["status"],

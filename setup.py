@@ -16,6 +16,7 @@ setup(
         f"{NAME}.microsoft_building_damage_assessment",
         f"{NAME}.palisades",
         f"{NAME}.sagesemseg",
+        f"{NAME}.VisuaLyze",
     ],
     include_package_data=True,
     package_data={
