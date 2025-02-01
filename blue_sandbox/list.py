@@ -7,26 +7,26 @@ list_of_experiments = {
     },
     "sagesemseg": {
         "title": "A SemSeg (Semantic Segmenter) trained and deployed on AWS Sagemaker.",
-        "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/sagesemseg/README.md",
+        "url": "./blue_sandbox/sagesemseg/README.md",
         "marquee": "https://github.com/kamangir/assets/blob/main/blue-sandbox/sagesemseg-predict.png?raw=true",
     },
     "`@damages`": {
         "title": "Satellite imagery damage assessment workflow",
-        "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/microsoft_building_damage_assessment/README.md",
+        "url": "./blue_sandbox/microsoft_building_damage_assessment/README.md",
         "marquee": "https://github.com/kamangir/assets/raw/main/blue-sandbox/Maui-Hawaii-fires-Aug-23-ingest-2025-01-10-qqJqhm.png?raw=true",
     },
     "VisuaLyze": {
         "title": 'How about calling it "VisuaLyze"? ... - OpenAI',
         "marquee": "https://github.com/kamangir/openai-commands/assets/1007567/7c0ed5f7-6941-451c-a17e-504c6adab23f",
-        "url": "https://github.com/kamangir/blue-sandbox/tree/main/blue_sandbox/VisuaLyze",
+        "url": "./blue_sandbox/VisuaLyze",
     },
     "gpt": {
         "title": "co-authored with ChapGPT.",
-        "url": "https://github.com/kamangir/openai-commands/tree/main/openai_commands/gpt",
+        "url": "/blue_sandbox/gpt",
     },
     "cemetery": {
         "title": "An AI cemetery.",
-        "url": "https://github.com/kamangir/blue-sandbox/blob/main/blue_sandbox/cemetery/README.md",
+        "url": "./blue_sandbox/cemetery/README.md",
         "status": "🪦",
     },
     "template": {
