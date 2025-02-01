@@ -11,6 +11,7 @@ setup(
         NAME,
         f"{NAME}.cemetery",
         f"{NAME}.cemetery.DALLE",
+        f"{NAME}.cemetery.gpt",
         f"{NAME}.cemetery.inference",
         f"{NAME}.help",
         f"{NAME}.microsoft_building_damage_assessment",

@@ -13,8 +13,11 @@ items = [
     "[`{}`]({}) {} [![image]({})]({}) {}".format(
         experiment_name,
         experiment["url"],
-        experiment["status"],
-        experiment["marquee"],
+        experiment.get("status", "⏸️"),
+        experiment.get(
+            "marquee",
+            "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
+        ),
         experiment["url"],
         experiment["title"],
     )
