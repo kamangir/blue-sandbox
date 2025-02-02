@@ -19,9 +19,3 @@ pylint
 pytest
 python-dotenv[cli]
 tqdm
-
-azure-storage-blob
-fiona
-tensorboard
-
-sagemaker>=2,<3

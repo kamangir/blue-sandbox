@@ -8,13 +8,6 @@ jobs:
     if: "! contains(github.event.head_commit.message, 'no-workflow')"
     steps:
       - uses: actions/checkout@v3
-      - name: Download se_resnext50_32x4d
-        run: |
-          mkdir -pv /home/runner/.cache/torch/hub/checkpoints/
-          curl \
-          --insecure \
-          -L http://data.lip6.fr/cadene/pretrainedmodels/se_resnext50_32x4d-a260b3a4.pth \
-          -o /home/runner/.cache/torch/hub/checkpoints/se_resnext50_32x4d-a260b3a4.pth
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
@@ -30,10 +23,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ca-central-1
-      - name: Install GDAL
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gdal-bin python3-gdal
       - name: Run bash tests
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

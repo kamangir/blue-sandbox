@@ -10,7 +10,6 @@ setup(
     packages=[
         NAME,
         f"{NAME}.help",
-        f"{NAME}.microsoft_building_damage_assessment",
     ],
     include_package_data=True,
     package_data={

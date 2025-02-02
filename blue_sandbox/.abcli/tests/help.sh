@@ -7,14 +7,6 @@ function test_blue_sandbox_help() {
     for module in \
         "@sandbox" \
         \
-        "@damages" \
-        "@damages ingest" \
-        "@damages ingest list" \
-        "@damages install" \
-        "@damages label" \
-        "@damages tensorboard" \
-        "@damages train" \
-        \
         "blue_sandbox"; do
         abcli_eval ,$options \
             abcli_help $module
