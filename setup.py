@@ -9,6 +9,7 @@ setup(
     description=DESCRIPTION,
     packages=[
         NAME,
+        f"{NAME}.assets",
         f"{NAME}.help",
     ],
     include_package_data=True,
