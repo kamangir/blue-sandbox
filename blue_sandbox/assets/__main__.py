@@ -31,6 +31,11 @@ parser.add_argument(
     default="png+geojson",
     help="png+geojson",
 )
+parser.add_argument(
+    "--prefix",
+    type=str,
+    default="",
+)
 args = parser.parse_args()
 
 success = False
@@ -38,6 +43,7 @@ if args.task == "publish":
     success = publish(
         object_name=args.object_name,
         list_of_extensions=args.extensions.split("+"),
+        prefix=args.prefix,
     )
 else:
     success = None
