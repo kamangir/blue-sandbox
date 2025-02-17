@@ -19,12 +19,14 @@ NAME = module.name(__file__, NAME)
 def publish(
     object_name: str,
     list_of_extensions: List[str],
+    prefix: str = "",
     log: bool = True,
 ) -> bool:
     logger.info(
-        "{}.publish {} / {}".format(
+        "{}.publish: {}/{}.* for {}".format(
             NAME,
             object_name,
+            prefix,
             ", ".join(list_of_extensions),
         )
     )
@@ -32,7 +34,7 @@ def publish(
     for extension in tqdm(list_of_extensions):
         for filename in glob.glob(
             objects.path_of(
-                filename=f"*.{extension}",
+                filename=f"{prefix}*.{extension}",
                 object_name=object_name,
             )
         ):
