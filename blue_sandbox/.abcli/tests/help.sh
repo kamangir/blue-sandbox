@@ -7,9 +7,6 @@ function test_blue_sandbox_help() {
     for module in \
         "@sandbox" \
         \
-        "@sam" \
-        "@sam install" \
-        \
         "blue_sandbox"; do
         abcli_eval ,$options \
             abcli_help $module
