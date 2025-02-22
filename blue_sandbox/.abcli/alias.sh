@@ -7,3 +7,5 @@ alias sagesemseg=blue_sandbox_sagesemseg
 alias @sandbox=blue_sandbox
 
 alias gpt=openai_commands_gpt
+
+alias @sam=blue_sandbox_blue_sam
