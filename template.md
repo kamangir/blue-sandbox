@@ -6,8 +6,8 @@
 pip install blue-sandbox
 ```
 
---table--
+items:::
 
 ---
 
---signature--
+signature:::
