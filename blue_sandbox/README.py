@@ -13,6 +13,8 @@ items = README.Items(
             "marquee": "https://github.com/kamangir/assets/raw/main/blue-sandbox/virtualcam.png?raw=true",
             "description": "Python + [OBS Studio](https://obsproject.com/) ⏸️",
         },
+        {},
+        {},
     ]
 )
 
