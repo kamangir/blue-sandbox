@@ -11,6 +11,7 @@ setup(
         NAME,
         f"{NAME}.assets",
         f"{NAME}.help",
+        f"{NAME}.virtualcam",
     ],
     include_package_data=True,
     package_data={
