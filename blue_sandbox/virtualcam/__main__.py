@@ -1,4 +1,4 @@
-#
+# https://chatgpt.com/c/67d8a46a-69dc-8005-9176-e1ec3528afdf
 
 import cv2
 import pyvirtualcam
