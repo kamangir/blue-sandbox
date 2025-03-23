@@ -8,10 +8,10 @@ from blue_sandbox import NAME, VERSION, ICON, REPO_NAME
 items = README.Items(
     [
         {
-            "name": "WebDav",
-            "url": "./blue_sandbox/WebDav",
-            "marquee": "https://github.com/kamangir/assets/raw/main/blue-sandbox/WebDav.png?raw=true",
-            "description": "An interface to [WebDav](http://www.webdav.org/) 🔥",
+            "name": "WebDAV",
+            "url": "./blue_sandbox/WebDAV",
+            "marquee": "https://github.com/kamangir/assets/raw/main/blue-sandbox/WebDAV.png?raw=true",
+            "description": "An interface to [WebDAV](http://www.webdav.org/) 🔥",
         },
         {
             "name": "virtualcam",
