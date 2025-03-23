@@ -9,6 +9,7 @@ from blue_sandbox.logger import logger
 NAME = module.name(__file__, NAME)
 
 
+# https://chatgpt.com/c/67e06812-4af0-8005-b2ab-5f9a1eabbbe3
 class WebDAVInterface:
     def __init__(self):
         config = {
