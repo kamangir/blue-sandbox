@@ -33,10 +33,16 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           ENCODED_BLOB_SAS_TOKEN: ${{ secrets.ENCODED_BLOB_SAS_TOKEN }}
+          WEBDAV_HOSTNAME: ${{ secrets.WEBDAV_HOSTNAME }}
+          WEBDAV_LOGIN: ${{ secrets.WEBDAV_LOGIN }}
+          WEBDAV_PASSWORD: ${{ secrets.WEBDAV_PASSWORD }}
         run: |
           echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
           echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
           echo "DATABRICKS_HOST: $DATABRICKS_HOST"
           echo "DATABRICKS_TOKEN: $DATABRICKS_TOKEN"
           echo "ENCODED_BLOB_SAS_TOKEN: $ENCODED_BLOB_SAS_TOKEN"
+          echo "WEBDAV_HOSTNAME: $WEBDAV_HOSTNAME"
+          echo "WEBDAV_LOGIN: $WEBDAV_LOGIN"
+          echo "WEBDAV_PASSWORD: $WEBDAV_PASSWORD"
           pytest --verbose
