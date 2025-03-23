@@ -44,7 +44,7 @@ class WebDAVInterface:
 
         return True
 
-    def upload_file(
+    def upload(
         self,
         local_path: str,
         remote_path: str,
@@ -68,7 +68,7 @@ class WebDAVInterface:
 
         if log:
             logger.info(
-                "{}.upload_file: {} -> {}".format(
+                "{}.upload: {} -> {}".format(
                     NAME,
                     local_path,
                     remote_path,
@@ -77,7 +77,7 @@ class WebDAVInterface:
 
         return True
 
-    def download_file(
+    def download(
         self,
         remote_path: str,
         local_path: str,
@@ -94,7 +94,7 @@ class WebDAVInterface:
 
         if log:
             logger.info(
-                "{}.download_file {} -> {}".format(
+                "{}.download {} -> {}".format(
                     NAME,
                     remote_path,
                     local_path,

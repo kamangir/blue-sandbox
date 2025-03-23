@@ -27,12 +27,12 @@ def test_WebDAV_interface(
 
     interface = WebDAVInterface()
 
-    assert interface.upload_file(
+    assert interface.upload(
         objects.path_of(filename, source_object_name),
         f"{destination_object_name}/{filename}",
     )
 
-    assert interface.download_file(
+    assert interface.download(
         f"{destination_object_name}/{filename}",
         objects.path_of(filename, destination_object_name),
     )
