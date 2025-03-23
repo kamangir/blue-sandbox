@@ -10,7 +10,7 @@ items = README.Items(
         {
             "name": "WebDav",
             "url": "./blue_sandbox/WebDav",
-            "marquee": "https://github.com/kamangir/assets/raw/main/blue-sandbox/WebDav?raw=true",
+            "marquee": "https://github.com/kamangir/assets/raw/main/blue-sandbox/WebDav.png?raw=true",
             "description": "An interface to [WebDav](http://www.webdav.org/) 🔥",
         },
         {
