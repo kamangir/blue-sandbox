@@ -12,6 +12,7 @@ setup(
         f"{NAME}.assets",
         f"{NAME}.help",
         f"{NAME}.virtualcam",
+        f"{NAME}.WebDAV",
     ],
     include_package_data=True,
     package_data={

@@ -19,3 +19,7 @@ def test_blue_sandbox_env():
     # assert env.GROQ_API_KEY
 
     assert env.VISUALYZE_PORT
+
+    assert env.WEBDAV_HOSTNAME
+    assert env.WEBDAV_LOGIN
+    assert env.WEBDAV_PASSWORD
