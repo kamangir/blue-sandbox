@@ -23,6 +23,8 @@ def test_WebDAV_interface(
 ):
     destination_object_name = objects.unique_object("test_WebDAV_interface")
 
+    assert objects.download(source_object_name)
+
     interface = WebDAVInterface()
 
     assert interface.upload_file(
